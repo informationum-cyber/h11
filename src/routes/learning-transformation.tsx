@@ -1,0 +1,142 @@
+import { createFileRoute, Link } from '@tanstack/react-router'
+import { CheckCircle2, ArrowRight } from 'lucide-react'
+
+export const Route = createFileRoute('/learning-transformation')({
+  component: LearningTransformation,
+})
+
+function LearningTransformation() {
+  return (
+    <div className="min-h-screen bg-white text-gray-900 font-sans">
+      {/* HEADER */}
+      <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-100">
+        <div className="mb-4 md:mb-0">
+          <Link to="/">
+            <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-16 w-auto object-contain" />
+          </Link>
+        </div>
+        <nav className="flex gap-6 text-sm font-medium text-gray-600">
+          <Link to="/enterprise-transformation" className="hover:text-[#DD6547] transition-colors">Enterprise</Link>
+          <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
+          <Link to="/learning-transformation" className="text-[#DD6547] font-semibold">Learning</Link>
+        </nav>
+      </header>
+
+      {/* CONTENT */}
+      <main className="w-full max-w-5xl mx-auto px-6 py-16">
+        <div className="mb-12">
+          <Link to="/" className="text-sm font-medium text-gray-500 hover:text-[#DD6547] inline-flex items-center gap-2 mb-6">
+            &larr; Back to Home
+          </Link>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#232C33] mb-6">Learning Transformation</h1>
+          <p className="text-xl text-gray-600 font-light max-w-3xl">
+            Empowering professionals with top-tier certification training, mentoring, and thought leadership. We proudly maintain a <strong className="font-semibold text-[#DD6547]">100% pass rate</strong> for our PMP and Agile certification students.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+          {/* Offering 1: PMP Training */}
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+            <h2 className="text-2xl font-bold text-[#232C33] mb-4">PMP Certification Training</h2>
+            <p className="text-gray-600 mb-6">Comprehensive preparation for the Project Management Professional (PMP) exam.</p>
+            
+            <div className="space-y-6">
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold text-[#DD6547]">Premium PMP Tutoring</h3>
+                  <span className="text-xl font-black text-[#232C33]">$550</span>
+                </div>
+                <ul className="text-sm text-gray-600 space-y-2 mb-4">
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 8 hours scheduled over a month</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Covers all syllabus as per PMI ECO</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Practice sample papers & online quizzes</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Exam registration assistance</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Offline messaging support & help</li>
+                </ul>
+                <p className="text-sm font-medium text-[#232C33] bg-gray-50 p-3 rounded-lg">
+                  <strong>Advantage:</strong> Individual 1:1 tutoring tailored entirely to your learning style and pace.
+                </p>
+              </div>
+
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold text-[#DD6547]">Self-Learner Session</h3>
+                  <span className="text-xl font-black text-[#232C33]">$220</span>
+                </div>
+                <ul className="text-sm text-gray-600 space-y-2 mb-4">
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 2-hour session with an expert tutor</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Dedicated Q&A and concept clarification</li>
+                </ul>
+                <p className="text-sm font-medium text-[#232C33] bg-gray-50 p-3 rounded-lg">
+                  <strong>Advantage:</strong> Self-learning at your pace, with a tutor available for fine-tuning your practice.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="space-y-12">
+            {/* Offering 2: Agile & Other Training */}
+            <div>
+              <h2 className="text-2xl font-bold text-[#232C33] mb-4">Agile & Framework Certifications</h2>
+              <p className="text-gray-600 mb-6 font-light">
+                Expand your toolkit beyond traditional project management. We offer specialized training and guidance for modern delivery frameworks. 
+              </p>
+              <div className="bg-[#232C33] text-white p-6 rounded-xl">
+                <p className="mb-4 text-gray-300">Contact us for details on certifications like:</p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">ITIL</span>
+                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">AgilePM</span>
+                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">CSM</span>
+                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">SAFe</span>
+                </div>
+                <a href="mailto:contact@hanseleleven.com" className="inline-flex items-center text-[#DD6547] font-medium hover:text-white transition-colors">
+                  Contact for details <ArrowRight size={16} className="ml-2" />
+                </a>
+              </div>
+            </div>
+
+            {/* Offering 3: Partnerships */}
+            <div>
+              <h2 className="text-2xl font-bold text-[#232C33] mb-4">Thought Leadership & Partnerships</h2>
+              <p className="text-gray-600 mb-4 font-light">
+                We are actively seeking collaborations in the transformation space. Partner with us for the review and co-creation of:
+              </p>
+              <ul className="space-y-2 text-gray-600 mb-6">
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> White Papers</li>
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Speaking Engagements</li>
+                <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Framework Development</li>
+              </ul>
+              <a href="mailto:partner@hanseleleven.com" className="inline-block px-6 py-3 border-2 border-[#232C33] text-[#232C33] rounded-sm font-medium hover:bg-[#232C33] hover:text-white transition-colors">
+                Partner With Us
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        {/* CTA */}
+        <div className="bg-[#DD6547]/10 rounded-2xl p-10 text-center max-w-3xl mx-auto">
+          <h3 className="text-2xl font-bold text-[#232C33] mb-4">Ready to accelerate your learning?</h3>
+          <p className="text-gray-600 mb-8">Book a free 15-minute consultation to discuss your certification goals.</p>
+          <a href="mailto:consult@hanseleleven.com" className="bg-[#DD6547] hover:bg-[#C2553A] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl inline-block">
+            Book a 15-Min Free Consult
+          </a>
+        </div>
+      </main>
+
+      {/* FOOTER */}
+      <footer className="bg-[#232C33] text-white py-12 text-center mt-20">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-2xl font-black tracking-tight mb-4">HANSEL ELEVEN</div>
+          <p className="text-[#DD6547] mb-4">Transformation & Professional Enablement</p>
+          <p className="text-gray-300 text-sm mb-8 font-light tracking-wide">
+            Supporting companies and people in <br className="md:hidden" />
+            Toronto | San Francisco | Warsaw | Dubai | Chennai | Seoul | Hong Kong
+          </p>
+          <div className="text-sm text-gray-400">
+            &copy; {new Date().getFullYear()} Hansel Eleven Inc. All rights reserved.
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
