@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Network, TrendingUp, GraduationCap, Linkedin } from 'lucide-react'
+import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
@@ -17,6 +17,7 @@ function LandingPage() {
           <Link to="/enterprise-transformation" className="hover:text-[#DD6547] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#DD6547] transition-colors">Learning</Link>
+          <Link to="/vizhun" className="hover:text-[#DD6547] transition-colors">Vizhun</Link>
         </nav>
       </header>
 
@@ -40,10 +41,10 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* THREE PILLAR CARDS */}
+      {/* PILLAR CARDS */}
       <section id="offerings" className="bg-gray-50 py-24">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
-          
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
           {/* Card 1 */}
           <Link to="/enterprise-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
             <div className="w-14 h-14 bg-[#232C33]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#232C33] transition-colors">
@@ -83,6 +84,20 @@ function LandingPage() {
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> PMP Prep</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Agile Training</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Thought Leadership</li>
+            </ul>
+          </Link>
+
+          {/* Card 4 */}
+          <Link to="/vizhun" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+            <div className="w-14 h-14 bg-[#DD6547]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#DD6547] transition-colors">
+              <CalendarClock className="w-7 h-7 text-[#DD6547] group-hover:text-white transition-colors" />
+            </div>
+            <h3 className="text-2xl font-bold text-[#232C33] mb-3">Vizhun</h3>
+            <p className="text-gray-500 mb-6 font-medium">Transform your vision into a plan</p>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Vision to Calendar</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Smart Scheduling</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Early Access</li>
             </ul>
           </Link>
 

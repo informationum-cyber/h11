@@ -19,6 +19,7 @@ function EnterpriseTransformation() {
           <Link to="/enterprise-transformation" className="text-[#DD6547] font-semibold">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#DD6547] transition-colors">Learning</Link>
+          <Link to="/vizhun" className="hover:text-[#DD6547] transition-colors">Vizhun</Link>
         </nav>
       </header>
 

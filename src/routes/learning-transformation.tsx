@@ -19,6 +19,7 @@ function LearningTransformation() {
           <Link to="/enterprise-transformation" className="hover:text-[#DD6547] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="text-[#DD6547] font-semibold">Learning</Link>
+          <Link to="/vizhun" className="hover:text-[#DD6547] transition-colors">Vizhun</Link>
         </nav>
       </header>
 
