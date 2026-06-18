@@ -11,7 +11,7 @@ function LandingPage() {
       {/* HEADER */}
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
-          <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-16 w-auto object-contain" />
+          <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
         </div>
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
           <Link to="/enterprise-transformation" className="hover:text-[#DD6547] transition-colors">Enterprise</Link>
