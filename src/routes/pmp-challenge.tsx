@@ -110,7 +110,11 @@ function PmpChallenge() {
 
       <main className="w-full max-w-3xl mx-auto px-6 py-8 pb-24">
         {stage === 'intro' && (
-          <div className="text-center">
+          <div className="text-center relative isolate">
+            <div className="absolute inset-0 -z-10 overflow-hidden">
+              <div className="absolute -top-10 left-1/4 w-[300px] h-[300px] bg-[#ffd799] rounded-full filter blur-3xl opacity-60"></div>
+              <div className="absolute -top-10 right-1/4 w-[300px] h-[300px] bg-[#dad6ff] rounded-full filter blur-3xl opacity-60"></div>
+            </div>
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full mb-8">
               <Target size={16} /> 60-SECOND PMP CHALLENGE
             </div>
@@ -183,7 +187,7 @@ function PmpChallenge() {
               {questions.map((q, i) => {
                 const isCorrect = answers[i] === q.correct
                 return (
-                  <div key={i} className="bg-gray-50 rounded-xl p-6 border border-gray-100">
+                  <div key={i} className={`rounded-xl p-6 border ${isCorrect ? 'bg-[#d6faff]/40 border-[#d6faff]' : 'bg-[#ffd799]/30 border-[#ffd799]'}`}>
                     <div className="flex gap-3 items-start mb-2">
                       {isCorrect ? (
                         <CheckCircle2 className="w-5 h-5 text-green-600 shrink-0 mt-0.5" />

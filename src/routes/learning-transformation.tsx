@@ -207,7 +207,7 @@ function LearningTransformation() {
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
             {cohortPackages.map((pkg) => (
-              <div key={pkg.id} className="bg-gray-50 rounded-2xl p-8 border border-gray-100 flex flex-col">
+              <div key={pkg.id} className={`rounded-2xl p-8 border border-gray-100 border-t-4 flex flex-col ${pkg.id === 'cohort-4' ? 'bg-[#dad6ff]/10 border-t-[#dad6ff]' : 'bg-[#ffd799]/10 border-t-[#ffd799]'}`}>
                 <div className="inline-flex items-center gap-1 text-xs font-semibold tracking-wide uppercase text-[#DD6547] mb-3">
                   <Star size={14} className="fill-[#DD6547]" /> {pkg.badge}
                 </div>
@@ -283,10 +283,10 @@ function LearningTransformation() {
               <div className="bg-[#232C33] text-white p-6 rounded-xl">
                 <p className="mb-4 text-gray-300">Contact us for details on certifications like:</p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">ITIL</span>
-                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">AgilePM</span>
-                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">CSM</span>
-                  <span className="bg-white/10 px-3 py-1 rounded-full text-sm">SAFe</span>
+                  <span className="bg-[#dad6ff] text-[#232C33] px-3 py-1 rounded-full text-sm font-medium">ITIL</span>
+                  <span className="bg-[#ffd799] text-[#232C33] px-3 py-1 rounded-full text-sm font-medium">AgilePM</span>
+                  <span className="bg-[#d6faff] text-[#232C33] px-3 py-1 rounded-full text-sm font-medium">CSM</span>
+                  <span className="bg-[#e8e8ea] text-[#232C33] px-3 py-1 rounded-full text-sm font-medium">SAFe</span>
                 </div>
                 <a href="mailto:contact@hanseleleven.com" className="inline-flex items-center text-[#DD6547] font-medium hover:text-white transition-colors">
                   Contact for details <ArrowRight size={16} className="ml-2" />

@@ -41,6 +41,8 @@ const testimonials = [
   },
 ]
 
+const testimonialAccents = ['border-t-[#dad6ff]', 'border-t-[#ffd799]', 'border-t-[#d6faff]', 'border-t-[#e8e8ea]']
+
 function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
@@ -59,10 +61,10 @@ function LandingPage() {
 
       {/* HERO SECTION */}
       <section className="w-full max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
-        <div className="relative">
-          <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-5">
-            {/* Subtle geometric background element */}
-            <div className="w-[600px] h-[600px] border-[40px] border-[#232C33] rounded-full filter blur-3xl"></div>
+        <div className="relative isolate">
+          <div className="absolute inset-0 -z-10 overflow-hidden">
+            <div className="absolute -top-20 -left-10 w-[400px] h-[400px] bg-[#dad6ff] rounded-full filter blur-3xl opacity-70"></div>
+            <div className="absolute -top-10 -right-10 w-[350px] h-[350px] bg-[#d6faff] rounded-full filter blur-3xl opacity-70"></div>
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
@@ -102,7 +104,7 @@ function LandingPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {/* Card 1 */}
-          <Link to="/enterprise-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link to="/enterprise-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 border-t-4 border-t-[#dad6ff] hover:shadow-md transition-shadow group">
             <div className="w-14 h-14 bg-[#232C33]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#232C33] transition-colors">
               <Network className="w-7 h-7 text-[#232C33] group-hover:text-white transition-colors" />
             </div>
@@ -116,7 +118,7 @@ function LandingPage() {
           </Link>
 
           {/* Card 2 */}
-          <Link to="/career-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link to="/career-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 border-t-4 border-t-[#ffd799] hover:shadow-md transition-shadow group">
             <div className="w-14 h-14 bg-[#DD6547]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#DD6547] transition-colors">
               <TrendingUp className="w-7 h-7 text-[#DD6547] group-hover:text-white transition-colors" />
             </div>
@@ -130,7 +132,7 @@ function LandingPage() {
           </Link>
 
           {/* Card 3 */}
-          <Link to="/learning-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link to="/learning-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 border-t-4 border-t-[#d6faff] hover:shadow-md transition-shadow group">
             <div className="w-14 h-14 bg-[#232C33]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#232C33] transition-colors">
               <GraduationCap className="w-7 h-7 text-[#232C33] group-hover:text-white transition-colors" />
             </div>
@@ -144,7 +146,7 @@ function LandingPage() {
           </Link>
 
           {/* Card 4 */}
-          <Link to="/vizhun" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link to="/vizhun" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 border-t-4 border-t-[#e8e8ea] hover:shadow-md transition-shadow group">
             <div className="w-14 h-14 bg-[#DD6547]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#DD6547] transition-colors">
               <CalendarClock className="w-7 h-7 text-[#DD6547] group-hover:text-white transition-colors" />
             </div>
@@ -233,8 +235,8 @@ function LandingPage() {
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
+            {testimonials.map((t, i) => (
+              <div key={t.name} className={`bg-white p-8 rounded-2xl shadow-sm border border-gray-100 border-t-4 flex flex-col ${testimonialAccents[i % testimonialAccents.length]}`}>
                 <Quote className="w-8 h-8 text-[#DD6547]/30 mb-4" />
                 <p className="text-gray-700 font-light leading-relaxed mb-6 flex-grow">"{t.quote}"</p>
                 {t.note && <p className="text-xs text-gray-400 italic mb-4">{t.note}</p>}
