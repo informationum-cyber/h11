@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
+import { Route as PmpChallengeRouteImport } from './routes/pmp-challenge'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
@@ -19,6 +20,11 @@ import { Route as ProductsProductIdRouteImport } from './routes/products/$produc
 const VizhunRoute = VizhunRouteImport.update({
   id: '/vizhun',
   path: '/vizhun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PmpChallengeRoute = PmpChallengeRouteImport.update({
+  id: '/pmp-challenge',
+  path: '/pmp-challenge',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LearningTransformationRoute = LearningTransformationRouteImport.update({
@@ -53,6 +59,7 @@ export interface FileRoutesByFullPath {
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
+  '/pmp-challenge': typeof PmpChallengeRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -61,6 +68,7 @@ export interface FileRoutesByTo {
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
+  '/pmp-challenge': typeof PmpChallengeRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -70,6 +78,7 @@ export interface FileRoutesById {
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
+  '/pmp-challenge': typeof PmpChallengeRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -80,6 +89,7 @@ export interface FileRouteTypes {
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/learning-transformation'
+    | '/pmp-challenge'
     | '/vizhun'
     | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -88,6 +98,7 @@ export interface FileRouteTypes {
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/learning-transformation'
+    | '/pmp-challenge'
     | '/vizhun'
     | '/products/$productId'
   id:
@@ -96,6 +107,7 @@ export interface FileRouteTypes {
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/learning-transformation'
+    | '/pmp-challenge'
     | '/vizhun'
     | '/products/$productId'
   fileRoutesById: FileRoutesById
@@ -105,6 +117,7 @@ export interface RootRouteChildren {
   CareerTransformationRoute: typeof CareerTransformationRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
+  PmpChallengeRoute: typeof PmpChallengeRoute
   VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
@@ -116,6 +129,13 @@ declare module '@tanstack/react-router' {
       path: '/vizhun'
       fullPath: '/vizhun'
       preLoaderRoute: typeof VizhunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pmp-challenge': {
+      id: '/pmp-challenge'
+      path: '/pmp-challenge'
+      fullPath: '/pmp-challenge'
+      preLoaderRoute: typeof PmpChallengeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/learning-transformation': {
@@ -161,6 +181,7 @@ const rootRouteChildren: RootRouteChildren = {
   CareerTransformationRoute: CareerTransformationRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
   LearningTransformationRoute: LearningTransformationRoute,
+  PmpChallengeRoute: PmpChallengeRoute,
   VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
 }

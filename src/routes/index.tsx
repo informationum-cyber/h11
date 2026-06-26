@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote } from 'lucide-react'
+import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote, ArrowRight, Users, Award } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
@@ -62,22 +62,39 @@ function LandingPage() {
             {/* Subtle geometric background element */}
             <div className="w-[600px] h-[600px] border-[40px] border-[#232C33] rounded-full filter blur-3xl"></div>
           </div>
-          
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full mb-8">
+            <Award size={16} /> 100% PMP PASS RATE
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#232C33] max-w-4xl mx-auto leading-tight mb-8">
-            Transformation & <br /> Professional Enablement
+            Pass Your PMP Exam — <br /> Train in a Cohort
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 font-light">
-            Guiding professionals and organizations through complexity — <span className="text-[#DD6547] font-medium">one breadcrumb at a time.</span>
+            Join a small group of peers preparing for the same exam. Same proven curriculum as our 1:1 tutoring, at a <span className="text-[#DD6547] font-medium">lower price per seat.</span>
           </p>
-          <a href="#offerings" className="bg-[#DD6547] hover:bg-[#C2553A] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block">
-            Explore Our Offerings
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
+            <Link to="/learning-transformation" hash="cohort" className="bg-[#DD6547] hover:bg-[#C2553A] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-flex items-center">
+              <Users size={20} className="mr-2" /> Reserve Your Cohort Seat
+            </Link>
+            <a href="#offerings" className="text-[#232C33] hover:text-[#DD6547] px-8 py-4 text-lg font-medium transition-colors inline-flex items-center">
+              Explore Our Other Offerings <ArrowRight size={18} className="ml-2" />
+            </a>
+          </div>
         </div>
       </section>
 
       {/* PILLAR CARDS */}
       <section id="offerings" className="bg-gray-50 py-24">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-[#232C33]/10 text-[#232C33] font-semibold tracking-wide text-sm rounded-full mb-6">
+              OUR OTHER OFFERINGS
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#232C33] leading-tight">
+              Beyond PMP Cohorts
+            </h2>
+          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {/* Card 1 */}
           <Link to="/enterprise-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
@@ -135,6 +152,7 @@ function LandingPage() {
             </ul>
           </Link>
 
+        </div>
         </div>
       </section>
 
