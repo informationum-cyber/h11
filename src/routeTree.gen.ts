@@ -9,9 +9,34 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VizhunRouteImport } from './routes/vizhun'
+import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
+import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
+import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 
+const VizhunRoute = VizhunRouteImport.update({
+  id: '/vizhun',
+  path: '/vizhun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearningTransformationRoute = LearningTransformationRouteImport.update({
+  id: '/learning-transformation',
+  path: '/learning-transformation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EnterpriseTransformationRoute =
+  EnterpriseTransformationRouteImport.update({
+    id: '/enterprise-transformation',
+    path: '/enterprise-transformation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CareerTransformationRoute = CareerTransformationRouteImport.update({
+  id: '/career-transformation',
+  path: '/career-transformation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -25,32 +50,95 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/career-transformation': typeof CareerTransformationRoute
+  '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/learning-transformation': typeof LearningTransformationRoute
+  '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/career-transformation': typeof CareerTransformationRoute
+  '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/learning-transformation': typeof LearningTransformationRoute
+  '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/career-transformation': typeof CareerTransformationRoute
+  '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/learning-transformation': typeof LearningTransformationRoute
+  '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/products/$productId'
+  fullPaths:
+    | '/'
+    | '/career-transformation'
+    | '/enterprise-transformation'
+    | '/learning-transformation'
+    | '/vizhun'
+    | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/products/$productId'
-  id: '__root__' | '/' | '/products/$productId'
+  to:
+    | '/'
+    | '/career-transformation'
+    | '/enterprise-transformation'
+    | '/learning-transformation'
+    | '/vizhun'
+    | '/products/$productId'
+  id:
+    | '__root__'
+    | '/'
+    | '/career-transformation'
+    | '/enterprise-transformation'
+    | '/learning-transformation'
+    | '/vizhun'
+    | '/products/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CareerTransformationRoute: typeof CareerTransformationRoute
+  EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
+  LearningTransformationRoute: typeof LearningTransformationRoute
+  VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vizhun': {
+      id: '/vizhun'
+      path: '/vizhun'
+      fullPath: '/vizhun'
+      preLoaderRoute: typeof VizhunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learning-transformation': {
+      id: '/learning-transformation'
+      path: '/learning-transformation'
+      fullPath: '/learning-transformation'
+      preLoaderRoute: typeof LearningTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/enterprise-transformation': {
+      id: '/enterprise-transformation'
+      path: '/enterprise-transformation'
+      fullPath: '/enterprise-transformation'
+      preLoaderRoute: typeof EnterpriseTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/career-transformation': {
+      id: '/career-transformation'
+      path: '/career-transformation'
+      fullPath: '/career-transformation'
+      preLoaderRoute: typeof CareerTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -70,6 +158,10 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CareerTransformationRoute: CareerTransformationRoute,
+  EnterpriseTransformationRoute: EnterpriseTransformationRoute,
+  LearningTransformationRoute: LearningTransformationRoute,
+  VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
 }
 export const routeTree = rootRouteImport

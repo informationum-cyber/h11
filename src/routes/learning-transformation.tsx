@@ -12,13 +12,14 @@ function LearningTransformation() {
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-100">
         <div className="mb-4 md:mb-0">
           <Link to="/">
-            <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-16 w-auto object-contain" />
+            <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
           </Link>
         </div>
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
           <Link to="/enterprise-transformation" className="hover:text-[#DD6547] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="text-[#DD6547] font-semibold">Learning</Link>
+          <Link to="/vizhun" className="hover:text-[#DD6547] transition-colors">Vizhun</Link>
         </nav>
       </header>
 
@@ -106,9 +107,14 @@ function LearningTransformation() {
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Speaking Engagements</li>
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Framework Development</li>
               </ul>
-              <a href="mailto:partner@hanseleleven.com" className="inline-block px-6 py-3 border-2 border-[#232C33] text-[#232C33] rounded-sm font-medium hover:bg-[#232C33] hover:text-white transition-colors">
-                Partner With Us
-              </a>
+              <div className="flex flex-col gap-4">
+                <a href="https://figshare.com/authors/Deepak_Saibaba/24172350" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#DD6547] font-medium hover:text-[#232C33] transition-colors">
+                  Read Our Published White Papers <ArrowRight size={16} className="ml-2" />
+                </a>
+                <a href="mailto:partner@hanseleleven.com" className="inline-block px-6 py-3 border-2 border-[#232C33] text-[#232C33] rounded-sm font-medium hover:bg-[#232C33] hover:text-white transition-colors w-fit">
+                  Partner With Us
+                </a>
+              </div>
             </div>
           </div>
         </div>

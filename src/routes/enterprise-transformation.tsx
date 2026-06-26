@@ -12,13 +12,14 @@ function EnterpriseTransformation() {
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-100">
         <div className="mb-4 md:mb-0">
           <Link to="/">
-            <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-16 w-auto object-contain" />
+            <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
           </Link>
         </div>
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
           <Link to="/enterprise-transformation" className="text-[#DD6547] font-semibold">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#DD6547] transition-colors">Learning</Link>
+          <Link to="/vizhun" className="hover:text-[#DD6547] transition-colors">Vizhun</Link>
         </nav>
       </header>
 
