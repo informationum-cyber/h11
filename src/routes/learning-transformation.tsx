@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, type FormEvent } from 'react'
 import { CheckCircle2, ArrowRight, Users, Star } from 'lucide-react'
+import { ExamUpdateBanner } from '../components/ExamUpdateBanner'
+import { HandbookDownload } from '../components/HandbookDownload'
 
 export const Route = createFileRoute('/learning-transformation')({
   component: LearningTransformation,
@@ -188,9 +190,10 @@ function LearningTransformation() {
             &larr; Back to Home
           </Link>
           <h1 className="text-4xl md:text-5xl font-bold text-[#232C33] mb-6">PMP Certification Training</h1>
-          <p className="text-xl text-gray-600 font-light max-w-3xl">
-            Comprehensive PMP exam preparation with a <strong className="font-semibold text-[#DD6547]">100% pass rate</strong>. Train in a small cohort, save versus 1:1 pricing, and keep each other accountable.
+          <p className="text-xl text-gray-600 font-light max-w-3xl mb-6">
+            Comprehensive PMP exam preparation with a <strong className="font-semibold text-[#DD6547]">100% first-attempt pass rate</strong>. Train in a small cohort, save versus 1:1 pricing, and keep each other accountable.
           </p>
+          <ExamUpdateBanner />
         </div>
 
         {/* COHORT PRICING */}
@@ -312,6 +315,10 @@ function LearningTransformation() {
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mb-20">
+          <HandbookDownload />
         </div>
 
         {/* CTA */}

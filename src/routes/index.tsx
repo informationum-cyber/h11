@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote, ArrowRight, Users, Award } from 'lucide-react'
+import { HandbookDownload } from '../components/HandbookDownload'
+import { ExamUpdateBanner } from '../components/ExamUpdateBanner'
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
@@ -63,8 +65,11 @@ function LandingPage() {
             <div className="w-[600px] h-[600px] border-[40px] border-[#232C33] rounded-full filter blur-3xl"></div>
           </div>
 
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full mb-8">
-            <Award size={16} /> 100% PMP PASS RATE
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full">
+              <Award size={16} /> 100% FIRST-ATTEMPT PASS RATE
+            </div>
+            <ExamUpdateBanner />
           </div>
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#232C33] max-w-4xl mx-auto leading-tight mb-8">
             Pass Your PMP Exam — <br /> Train in a Cohort
@@ -210,6 +215,9 @@ function LandingPage() {
             </div>
           </div>
 
+        </div>
+        <div className="mt-16">
+          <HandbookDownload />
         </div>
       </section>
 

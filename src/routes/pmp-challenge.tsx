@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { Award, ArrowRight, CheckCircle2, XCircle, Target } from 'lucide-react'
+import { ExamUpdateBanner } from '../components/ExamUpdateBanner'
 
 export const Route = createFileRoute('/pmp-challenge')({
   component: PmpChallenge,
@@ -116,9 +117,12 @@ function PmpChallenge() {
             <h1 className="text-4xl md:text-5xl font-bold text-[#232C33] mb-6 leading-tight">
               Think you're ready for the PMP exam?
             </h1>
-            <p className="text-xl text-gray-600 font-light mb-10 max-w-xl mx-auto">
+            <p className="text-xl text-gray-600 font-light mb-6 max-w-xl mx-auto">
               Answer 5 situational questions pulled straight from real PMP exam patterns. Most candidates miss at least two of them on their first try.
             </p>
+            <div className="flex justify-center mb-10">
+              <ExamUpdateBanner />
+            </div>
             <button
               onClick={() => setStage('quiz')}
               className="bg-[#DD6547] hover:bg-[#C2553A] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl inline-flex items-center"
