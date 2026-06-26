@@ -42,6 +42,8 @@ const testimonials = [
 ]
 
 const testimonialAccents = ['border-t-[#dad6ff]', 'border-t-[#ffd799]', 'border-t-[#d6faff]', 'border-t-[#e8e8ea]']
+const dotGrid = [0, 1, 2, 3, 4, 5, 6, 7, 8]
+const stripeBlock = [0, 1, 2, 3, 4]
 
 function LandingPage() {
   return (
@@ -60,13 +62,22 @@ function LandingPage() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
-        <div className="relative isolate">
-          <div className="absolute inset-0 -z-10 overflow-hidden">
-            <div className="absolute -top-20 -left-10 w-[400px] h-[400px] bg-[#dad6ff] rounded-full filter blur-3xl opacity-70"></div>
-            <div className="absolute -top-10 -right-10 w-[350px] h-[350px] bg-[#d6faff] rounded-full filter blur-3xl opacity-70"></div>
+      <section className="relative isolate w-full max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
+        <div className="absolute inset-0 -z-10 overflow-hidden">
+          <div className="hidden md:grid absolute top-10 left-6 grid-cols-3 gap-2.5">
+            {dotGrid.map((i) => (
+              <span key={i} className="w-2.5 h-2.5 rounded-full bg-[#DD6547]/50"></span>
+            ))}
           </div>
+          <div className="hidden md:flex absolute top-12 right-6 flex-col gap-1.5 w-20">
+            {stripeBlock.map((i) => (
+              <span key={i} className="h-2 rounded-sm bg-[#232C33]"></span>
+            ))}
+          </div>
+          <div className="absolute -bottom-24 -left-16 w-[300px] h-[300px] bg-[#d6faff] rounded-full filter blur-3xl opacity-60"></div>
+        </div>
 
+        <div className="relative">
           <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full">
               <Award size={16} /> 100% FIRST-ATTEMPT PASS RATE
