@@ -42,8 +42,8 @@ const testimonials = [
 ]
 
 const testimonialAccents = ['border-t-[#dad6ff]', 'border-t-[#ffd799]', 'border-t-[#d6faff]', 'border-t-[#e8e8ea]']
-const dotGrid = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-const stripeBlock = [0, 1, 2, 3, 4]
+const dotGrid16 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+const stripeBlockBig = [0, 1, 2, 3, 4]
 
 function LandingPage() {
   return (
@@ -64,17 +64,18 @@ function LandingPage() {
       {/* HERO SECTION */}
       <section className="relative isolate w-full max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
         <div className="absolute inset-0 -z-10 overflow-hidden">
-          <div className="hidden md:grid absolute top-10 left-6 grid-cols-3 gap-2.5">
-            {dotGrid.map((i) => (
-              <span key={i} className="w-2.5 h-2.5 rounded-full bg-[#DD6547]/50"></span>
+          <div className="hidden md:block absolute -top-48 -left-48 w-[320px] h-[320px] bg-[#DD6547] rounded-full"></div>
+          <div className="hidden md:block absolute -bottom-40 -right-40 w-[320px] h-[320px] bg-[#232C33] rounded-[3rem] rotate-12"></div>
+          <div className="hidden md:grid absolute top-6 left-0 grid-cols-4 gap-3">
+            {dotGrid16.map((i) => (
+              <span key={i} className="w-4 h-4 rounded-full bg-[#dad6ff]"></span>
             ))}
           </div>
-          <div className="hidden md:flex absolute top-12 right-6 flex-col gap-1.5 w-20">
-            {stripeBlock.map((i) => (
-              <span key={i} className="h-2 rounded-sm bg-[#232C33]"></span>
+          <div className="hidden md:flex absolute bottom-6 right-0 flex-col gap-2 w-32">
+            {stripeBlockBig.map((i) => (
+              <span key={i} className="h-3 rounded-sm bg-[#ffd799]"></span>
             ))}
           </div>
-          <div className="absolute -bottom-24 -left-16 w-[300px] h-[300px] bg-[#d6faff] rounded-full filter blur-3xl opacity-60"></div>
         </div>
 
         <div className="relative">
