@@ -1,9 +1,43 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock } from 'lucide-react'
+import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote } from 'lucide-react'
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
 })
+
+const testimonials = [
+  {
+    name: 'Tomas Czyz',
+    country: 'Poland',
+    flag: '🇵🇱',
+    quote: 'Hansel Eleven helped me in my journey to build real confidence for the corporate workplace. Every session was well prepared, engaging, and focused on my goals. I appreciate how much the mentors care about my progress and make learning enjoyable.',
+  },
+  {
+    name: 'Andrea D',
+    country: 'Italy',
+    flag: '🇮🇹',
+    quote: "Deepak from Hansel Eleven is a wonderful mentor. I can't stop thanking him for opening my eyes to the world of Project Management, which changed my perspective and helped me love my job even more. In your professional life, some people are unforgettable, and he is one of them.",
+  },
+  {
+    name: 'Bota K',
+    country: 'Uzbekistan',
+    flag: '🇺🇿',
+    quote: 'The guidance I received from them has been invaluable in preparing me for technical and C-level interviews where I got great feedback from those interviews.',
+  },
+  {
+    name: 'Salama',
+    country: 'Egypt',
+    flag: '🇪🇬',
+    quote: 'Your expertise, passion, and dedication have helped shape my vision of this project management field and have optimally prepared me to face the challenges ahead. I am convinced that your positive influence will remain etched in me throughout my career.',
+    note: 'Translated from the original French',
+  },
+  {
+    name: 'Antonio',
+    country: 'United Kingdom',
+    flag: '🇬🇧',
+    quote: 'Consulted with them as I was looking to start a career in IT PM. Received great guidance, direction and invaluable knowledge about the industry.',
+  },
+]
 
 function LandingPage() {
   return (
@@ -145,7 +179,7 @@ function LandingPage() {
                   <p className="text-gray-700 leading-relaxed font-light mb-4">
                     A passionate advocate for human-centered delivery, he is dedicated to mentoring early-career talent and coaching delivery professionals to thrive in an ever-evolving landscape.
                   </p>
-                  <a href="#" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#DD6547] hover:text-[#232C33] transition-colors" title="LinkedIn Profile">
+                  <a href="https://linkedin.com/in/deepyeshu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#DD6547] hover:text-[#232C33] transition-colors" title="LinkedIn Profile">
                     <Linkedin size={20} />
                     <span className="ml-2 font-medium text-sm">Connect on LinkedIn</span>
                   </a>
@@ -158,6 +192,36 @@ function LandingPage() {
             </div>
           </div>
 
+        </div>
+      </section>
+
+      {/* TESTIMONIALS SECTION */}
+      <section className="bg-gray-50 py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <div className="inline-block px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full mb-6">
+              TESTIMONIALS
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-[#232C33] leading-tight">
+              What Our Clients Say
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {testimonials.map((t) => (
+              <div key={t.name} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
+                <Quote className="w-8 h-8 text-[#DD6547]/30 mb-4" />
+                <p className="text-gray-700 font-light leading-relaxed mb-6 flex-grow">"{t.quote}"</p>
+                {t.note && <p className="text-xs text-gray-400 italic mb-4">{t.note}</p>}
+                <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
+                  <span className="text-2xl" role="img" aria-label={t.country}>{t.flag}</span>
+                  <div>
+                    <p className="font-bold text-[#232C33] text-sm">{t.name}</p>
+                    <p className="text-gray-500 text-xs">{t.country}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
