@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState, type FormEvent } from 'react'
-import { CheckCircle2, ArrowRight, Users, Star } from 'lucide-react'
+import { CheckCircle2, ArrowRight, Users, Star, CreditCard } from 'lucide-react'
 import { ExamUpdateBanner } from '../components/ExamUpdateBanner'
 import { HandbookDownload } from '../components/HandbookDownload'
+import { createCheckoutSession } from '../server/stripe.functions'
 
 export const Route = createFileRoute('/learning-transformation')({
   component: LearningTransformation,
@@ -165,6 +166,20 @@ function CohortReserveForm({
 
 function LearningTransformation() {
   const [selectedPackage, setSelectedPackageName] = useState(cohortPackages[0].name)
+  const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const [checkoutError, setCheckoutError] = useState('')
+
+  async function handleBuyNow() {
+    setCheckoutLoading(true)
+    setCheckoutError('')
+    try {
+      const { url } = await createCheckoutSession()
+      window.location.href = url
+    } catch {
+      setCheckoutError('Could not start checkout. Please email consult@hanseleleven.com.')
+      setCheckoutLoading(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
@@ -235,40 +250,74 @@ function LearningTransformation() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
           {/* Offering 1: PMP Training */}
-          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+          <div id="tutoring" className="scroll-mt-24">
             <h2 className="text-2xl font-bold text-[#232C33] mb-4">1:1 PMP Tutoring</h2>
-            <p className="text-gray-600 mb-6">Prefer individual attention? We still offer 1:1 sessions.</p>
+            <p className="text-gray-600 mb-6">Prefer individual attention? We offer 1:1 sessions tailored entirely to your learning style and pace.</p>
 
             <div className="space-y-6">
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              {/* 16-hour package — buyable now */}
+              <div className="bg-[#232C33] rounded-2xl p-7 border-t-4 border-t-[#DD6547]">
+                <div className="flex justify-between items-start mb-1">
+                  <div>
+                    <div className="inline-flex items-center gap-1 text-xs font-semibold tracking-wide uppercase text-[#ffd799] mb-2">
+                      <Star size={12} className="fill-[#ffd799]" /> Best Value
+                    </div>
+                    <h3 className="text-xl font-bold text-white">16-Hour PMP Tutoring Package</h3>
+                  </div>
+                  <div className="text-right ml-4 shrink-0">
+                    <span className="text-3xl font-black text-white">$350</span>
+                    <p className="text-gray-400 text-xs mt-0.5">one-time</p>
+                  </div>
+                </div>
+                <ul className="text-sm text-gray-300 space-y-2 mt-4 mb-6">
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> 16 hours of 1:1 tutoring over 6–8 weeks</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Full PMI ECO syllabus coverage</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Practice sample papers & online quizzes</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Exam registration assistance</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Offline messaging support throughout</li>
+                </ul>
+                <button
+                  onClick={handleBuyNow}
+                  disabled={checkoutLoading}
+                  className="w-full bg-[#DD6547] hover:bg-[#C2553A] disabled:opacity-60 text-white px-6 py-4 rounded-sm font-medium transition-colors inline-flex items-center justify-center gap-2"
+                >
+                  <CreditCard size={18} />
+                  {checkoutLoading ? 'Redirecting to checkout…' : 'Buy Now — $350'}
+                </button>
+                {checkoutError && (
+                  <p className="text-red-400 text-sm mt-3 text-center">{checkoutError}</p>
+                )}
+              </div>
+
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-lg font-bold text-[#DD6547]">Premium PMP Tutoring</h3>
                   <span className="text-xl font-black text-[#232C33]">$550</span>
                 </div>
                 <ul className="text-sm text-gray-600 space-y-2 mb-4">
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 8 hours scheduled over a month</li>
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Covers all syllabus as per PMI ECO</li>
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Practice sample papers & online quizzes</li>
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Exam registration assistance</li>
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Offline messaging support & help</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> 8 hours scheduled over a month</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Covers all syllabus as per PMI ECO</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Practice sample papers & online quizzes</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Exam registration assistance</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Offline messaging support & help</li>
                 </ul>
-                <p className="text-sm font-medium text-[#232C33] bg-gray-50 p-3 rounded-lg">
-                  <strong>Advantage:</strong> Individual 1:1 tutoring tailored entirely to your learning style and pace.
-                </p>
+                <a href="mailto:consult@hanseleleven.com" className="inline-flex items-center text-[#DD6547] text-sm font-medium hover:text-[#232C33] transition-colors">
+                  Enquire via email <ArrowRight size={14} className="ml-1" />
+                </a>
               </div>
 
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-lg font-bold text-[#DD6547]">Self-Learner Session</h3>
                   <span className="text-xl font-black text-[#232C33]">$220</span>
                 </div>
                 <ul className="text-sm text-gray-600 space-y-2 mb-4">
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 2-hour session with an expert tutor</li>
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Dedicated Q&A and concept clarification</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> 2-hour session with an expert tutor</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5" /> Dedicated Q&A and concept clarification</li>
                 </ul>
-                <p className="text-sm font-medium text-[#232C33] bg-gray-50 p-3 rounded-lg">
-                  <strong>Advantage:</strong> Self-learning at your pace, with a tutor available for fine-tuning your practice.
-                </p>
+                <a href="mailto:consult@hanseleleven.com" className="inline-flex items-center text-[#DD6547] text-sm font-medium hover:text-[#232C33] transition-colors">
+                  Enquire via email <ArrowRight size={14} className="ml-1" />
+                </a>
               </div>
             </div>
           </div>
