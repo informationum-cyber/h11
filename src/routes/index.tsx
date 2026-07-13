@@ -1,5 +1,26 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote } from 'lucide-react'
+import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote, ArrowRight } from 'lucide-react'
+
+const whitepapers = [
+  {
+    title: 'No Toll-Free Highways',
+    subtitle: 'Why Every Meeting Has a Cost; Even When Nobody Notices',
+    publisher: 'GovWhitePapers',
+    url: 'https://govwhitepapers.com/whitepapers/no-toll-free-highways-where-every-meeting-has-a-cost',
+  },
+  {
+    title: 'The Human Operating System™',
+    subtitle: 'Projects do not fail because of bad plans. They fail because of human conditions that no project charter or risk register captures.',
+    publisher: 'GovWhitePapers',
+    url: 'https://govwhitepapers.com/whitepapers/human-operating-system-why-projects-fail-people-before-they-fail-plans',
+  },
+  {
+    title: 'Protecting the Product from Its Own Clients',
+    subtitle: 'What project managers learn when they finally cross into product thinking.',
+    publisher: 'Hansel Eleven / Figshare',
+    url: 'https://doi.org/10.6084/m9.figshare.32974694',
+  },
+]
 
 export const Route = createFileRoute('/')({
   component: LandingPage,
@@ -45,13 +66,13 @@ function LandingPage() {
       {/* HEADER */}
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
-          <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
+          <img src="/logo.png" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
         </div>
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
-          <Link to="/enterprise-transformation" className="hover:text-[#DD6547] transition-colors">Enterprise</Link>
-          <Link to="/career-transformation" className="hover:text-[#DD6547] transition-colors">Career</Link>
-          <Link to="/learning-transformation" className="hover:text-[#DD6547] transition-colors">Learning</Link>
-          <Link to="/vizhun" className="hover:text-[#DD6547] transition-colors">Vizhun</Link>
+          <Link to="/enterprise-transformation" className="hover:text-[#1E5C3A] transition-colors">Enterprise</Link>
+          <Link to="/career-transformation" className="hover:text-[#1E5C3A] transition-colors">Career</Link>
+          <Link to="/learning-transformation" className="hover:text-[#1E5C3A] transition-colors">Learning</Link>
+          <Link to="/vizhun" className="hover:text-[#1E5C3A] transition-colors">Vizhun</Link>
         </nav>
       </header>
 
@@ -60,16 +81,16 @@ function LandingPage() {
         <div className="relative">
           <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-5">
             {/* Subtle geometric background element */}
-            <div className="w-[600px] h-[600px] border-[40px] border-[#232C33] rounded-full filter blur-3xl"></div>
+            <div className="w-[600px] h-[600px] border-[40px] border-[#143D2D] rounded-full filter blur-3xl"></div>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#232C33] max-w-4xl mx-auto leading-tight mb-8">
+          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#143D2D] max-w-4xl mx-auto leading-tight mb-8">
             Transformation & <br /> Professional Enablement
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 font-light">
-            Guiding professionals and organizations through complexity — <span className="text-[#DD6547] font-medium">one breadcrumb at a time.</span>
+            Guiding professionals and organizations through complexity — <span className="text-[#1E5C3A] font-medium">one breadcrumb at a time.</span>
           </p>
-          <a href="#offerings" className="bg-[#DD6547] hover:bg-[#C2553A] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block">
+          <a href="#offerings" className="bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block">
             Explore Our Offerings
           </a>
         </div>
@@ -81,57 +102,57 @@ function LandingPage() {
 
           {/* Card 1 */}
           <Link to="/enterprise-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="w-14 h-14 bg-[#232C33]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#232C33] transition-colors">
-              <Network className="w-7 h-7 text-[#232C33] group-hover:text-white transition-colors" />
+            <div className="w-14 h-14 bg-[#143D2D]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#143D2D] transition-colors">
+              <Network className="w-7 h-7 text-[#143D2D] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#232C33] mb-3">Enterprise Transformation</h3>
+            <h3 className="text-2xl font-bold text-[#143D2D] mb-3">Enterprise Transformation</h3>
             <p className="text-gray-500 mb-6 font-medium">Transform how you deliver</p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> HART Framework</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Consulting</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Workshops</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1E5C3A]"></span> HART Framework</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1E5C3A]"></span> Consulting</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1E5C3A]"></span> Workshops</li>
             </ul>
           </Link>
 
           {/* Card 2 */}
           <Link to="/career-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="w-14 h-14 bg-[#DD6547]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#DD6547] transition-colors">
-              <TrendingUp className="w-7 h-7 text-[#DD6547] group-hover:text-white transition-colors" />
+            <div className="w-14 h-14 bg-[#1E5C3A]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#1E5C3A] transition-colors">
+              <TrendingUp className="w-7 h-7 text-[#1E5C3A] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#232C33] mb-3">Career Transformation</h3>
+            <h3 className="text-2xl font-bold text-[#143D2D] mb-3">Career Transformation</h3>
             <p className="text-gray-500 mb-6 font-medium">Transform your career path</p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> CECY Platform</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Coaching</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Transitions</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#143D2D]"></span> CECY Platform</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#143D2D]"></span> Coaching</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#143D2D]"></span> Transitions</li>
             </ul>
           </Link>
 
           {/* Card 3 */}
           <Link to="/learning-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="w-14 h-14 bg-[#232C33]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#232C33] transition-colors">
-              <GraduationCap className="w-7 h-7 text-[#232C33] group-hover:text-white transition-colors" />
+            <div className="w-14 h-14 bg-[#143D2D]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#143D2D] transition-colors">
+              <GraduationCap className="w-7 h-7 text-[#143D2D] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#232C33] mb-3">Learning Transformation</h3>
+            <h3 className="text-2xl font-bold text-[#143D2D] mb-3">Learning Transformation</h3>
             <p className="text-gray-500 mb-6 font-medium">Transform your expertise</p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> PMP Prep</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Agile Training</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#DD6547]"></span> Thought Leadership</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1E5C3A]"></span> PMP Prep</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1E5C3A]"></span> Agile Training</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#1E5C3A]"></span> Thought Leadership</li>
             </ul>
           </Link>
 
           {/* Card 4 */}
           <Link to="/vizhun" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="w-14 h-14 bg-[#DD6547]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#DD6547] transition-colors">
-              <CalendarClock className="w-7 h-7 text-[#DD6547] group-hover:text-white transition-colors" />
+            <div className="w-14 h-14 bg-[#1E5C3A]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#1E5C3A] transition-colors">
+              <CalendarClock className="w-7 h-7 text-[#1E5C3A] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#232C33] mb-3">Vizhun</h3>
+            <h3 className="text-2xl font-bold text-[#143D2D] mb-3">Vizhun</h3>
             <p className="text-gray-500 mb-6 font-medium">Transform your vision into a plan</p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Vision to Calendar</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Smart Scheduling</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#232C33]"></span> Early Access</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#143D2D]"></span> Vision to Calendar</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#143D2D]"></span> Smart Scheduling</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#143D2D]"></span> Early Access</li>
             </ul>
           </Link>
 
@@ -143,10 +164,10 @@ function LandingPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           
           <div>
-            <div className="inline-block px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full mb-6">
+            <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-6">
               ABOUT US
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#232C33] mb-8 leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-8 leading-tight">
               Navigating Complexity with Empathy & Structure
             </h2>
             <div className="space-y-6 text-lg text-gray-700 font-light leading-relaxed">
@@ -163,9 +184,9 @@ function LandingPage() {
           </div>
           
           <div className="bg-gray-50 p-10 md:p-14 rounded-2xl border border-gray-100 relative">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#DD6547]/5 rounded-bl-full -z-0"></div>
+            <div className="absolute top-0 right-0 w-32 h-32 bg-[#1E5C3A]/5 rounded-bl-full -z-0"></div>
             <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-[#232C33] mb-6">Founder & Vision</h3>
+              <h3 className="text-2xl font-bold text-[#143D2D] mb-6">Founder & Vision</h3>
               <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
                 <img 
                   src="/founder.jpg" 
@@ -179,14 +200,14 @@ function LandingPage() {
                   <p className="text-gray-700 leading-relaxed font-light mb-4">
                     A passionate advocate for human-centered delivery, he is dedicated to mentoring early-career talent and coaching delivery professionals to thrive in an ever-evolving landscape.
                   </p>
-                  <a href="https://linkedin.com/in/deepyeshu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#DD6547] hover:text-[#232C33] transition-colors" title="LinkedIn Profile">
+                  <a href="https://linkedin.com/in/deepyeshu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#1E5C3A] hover:text-[#143D2D] transition-colors" title="LinkedIn Profile">
                     <Linkedin size={20} />
                     <span className="ml-2 font-medium text-sm">Connect on LinkedIn</span>
                   </a>
                 </div>
               </div>
               <div className="pt-8 border-t border-gray-200">
-                <p className="text-sm font-semibold tracking-widest text-[#DD6547] uppercase mb-2">Our Mission</p>
+                <p className="text-sm font-semibold tracking-widest text-[#1E5C3A] uppercase mb-2">Our Mission</p>
                 <p className="text-gray-600 italic">"To empower professionals and organizations to navigate complexity and achieve sustainable growth through human-centered, adaptive, and structured transformation."</p>
               </div>
             </div>
@@ -195,27 +216,62 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* PUBLISHED RESEARCH SECTION */}
+      <section className="bg-[#143D2D] py-24">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-14">
+            <div className="inline-block px-4 py-2 bg-[#1E5C3A]/20 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-6">
+              THOUGHT LEADERSHIP
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-4">
+              Published Research
+            </h2>
+            <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
+              Original research on delivery, leadership, and organizational complexity — by Deepak Yeshwanth Saibaba.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {whitepapers.map((wp, i) => (
+              <a
+                key={i}
+                href={wp.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#1E5C3A]/50 rounded-2xl p-8 transition-all flex flex-col"
+              >
+                <div className="text-[#1E5C3A] text-xs font-bold tracking-widest uppercase mb-4">{wp.publisher}</div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#1E5C3A] transition-colors leading-snug">{wp.title}</h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed mb-8 flex-grow">{wp.subtitle}</p>
+                <div className="inline-flex items-center gap-2 text-[#1E5C3A] text-sm font-medium group-hover:gap-3 transition-all">
+                  Read Paper <ArrowRight size={14} />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* TESTIMONIALS SECTION */}
       <section className="bg-gray-50 py-24">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
-            <div className="inline-block px-4 py-2 bg-[#DD6547]/10 text-[#DD6547] font-semibold tracking-wide text-sm rounded-full mb-6">
+            <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-6">
               TESTIMONIALS
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#232C33] leading-tight">
+            <h2 className="text-4xl md:text-5xl font-bold text-[#143D2D] leading-tight">
               What Our Clients Say
             </h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
               <div key={t.name} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
-                <Quote className="w-8 h-8 text-[#DD6547]/30 mb-4" />
+                <Quote className="w-8 h-8 text-[#1E5C3A]/30 mb-4" />
                 <p className="text-gray-700 font-light leading-relaxed mb-6 flex-grow">"{t.quote}"</p>
                 {t.note && <p className="text-xs text-gray-400 italic mb-4">{t.note}</p>}
                 <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
                   <span className="text-2xl" role="img" aria-label={t.country}>{t.flag}</span>
                   <div>
-                    <p className="font-bold text-[#232C33] text-sm">{t.name}</p>
+                    <p className="font-bold text-[#143D2D] text-sm">{t.name}</p>
                     <p className="text-gray-500 text-xs">{t.country}</p>
                   </div>
                 </div>
@@ -226,10 +282,10 @@ function LandingPage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-[#232C33] text-white py-12 text-center">
+      <footer className="bg-[#143D2D] text-white py-12 text-center">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-2xl font-black tracking-tight mb-4">HANSEL ELEVEN</div>
-          <p className="text-[#DD6547] mb-4">Transformation & Professional Enablement</p>
+          <p className="text-[#6BAF8A] mb-4">Transformation & Professional Enablement</p>
           <p className="text-gray-300 text-sm mb-8 font-light tracking-wide">
             Supporting companies and people in <br className="md:hidden" />
             Toronto | San Francisco | Warsaw | Dubai | Chennai | Seoul | Hong Kong
