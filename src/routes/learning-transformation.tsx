@@ -98,7 +98,7 @@ function LearningTransformation() {
                   <span className="text-xl font-black text-[#232C33]">$550</span>
                 </div>
                 <ul className="text-sm text-gray-600 space-y-2 mb-4">
-                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 8 hours scheduled over a month</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 20 hours scheduled over 2 months</li>
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Covers all syllabus as per PMI ECO</li>
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Practice sample papers & online quizzes</li>
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Exam registration assistance</li>
@@ -112,7 +112,7 @@ function LearningTransformation() {
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-lg font-bold text-[#DD6547]">Self-Learner Session</h3>
-                  <span className="text-xl font-black text-[#232C33]">$220</span>
+                  <span className="text-xl font-black text-[#232C33]">$150</span>
                 </div>
                 <ul className="text-sm text-gray-600 space-y-2 mb-4">
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 2-hour session with an expert tutor</li>
