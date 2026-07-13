@@ -103,6 +103,7 @@ function LearningTransformation() {
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Practice sample papers & online quizzes</li>
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Exam registration assistance</li>
                   <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> Offline messaging support & help</li>
+                  <li className="flex gap-2"><CheckCircle2 size={16} className="text-[#DD6547] shrink-0 mt-0.5"/> 1 extra high-difficulty practice exam included</li>
                 </ul>
                 <p className="text-sm font-medium text-[#232C33] bg-gray-50 p-3 rounded-lg">
                   <strong>Advantage:</strong> Individual 1:1 tutoring tailored entirely to your learning style and pace.
