@@ -30,3 +30,33 @@ export const createCheckoutSession = createServerFn({ method: 'POST' }).handler(
     return { url: session.url! }
   },
 )
+
+export const createConsultCheckoutSession = createServerFn({ method: 'POST' }).handler(
+  async () => {
+    const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!)
+    const baseUrl = process.env.URL || 'http://localhost:3000'
+
+    const session = await stripe.checkout.sessions.create({
+      payment_method_types: ['card'],
+      line_items: [
+        {
+          price_data: {
+            currency: 'usd',
+            product_data: {
+              name: '1-Hour PMP Consultation',
+              description:
+                'A focused 1-hour session covering your background, PMP ECO walkthrough, readiness assessment, a personalized study roadmap, and exam registration details.',
+            },
+            unit_amount: 2500,
+          },
+          quantity: 1,
+        },
+      ],
+      mode: 'payment',
+      success_url: `${baseUrl}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+      cancel_url: `${baseUrl}/learning-transformation#consult`,
+    })
+
+    return { url: session.url! }
+  },
+)

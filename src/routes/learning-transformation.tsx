@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { CheckCircle2, ArrowRight, CreditCard, Star, BookOpen } from 'lucide-react'
-import { createCheckoutSession } from '../server/stripe.functions'
+import { createCheckoutSession, createConsultCheckoutSession } from '../server/stripe.functions'
 
 const whitepapers = [
   {
@@ -34,6 +34,8 @@ export const Route = createFileRoute('/learning-transformation')({
 function LearningTransformation() {
   const [checkoutLoading, setCheckoutLoading] = useState(false)
   const [checkoutError, setCheckoutError] = useState('')
+  const [consultLoading, setConsultLoading] = useState(false)
+  const [consultError, setConsultError] = useState('')
 
   async function handleBuyNow() {
     setCheckoutLoading(true)
@@ -44,6 +46,18 @@ function LearningTransformation() {
     } catch {
       setCheckoutError('Could not start checkout. Please email consult@hanseleleven.com.')
       setCheckoutLoading(false)
+    }
+  }
+
+  async function handleBookConsult() {
+    setConsultLoading(true)
+    setConsultError('')
+    try {
+      const { url } = await createConsultCheckoutSession()
+      window.location.href = url
+    } catch {
+      setConsultError('Could not start checkout. Please email consult@hanseleleven.com.')
+      setConsultLoading(false)
     }
   }
 
@@ -217,13 +231,48 @@ function LearningTransformation() {
           </div>
         </section>
 
-        {/* CTA */}
-        <div className="bg-[#1E5C3A]/10 rounded-2xl p-10 text-center max-w-3xl mx-auto">
-          <h3 className="text-2xl font-bold text-[#143D2D] mb-4">Ready to accelerate your learning?</h3>
-          <p className="text-gray-600 mb-8">Book a free 15-minute consultation to discuss your certification goals.</p>
-          <a href="mailto:consult@hanseleleven.com" className="bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl inline-block">
-            Book a 15-Min Free Consult
-          </a>
+        {/* 1-HR CONSULT CTA */}
+        <div id="consult" className="scroll-mt-24 bg-[#143D2D] rounded-2xl p-10 max-w-3xl mx-auto">
+          <div className="text-center mb-8">
+            <div className="inline-block px-4 py-2 bg-white/10 text-[#a8d5b5] font-semibold tracking-wide text-sm rounded-full mb-4">
+              START HERE
+            </div>
+            <h3 className="text-2xl font-bold text-white mb-3">Not sure where to begin?</h3>
+            <p className="text-gray-300 font-light">
+              Book a focused 1-hour consultation to map out exactly what you need.
+            </p>
+          </div>
+          <ul className="space-y-3 mb-8">
+            {[
+              'Discussion of your background and experience',
+              'PMP ECO walkthrough — what the exam actually tests',
+              'Assessment of your exam readiness',
+              'Personalized roadmap: tutoring + self-study balance',
+              'Exam registration details and next steps',
+            ].map((item) => (
+              <li key={item} className="flex gap-3 text-gray-200 text-sm">
+                <CheckCircle2 size={16} className="text-[#1E5C3A] shrink-0 mt-0.5" />
+                {item}
+              </li>
+            ))}
+          </ul>
+          <div className="text-center">
+            <div className="mb-4">
+              <span className="text-4xl font-black text-white">$25</span>
+              <span className="text-gray-400 ml-2 text-sm">/ 1 hour</span>
+            </div>
+            <button
+              onClick={handleBookConsult}
+              disabled={consultLoading}
+              className="bg-[#1E5C3A] hover:bg-[#144D2E] disabled:opacity-60 text-white px-10 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2"
+            >
+              <CreditCard size={20} />
+              {consultLoading ? 'Redirecting to checkout…' : 'Book Now — $25'}
+            </button>
+            {consultError && (
+              <p className="text-red-400 text-sm mt-3">{consultError}</p>
+            )}
+          </div>
         </div>
       </main>
 
