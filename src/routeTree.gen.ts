@@ -14,6 +14,7 @@ import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
 
@@ -43,6 +44,11 @@ const CareerTransformationRoute = CareerTransformationRouteImport.update({
   path: '/career-transformation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -56,6 +62,7 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
@@ -75,6 +83,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/learning-transformation'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/learning-transformation'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/learning-transformation'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
@@ -159,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareerTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
   LearningTransformationRoute: LearningTransformationRoute,

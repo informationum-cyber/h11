@@ -16,6 +16,7 @@ function CareerTransformation() {
           </Link>
         </div>
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
+          <Link to="/about" className="hover:text-[#1E5C3A] transition-colors">About</Link>
           <Link to="/enterprise-transformation" className="hover:text-[#1E5C3A] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="text-[#1E5C3A] font-semibold">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#1E5C3A] transition-colors">Learning</Link>

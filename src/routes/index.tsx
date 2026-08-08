@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Network, TrendingUp, GraduationCap, Linkedin, CalendarClock, Quote, ArrowRight } from 'lucide-react'
+import { Network, TrendingUp, GraduationCap, CalendarClock, Quote, ArrowRight } from 'lucide-react'
 
 const whitepapers = [
   {
@@ -69,6 +69,7 @@ function LandingPage() {
           <img src="/logo.png" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
         </div>
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
+          <Link to="/about" className="hover:text-[#1E5C3A] transition-colors">About</Link>
           <Link to="/enterprise-transformation" className="hover:text-[#1E5C3A] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#1E5C3A] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#1E5C3A] transition-colors">Learning</Link>
@@ -159,61 +160,22 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ABOUT US SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-24 md:py-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          
-          <div>
-            <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-6">
-              ABOUT US
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-8 leading-tight">
-              Navigating Complexity with Empathy & Structure
-            </h2>
-            <div className="space-y-6 text-lg text-gray-700 font-light leading-relaxed">
-              <p>
-                Hansel Eleven is a boutique transformation and professional enablement firm dedicated to guiding organizations and individuals through complexity. We believe that modern challenges require more than rigid frameworks; they demand a human-centered, adaptive approach to delivery and development.
-              </p>
-              <p>
-                By bridging the gap between traditional methodologies and modern agility, we design sustainable ecosystems where both businesses and their people can thrive. Our expertise spans enterprise delivery consulting, PMO, governance design, hybrid agile frameworks, and empowering people to execute with precision and empathy. In addition to delivery consulting for projects, we focus on training and mentoring of individuals as well.
-              </p>
-              <p>
-                Hansel Eleven transforms how you work. Whether you’re transforming your delivery approach, your career path, or your skillset, we guide you through complexity.
-              </p>
-            </div>
+      {/* ABOUT TEASER */}
+      <section className="w-full max-w-7xl mx-auto px-6 py-20 flex flex-col md:flex-row items-center justify-between gap-10 border-t border-gray-100">
+        <div className="max-w-xl">
+          <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-4">
+            ABOUT US
           </div>
-          
-          <div className="bg-gray-50 p-10 md:p-14 rounded-2xl border border-gray-100 relative">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-[#1E5C3A]/5 rounded-bl-full -z-0"></div>
-            <div className="relative z-10">
-              <h3 className="text-2xl font-bold text-[#143D2D] mb-6">Founder & Vision</h3>
-              <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
-                <img 
-                  src="/founder.jpg" 
-                  alt="Deepak S" 
-                  className="w-32 h-32 rounded-full object-cover shadow-sm border-2 border-white shrink-0"
-                />
-                <div>
-                  <p className="text-gray-700 leading-relaxed font-light mb-4">
-                    Based in Canada, <strong>Deepak S</strong> is a transformation and delivery leader with nearly two decades of experience across banking, financial services, and enterprise PMO leadership. As the founder of Hansel Eleven, Deepak has successfully spearheaded large-scale transformation initiatives, operating seamlessly across traditional, agile, and hybrid models.
-                  </p>
-                  <p className="text-gray-700 leading-relaxed font-light mb-4">
-                    A passionate advocate for human-centered delivery, he is dedicated to mentoring early-career talent and coaching delivery professionals to thrive in an ever-evolving landscape.
-                  </p>
-                  <a href="https://linkedin.com/in/deepyeshu" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-[#1E5C3A] hover:text-[#143D2D] transition-colors" title="LinkedIn Profile">
-                    <Linkedin size={20} />
-                    <span className="ml-2 font-medium text-sm">Connect on LinkedIn</span>
-                  </a>
-                </div>
-              </div>
-              <div className="pt-8 border-t border-gray-200">
-                <p className="text-sm font-semibold tracking-widest text-[#1E5C3A] uppercase mb-2">Our Mission</p>
-                <p className="text-gray-600 italic">"To empower professionals and organizations to navigate complexity and achieve sustainable growth through human-centered, adaptive, and structured transformation."</p>
-              </div>
-            </div>
-          </div>
-
+          <h2 className="text-3xl md:text-4xl font-bold text-[#143D2D] mb-4 leading-tight">
+            A boutique transformation firm
+          </h2>
+          <p className="text-lg text-gray-600 font-light leading-relaxed">
+            Hansel Eleven is dedicated to guiding organizations and individuals through complexity — with empathy, structure, and a human-centered approach.
+          </p>
         </div>
+        <Link to="/about" className="shrink-0 inline-flex items-center gap-2 bg-[#143D2D] text-white px-8 py-4 rounded-sm font-medium hover:bg-[#1E5C3A] transition-colors">
+          Meet the Team <ArrowRight size={18} />
+        </Link>
       </section>
 
       {/* PUBLISHED RESEARCH SECTION */}
