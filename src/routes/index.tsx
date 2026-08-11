@@ -189,7 +189,7 @@ function LandingPage() {
               Published Research
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
-              Original research on delivery, leadership, and organizational complexity — by Deepak Yeshwanth Saibaba.
+              Original research on delivery, leadership, and organizational complexity — by Deepak S.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -209,7 +209,7 @@ function LearningTransformation() {
             <h2 className="text-2xl font-bold text-[#143D2D]">Published White Papers</h2>
           </div>
           <p className="text-gray-600 mb-8 max-w-2xl">
-            Original research by Deepak Yeshwanth Saibaba on delivery, leadership, and the human dynamics that shape project outcomes.
+            Original research by Deepak S on delivery, leadership, and the human dynamics that shape project outcomes.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {whitepapers.map((wp, i) => (
