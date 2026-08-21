@@ -13,6 +13,7 @@ import { Route as VizhunRouteImport } from './routes/vizhun'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
+import { Route as EricExamRouteImport } from './routes/eric-exam'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as IndexRouteImport } from './routes/index'
@@ -36,6 +37,11 @@ const PaymentSuccessRoute = PaymentSuccessRouteImport.update({
 const LearningTransformationRoute = LearningTransformationRouteImport.update({
   id: '/learning-transformation',
   path: '/learning-transformation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EricExamRoute = EricExamRouteImport.update({
+  id: '/eric-exam',
+  path: '/eric-exam',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnterpriseTransformationRoute =
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/career-transformation'
     | '/enterprise-transformation'
+    | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
     | '/pmp24q40m'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/'
     | '/career-transformation'
     | '/enterprise-transformation'
+    | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
     | '/pmp24q40m'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/'
     | '/career-transformation'
     | '/enterprise-transformation'
+    | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
     | '/pmp24q40m'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
+  EricExamRoute: typeof EricExamRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
@@ -165,6 +178,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LearningTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/eric-exam': {
+      id: '/eric-exam'
+      path: '/eric-exam'
+      fullPath: '/eric-exam'
+      preLoaderRoute: typeof EricExamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/enterprise-transformation': {
       id: '/enterprise-transformation'
       path: '/enterprise-transformation'
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
+  EricExamRoute: EricExamRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
