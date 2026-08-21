@@ -131,6 +131,22 @@ function LearningTransformation() {
                 )}
               </div>
 
+              {/* Practice test */}
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-lg font-bold text-[#1E5C3A]">PMP24Q40M Practice Test</h3>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">
+                  24 scenario-based questions, 40-minute timer, and an instant personalized advisory report based on the questions you miss. Password required for enrolled students.
+                </p>
+                <Link
+                  to="/pmp24q40m"
+                  className="inline-flex items-center text-[#1E5C3A] font-medium hover:text-[#143D2D] transition-colors"
+                >
+                  Take the Practice Test <ArrowRight size={16} className="ml-2" />
+                </Link>
+              </div>
+
               {/* 20-hour premium package */}
               <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                 <div className="flex justify-between items-start mb-2">

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
+import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
@@ -20,6 +21,11 @@ import { Route as ProductsProductIdRouteImport } from './routes/products/$produc
 const VizhunRoute = VizhunRouteImport.update({
   id: '/vizhun',
   path: '/vizhun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Pmp24q40mRoute = Pmp24q40mRouteImport.update({
+  id: '/pmp24q40m',
+  path: '/pmp24q40m',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PaymentSuccessRoute = PaymentSuccessRouteImport.update({
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
+  '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
+  '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
+  '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/enterprise-transformation'
     | '/learning-transformation'
     | '/payment-success'
+    | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/enterprise-transformation'
     | '/learning-transformation'
     | '/payment-success'
+    | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
   id:
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/enterprise-transformation'
     | '/learning-transformation'
     | '/payment-success'
+    | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
   fileRoutesById: FileRoutesById
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
+  Pmp24q40mRoute: typeof Pmp24q40mRoute
   VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
@@ -129,6 +142,13 @@ declare module '@tanstack/react-router' {
       path: '/vizhun'
       fullPath: '/vizhun'
       preLoaderRoute: typeof VizhunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pmp24q40m': {
+      id: '/pmp24q40m'
+      path: '/pmp24q40m'
+      fullPath: '/pmp24q40m'
+      preLoaderRoute: typeof Pmp24q40mRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/payment-success': {
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
+  Pmp24q40mRoute: Pmp24q40mRoute,
   VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
 }
