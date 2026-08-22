@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { CheckCircle2, XCircle, Lock, Clock, ArrowRight, ArrowLeft } from 'lucide-react'
 import type { PMPDomain, PMPQuestion } from '../data/pmp-quiz-types'
 
@@ -23,6 +23,34 @@ function formatTime(totalSeconds: number) {
   const m = Math.floor(totalSeconds / 60)
   const s = totalSeconds % 60
   return `${m}:${s.toString().padStart(2, '0')}`
+}
+
+function encodeFormData(data: Record<string, string>) {
+  return Object.entries(data)
+    .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
+    .join('&')
+}
+
+function emailResults(fields: {
+  examTitle: string
+  studentName: string
+  score: string
+  scorePercent: string
+  domainBreakdown: string
+  missedQuestions: string
+}) {
+  fetch('/__forms.html', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: encodeFormData({
+      'form-name': 'quiz-results',
+      'bot-field': '',
+      takenAt: new Date().toLocaleString(),
+      ...fields,
+    }),
+  }).catch(() => {
+    // Best-effort — never block the student's results on a failed email.
+  })
 }
 
 function Header() {
@@ -70,6 +98,8 @@ export function PMPQuizPage({ config }: { config: PMPQuizConfig }) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [answers, setAnswers] = useState<Answers>({})
   const [timeLeft, setTimeLeft] = useState(durationSeconds)
+  const [studentName, setStudentName] = useState('')
+  const emailedRef = useRef(false)
 
   useEffect(() => {
     if (sessionStorage.getItem(unlockKey) === 'true') {
@@ -107,6 +137,7 @@ export function PMPQuizPage({ config }: { config: PMPQuizConfig }) {
     setCurrentIndex(0)
     setAnswers({})
     setTimeLeft(durationSeconds)
+    emailedRef.current = false
     setStage('quiz')
   }
 
@@ -141,6 +172,35 @@ export function PMPQuizPage({ config }: { config: PMPQuizConfig }) {
     }
     return { correctCount, byDomain, wrongQuestions }
   }, [answers, questions])
+
+  useEffect(() => {
+    if (stage !== 'results' || emailedRef.current) return
+    emailedRef.current = true
+
+    const scorePercent = `${Math.round((results.correctCount / questions.length) * 100)}%`
+    const domainBreakdown = DOMAINS.map((d) => {
+      const { correct, total } = results.byDomain[d]
+      return `${d}: ${correct}/${total}`
+    }).join('\n')
+    const missedQuestions = results.wrongQuestions.length
+      ? results.wrongQuestions
+          .map((q) => {
+            const given = answers[q.id]
+            return `Q${q.id} (${q.domain} — ${q.topic}): answered ${given ? given.toUpperCase() : '—'}, correct ${q.correct.toUpperCase()}`
+          })
+          .join('\n')
+      : 'None — perfect score.'
+
+    emailResults({
+      examTitle: title,
+      studentName: studentName.trim() || '(not provided)',
+      score: `${results.correctCount}/${questions.length}`,
+      scorePercent,
+      domainBreakdown,
+      missedQuestions,
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [stage])
 
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
@@ -204,6 +264,15 @@ export function PMPQuizPage({ config }: { config: PMPQuizConfig }) {
                 <li>The test auto-submits when the timer reaches zero.</li>
                 <li>After submitting, you'll get a personalized results report with domain-by-domain advice based on the questions you missed.</li>
               </ul>
+            </div>
+            <div className="mb-8 max-w-xs mx-auto">
+              <input
+                type="text"
+                value={studentName}
+                onChange={(e) => setStudentName(e.target.value)}
+                placeholder="Your name (optional)"
+                className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:outline-none focus:border-[#1E5C3A] text-center"
+              />
             </div>
             <button
               onClick={startTest}
