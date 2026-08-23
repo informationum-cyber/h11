@@ -311,4 +311,74 @@ export const ericScenarios: PMPScenario[] = [
       },
     ],
   },
+  {
+    id: 4,
+    title: 'Practice Questions — PMBOK 8th Edition',
+    questions: [
+      {
+        id: 1,
+        domain: 'Process',
+        topic: 'Work Breakdown Structure (WBS) Creation',
+        prompt:
+          'Jonah is managing a product development project at RLM. The team needs to clearly organize all deliverables and decompose the work into manageable components to support planning and execution. What should Jonah do next?',
+        options: [
+          { key: 'a', text: 'Organize deliverables into a work breakdown structure.' },
+          { key: 'b', text: 'Capture requirements as user stories and refine them iteratively.' },
+          { key: 'c', text: 'Prioritize features in a backlog for incremental delivery.' },
+          { key: 'd', text: 'Validate the completed deliverables with stakeholders.' },
+        ],
+        correct: 'a',
+        explanation:
+          "Decomposing deliverables into manageable components to support planning and execution is exactly what a work breakdown structure does. User stories and backlog prioritization (B, C) are adaptive techniques not indicated by this predictive-style decomposition task, and validating completed deliverables (D) is a later monitoring activity, not part of this planning step.",
+      },
+      {
+        id: 2,
+        domain: 'Process',
+        topic: 'WBS Dictionary',
+        prompt:
+          'Nate is managing a manufacturing facility upgrade using a predictive approach. Nate has elicited the requirements from project stakeholders and turned them into project scope. Nate wants to add more details to the work packages to ensure clarity and alignment across the team. What will he do next?',
+        options: [
+          { key: 'a', text: 'Create a responsibility assignment matrix (RAM) to define roles and responsibilities.' },
+          { key: 'b', text: 'Perform quality control and verify the work packages.' },
+          { key: 'c', text: 'Develop a clear requirements traceability matrix.' },
+          { key: 'd', text: 'Develop a detailed WBS dictionary.' },
+        ],
+        correct: 'd',
+        explanation:
+          "The WBS dictionary is what adds the missing detail to each work package — deliverables, acceptance criteria, resources, assumptions — for clarity and team alignment. A RAM (A) defines roles, not work package detail; quality control (B) is an execution-phase activity, too early here; and a requirements traceability matrix (C) links requirements to deliverables rather than detailing the work packages themselves.",
+      },
+      {
+        id: 3,
+        domain: 'Process',
+        topic: 'Validate Scope Inputs (Verified vs Validated Deliverables)',
+        prompt:
+          'Marcus is overseeing a bridge construction project at BEL. Several completed components have passed internal quality checks. The client is now reviewing these outputs against agreed criteria to determine formal approval. What should Marcus obtain as an input to help the client with their decision?',
+        options: [
+          { key: 'a', text: 'Work performance reports summarizing project progress and quality metrics.' },
+          { key: 'b', text: 'Validated deliverables.' },
+          { key: 'c', text: 'Verified deliverables.' },
+          { key: 'd', text: 'Change requests addressing gaps identified during stakeholder review.' },
+        ],
+        correct: 'c',
+        explanation:
+          "Components that have already passed internal quality checks are verified deliverables — the output of Control Quality, and the correct input to Validate Scope. Validated deliverables (B) are the output of Validate Scope, not an input to it — that's what the client's review is about to produce. Work performance reports (A) summarize status rather than provide the deliverables themselves, and change requests (D) only apply once gaps are actually found.",
+      },
+      {
+        id: 4,
+        domain: 'Process',
+        topic: 'Control Quality Outputs (Quality Reports)',
+        prompt:
+          'At Redwood Biologics, Diane is managing a pharmaceutical product development project. During monitoring, inconsistencies in deliverable quality are identified. Stakeholders request additional information on these issues to support improvements. What should Diane produce?',
+        options: [
+          { key: 'a', text: 'Work performance data.' },
+          { key: 'b', text: 'The scope baseline.' },
+          { key: 'c', text: 'Change requests in the change log.' },
+          { key: 'd', text: 'The quality report.' },
+        ],
+        correct: 'd',
+        explanation:
+          "The quality report is the Control Quality output built specifically to communicate quality issues, summarize findings, and recommend corrective actions to stakeholders — exactly what's being asked for. Work performance data (A) is raw, unprocessed observation rather than the digested information stakeholders requested; the scope baseline (B) is unrelated; and change requests (C) address specific approved changes, not a general summary of the issues.",
+      },
+    ],
+  },
 ]
