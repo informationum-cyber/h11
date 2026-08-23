@@ -9,3 +9,11 @@ export interface PMPQuestion {
   correct: 'a' | 'b' | 'c' | 'd'
   explanation: string
 }
+
+export interface PMPScenario {
+  id: number
+  title: string
+  /** Full narrative shown in the fixed side pane while the student works through this scenario's questions. */
+  scenarioText: string
+  questions: PMPQuestion[]
+}
