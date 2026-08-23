@@ -121,4 +121,92 @@ export const ericScenarios: PMPScenario[] = [
       },
     ],
   },
+  {
+    id: 2,
+    title: 'EnterpriseNow Transformation Project Scenario',
+    scenarioText:
+      "You are assigned as PM to lead EnterpriseNow, a 12-month digital transformation initiative across your national financial services firm. The project involves: (1) deploying a new accounting system to 15 regional offices, (2) procuring $2M in new IT infrastructure from overseas suppliers, and (3) training 10,000+ employees on new processes. Budget approved: $2.5M. Planned Value: $520K (at current stage). Actual Cost to date: $335K. Your project sponsor has approved the scope. However, during a mid-project review, the sponsor mentions a critical capability was missing from the scope—advanced reporting dashboards that will significantly impact the project's business value. The sponsor approves this addition, but it requires unbudgeted work. Simultaneously, you are assembling an Agile delivery team for the accounting system rollout to the Northern Region office. The functional manager and senior users have provided high-level requirements. The project is high-risk because this accounting system has never been deployed in your organisation before, and delivery must be right the first time—there's no room for rework across 15 offices. You are also planning a massive communication strategy to engage 10,000+ stakeholders across all regions who will be impacted by the system changes and new processes. Finally, your procurement team has ordered $2M in physical IT hardware from overseas, but global supply chain disruptions have caused a three-month delay in shipment arrival.",
+    questions: [
+      {
+        id: 1,
+        domain: 'Process',
+        topic: 'Change Control & Reserves',
+        prompt:
+          'During your progress review with the sponsor, they approve adding critical reporting dashboards to scope. Your Planned Value is $520K and Actual Cost is $335K. What will you do next?',
+        options: [
+          { key: 'a', text: 'Work with the PMO to unlock project management reserves for the extra work.' },
+          { key: 'b', text: 'Ask the Product Owner to reprioritise the backlog and see if the new work will fit.' },
+          { key: 'c', text: 'Perform the work within your normal budget as your project is on track.' },
+          { key: 'd', text: 'Raise a change request for the changes and gain approval from the Change Control Board.' },
+        ],
+        correct: 'a',
+        explanation:
+          "The sponsor has already approved the scope addition — what's missing is funding for the unbudgeted work, so the next step is securing it through management reserve via the PMO, not re-running an approval that already happened, silently absorbing it into a budget it wasn't scoped for, or treating this predictive workstream as if it had an agile backlog.",
+      },
+      {
+        id: 2,
+        domain: 'People',
+        topic: 'Team Structure & Colocation',
+        prompt:
+          'You are assembling an Agile team for the Northern Region accounting system rollout. The functional manager and senior users have provided high-level requirements and scope. The project needs quick delivery. What will you do next?',
+        options: [
+          { key: 'a', text: 'Select project members from each city to ensure diversity of knowledge within the team.' },
+          { key: 'b', text: 'Put together a resource management plan outlining the resources required.' },
+          { key: 'c', text: 'Ask your PMO for current available resources and assign them to the work.' },
+          { key: 'd', text: 'Select a small team that can work in the same area so they can solve problems as they arise.' },
+        ],
+        correct: 'd',
+        explanation:
+          'A small, co-located team maximizes the fast face-to-face collaboration and quick problem-solving that agile delivery depends on — spreading the team across cities, defaulting to whoever the PMO has free, or leading with a formal planning document all trade away the speed this rollout needs.',
+      },
+      {
+        id: 3,
+        domain: 'Process',
+        topic: 'Delivery Approach Selection',
+        prompt:
+          'The new accounting system you are deploying has not been used by anyone in your organisation before. The project is quite high-risk, and the delivery needs to be right the first time. What will you do next?',
+        options: [
+          { key: 'a', text: 'Select a small team that can work in the same area so they can solve problems as they arise.' },
+          { key: 'b', text: 'Use a predictive project approach and source part of your team externally if they have skillsets in the new system.' },
+          { key: 'c', text: 'Train existing internal staff in the new system then have them work on the project.' },
+          { key: 'd', text: 'Perform a make or buy analysis on the different software options.' },
+        ],
+        correct: 'b',
+        explanation:
+          "Tailoring the approach to context matters here: with zero tolerance for rework across 15 offices and no in-house experience with the system, a predictive approach with detailed upfront planning, backed by externally sourced expertise, reduces risk far more than relying on newly-trained internal staff or re-litigating a software choice that's already been made.",
+      },
+      {
+        id: 4,
+        domain: 'Process',
+        topic: 'Communications Planning',
+        prompt:
+          "You are putting together a communication plan for 10,000+ stakeholders across all regions who will be impacted by EnterpriseNow. You have identified affected stakeholders, analysed and prioritised them, and are creating a communication strategy. What will you NOT include in your plan?",
+        options: [
+          { key: 'a', text: 'Why should information be shared with stakeholders?' },
+          { key: 'b', text: 'What is the best way to provide information?' },
+          { key: 'c', text: 'How can they make changes to the communication plan?' },
+          { key: 'd', text: 'When and how often is information needed?' },
+        ],
+        correct: 'c',
+        explanation:
+          "A communications management plan defines the purpose, method, and cadence of communication — it doesn't hand stakeholders a mechanism to unilaterally alter the plan itself; changes to the plan go through the project's own change control, not stakeholder self-service.",
+      },
+      {
+        id: 5,
+        domain: 'Process',
+        topic: 'Resource & Procurement Risk Planning',
+        prompt:
+          'You put together a resource plan for the $2M IT hardware procurement from overseas. However, global supply chains were impacted and the shipment was delayed by three months, significantly impacting your project timeline. What should you have done differently?',
+        options: [
+          { key: 'a', text: 'Hired a resource manager to take care of the resource tasks on your project.' },
+          { key: 'b', text: 'Planned strategically about the timing from order to delivery to usage, managing resource risks and their responses.' },
+          { key: 'c', text: 'Ensured a means to track the inventory from arrival on site to the delivery of an integrated product.' },
+          { key: 'd', text: 'Sourced the inventory locally to reduce the impact of global supply chains.' },
+        ],
+        correct: 'b',
+        explanation:
+          "The gap was upfront risk planning, not execution — proactively identifying supply-chain risk across the full order-to-usage timeline and building response plans for it addresses the root cause, where adding headcount, better inventory tracking after arrival, or a specific local-sourcing fix only treat symptoms or assume one narrow response in hindsight.",
+      },
+    ],
+  },
 ]
