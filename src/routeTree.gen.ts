@@ -16,6 +16,7 @@ import { Route as LearningTransformationRouteImport } from './routes/learning-tr
 import { Route as EricExamRouteImport } from './routes/eric-exam'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
+import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
@@ -56,6 +57,11 @@ const CareerTransformationRoute = CareerTransformationRouteImport.update({
   path: '/career-transformation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AygulQuizRoute = AygulQuizRouteImport.update({
+  id: '/aygul-quiz',
+  path: '/aygul-quiz',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -75,6 +81,7 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/eric-exam': typeof EricExamRoute
@@ -87,6 +94,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/eric-exam': typeof EricExamRoute
@@ -100,6 +108,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/eric-exam': typeof EricExamRoute
@@ -114,6 +123,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/aygul-quiz'
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/eric-exam'
@@ -126,6 +136,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/aygul-quiz'
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/eric-exam'
@@ -138,6 +149,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/aygul-quiz'
     | '/career-transformation'
     | '/enterprise-transformation'
     | '/eric-exam'
@@ -151,6 +163,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AygulQuizRoute: typeof AygulQuizRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
   EricExamRoute: typeof EricExamRoute
@@ -212,6 +225,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareerTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/aygul-quiz': {
+      id: '/aygul-quiz'
+      path: '/aygul-quiz'
+      fullPath: '/aygul-quiz'
+      preLoaderRoute: typeof AygulQuizRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -239,6 +259,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AygulQuizRoute: AygulQuizRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
   EricExamRoute: EricExamRoute,

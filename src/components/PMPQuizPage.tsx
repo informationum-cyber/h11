@@ -25,6 +25,11 @@ function formatTime(totalSeconds: number) {
   return `${m}:${s.toString().padStart(2, '0')}`
 }
 
+function articleFor(n: number) {
+  const s = String(n)
+  return s.startsWith('8') || s === '11' || s === '18' ? 'an' : 'a'
+}
+
 function encodeFormData(data: Record<string, string>) {
   return Object.entries(data)
     .map(([key, val]) => `${encodeURIComponent(key)}=${encodeURIComponent(val)}`)
@@ -240,7 +245,7 @@ export function PMPQuizPage({ config }: { config: PMPQuizConfig }) {
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-[#143D2D] mb-4">{title}</h1>
             <p className="text-gray-600 mb-10 font-light text-lg">
-              {questions.length} scenario-based questions covering all three PMP domains, timed to a {durationMinutes}-minute window.
+              {questions.length} scenario-based questions covering all three PMP domains, timed to {articleFor(durationMinutes)} {durationMinutes}-minute window.
             </p>
             <div className="grid grid-cols-3 gap-4 mb-10">
               <div className="bg-gray-50 rounded-xl p-5">
