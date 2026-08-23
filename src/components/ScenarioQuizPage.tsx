@@ -105,7 +105,7 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
           .map((q) => {
             const fq = q as FlatQuestion
             const given = answers[q.id]
-            return `Scenario ${fq.scenarioIndex + 1} Q${fq.localNumber} (${q.domain} — ${q.topic}): answered ${given ? given.toUpperCase() : '—'}, correct ${q.correct.toUpperCase()}`
+            return `${scenarios[fq.scenarioIndex].title} Q${fq.localNumber} (${q.domain} — ${q.topic}): answered ${given ? given.toUpperCase() : '—'}, correct ${q.correct.toUpperCase()}`
           })
           .join('\n')
       : 'None — perfect score.'
@@ -170,12 +170,12 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-[#143D2D] mb-4">{title}</h1>
             <p className="text-gray-600 mb-10 font-light text-lg">
-              {scenarios.length} scenario{scenarios.length === 1 ? '' : 's'}, {totalQuestions} questions total. Read each scenario carefully — it stays visible next to the questions the whole way through.
+              {scenarios.length} set{scenarios.length === 1 ? '' : 's'}, {totalQuestions} questions total. Each scenario's narrative stays visible next to its questions the whole way through.
             </p>
             <div className="grid grid-cols-2 gap-4 mb-10">
               <div className="bg-gray-50 rounded-xl p-5">
                 <div className="text-3xl font-black text-[#143D2D]">{scenarios.length}</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">Scenarios</div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">Sets</div>
               </div>
               <div className="bg-gray-50 rounded-xl p-5">
                 <div className="text-3xl font-black text-[#143D2D]">{totalQuestions}</div>
@@ -185,8 +185,8 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
             <div className="text-left bg-[#143D2D] text-gray-200 rounded-2xl p-7 mb-10">
               <p className="font-semibold text-white mb-3">Before you begin:</p>
               <ul className="space-y-2 text-sm font-light">
-                <li>This is untimed — take the time you need to reason through each scenario.</li>
-                <li>The scenario text stays pinned next to the questions so you can refer back to it anytime.</li>
+                <li>This is untimed — take the time you need to reason through each question.</li>
+                <li>Where a scenario has a narrative, it stays pinned next to the questions so you can refer back to it anytime.</li>
                 <li>You can move freely between questions and change answers before submitting.</li>
                 <li>After submitting, you'll get a personalized results report with domain-by-domain advice based on the questions you missed.</li>
               </ul>
@@ -210,96 +210,58 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
         )}
 
         {stage === 'quiz' && question && scenario && (
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <div className="lg:col-span-2">
-              <div className="lg:sticky lg:top-6 bg-gray-50 rounded-2xl p-6 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto">
-                <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A] mb-3">
-                  <BookOpen size={14} /> Scenario {question.scenarioIndex + 1} of {scenarios.length}
+          <>
+            {scenario.scenarioText ? (
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div className="lg:col-span-2">
+                  <div className="lg:sticky lg:top-6 bg-gray-50 rounded-2xl p-6 lg:max-h-[calc(100vh-3rem)] lg:overflow-y-auto">
+                    <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A] mb-3">
+                      <BookOpen size={14} /> Scenario {question.scenarioIndex + 1} of {scenarios.length}
+                    </div>
+                    <h2 className="text-lg font-bold text-[#143D2D] mb-3">{scenario.title}</h2>
+                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{scenario.scenarioText}</p>
+                  </div>
                 </div>
-                <h2 className="text-lg font-bold text-[#143D2D] mb-3">{scenario.title}</h2>
-                <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{scenario.scenarioText}</p>
-              </div>
-            </div>
 
-            <div className="lg:col-span-3">
-              <div className="flex items-center justify-between mb-6">
-                <span className="text-sm font-medium text-gray-500">
-                  Question {currentIndex + 1} of {totalQuestions} &middot; {answeredCount} answered
-                </span>
+                <div className="lg:col-span-3">
+                  <QuestionPanel
+                    question={question}
+                    currentIndex={currentIndex}
+                    totalQuestions={totalQuestions}
+                    answeredCount={answeredCount}
+                    flatQuestions={flatQuestions}
+                    answers={answers}
+                    onJump={setCurrentIndex}
+                    onSelect={selectAnswer}
+                    onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
+                    onNext={() => setCurrentIndex((i) => Math.min(totalQuestions - 1, i + 1))}
+                    onSubmit={() => setStage('results')}
+                  />
+                </div>
               </div>
-
-              <div className="flex flex-wrap gap-2 mb-8">
-                {flatQuestions.map((q, i) => (
-                  <button
-                    key={q.id}
-                    onClick={() => setCurrentIndex(i)}
-                    className={`w-8 h-8 text-xs font-semibold rounded-full flex items-center justify-center transition-colors ${
-                      i === currentIndex
-                        ? 'bg-[#1E5C3A] text-white'
-                        : answers[q.id]
-                          ? 'bg-[#a8d5b5] text-[#143D2D]'
-                          : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
-                    }`}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
+            ) : (
+              <div className="max-w-3xl mx-auto">
+                <div className="text-center mb-8">
+                  <div className="inline-block px-4 py-2 bg-[#f0f7f2] text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full">
+                    {scenario.title}
+                  </div>
+                </div>
+                <QuestionPanel
+                  question={question}
+                  currentIndex={currentIndex}
+                  totalQuestions={totalQuestions}
+                  answeredCount={answeredCount}
+                  flatQuestions={flatQuestions}
+                  answers={answers}
+                  onJump={setCurrentIndex}
+                  onSelect={selectAnswer}
+                  onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
+                  onNext={() => setCurrentIndex((i) => Math.min(totalQuestions - 1, i + 1))}
+                  onSubmit={() => setStage('results')}
+                />
               </div>
-
-              <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
-                {question.domain} Domain &middot; {question.topic}
-              </div>
-              <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">{question.prompt}</h2>
-
-              <div className="space-y-3 mb-10">
-                {question.options.map((opt) => {
-                  const selected = answers[question.id] === opt.key
-                  return (
-                    <button
-                      key={opt.key}
-                      onClick={() => selectAnswer(question.id, opt.key)}
-                      className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-colors flex gap-3 ${
-                        selected
-                          ? 'border-[#1E5C3A] bg-[#f0f7f2]'
-                          : 'border-gray-100 hover:border-gray-300'
-                      }`}
-                    >
-                      <span className={`font-bold uppercase ${selected ? 'text-[#1E5C3A]' : 'text-gray-400'}`}>
-                        {opt.key}.
-                      </span>
-                      <span className="text-gray-800">{opt.text}</span>
-                    </button>
-                  )
-                })}
-              </div>
-
-              <div className="flex items-center justify-between">
-                <button
-                  onClick={() => setCurrentIndex((i) => Math.max(0, i - 1))}
-                  disabled={currentIndex === 0}
-                  className="inline-flex items-center gap-2 px-5 py-3 rounded-sm font-medium text-gray-600 disabled:opacity-30 hover:text-[#143D2D]"
-                >
-                  <ArrowLeft size={16} /> Previous
-                </button>
-
-                {currentIndex < totalQuestions - 1 ? (
-                  <button
-                    onClick={() => setCurrentIndex((i) => Math.min(totalQuestions - 1, i + 1))}
-                    className="inline-flex items-center gap-2 bg-[#143D2D] hover:bg-[#1E5C3A] text-white px-6 py-3 rounded-sm font-medium transition-colors"
-                  >
-                    Next <ArrowRight size={16} />
-                  </button>
-                ) : (
-                  <button
-                    onClick={() => setStage('results')}
-                    className="inline-flex items-center gap-2 bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-6 py-3 rounded-sm font-medium transition-colors"
-                  >
-                    Submit
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
+            )}
+          </>
         )}
 
         {stage === 'results' && (
@@ -317,6 +279,111 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
       </main>
 
       <QuizFooter />
+    </div>
+  )
+}
+
+function QuestionPanel({
+  question,
+  currentIndex,
+  totalQuestions,
+  answeredCount,
+  flatQuestions,
+  answers,
+  onJump,
+  onSelect,
+  onPrev,
+  onNext,
+  onSubmit,
+}: {
+  question: FlatQuestion
+  currentIndex: number
+  totalQuestions: number
+  answeredCount: number
+  flatQuestions: FlatQuestion[]
+  answers: Answers
+  onJump: (index: number) => void
+  onSelect: (questionId: number, key: 'a' | 'b' | 'c' | 'd') => void
+  onPrev: () => void
+  onNext: () => void
+  onSubmit: () => void
+}) {
+  return (
+    <div>
+      <div className="flex items-center justify-between mb-6">
+        <span className="text-sm font-medium text-gray-500">
+          Question {currentIndex + 1} of {totalQuestions} &middot; {answeredCount} answered
+        </span>
+      </div>
+
+      <div className="flex flex-wrap gap-2 mb-8">
+        {flatQuestions.map((q, i) => (
+          <button
+            key={q.id}
+            onClick={() => onJump(i)}
+            className={`w-8 h-8 text-xs font-semibold rounded-full flex items-center justify-center transition-colors ${
+              i === currentIndex
+                ? 'bg-[#1E5C3A] text-white'
+                : answers[q.id]
+                  ? 'bg-[#a8d5b5] text-[#143D2D]'
+                  : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            }`}
+          >
+            {i + 1}
+          </button>
+        ))}
+      </div>
+
+      <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
+        {question.domain} Domain &middot; {question.topic}
+      </div>
+      <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">{question.prompt}</h2>
+
+      <div className="space-y-3 mb-10">
+        {question.options.map((opt) => {
+          const selected = answers[question.id] === opt.key
+          return (
+            <button
+              key={opt.key}
+              onClick={() => onSelect(question.id, opt.key)}
+              className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-colors flex gap-3 ${
+                selected ? 'border-[#1E5C3A] bg-[#f0f7f2]' : 'border-gray-100 hover:border-gray-300'
+              }`}
+            >
+              <span className={`font-bold uppercase ${selected ? 'text-[#1E5C3A]' : 'text-gray-400'}`}>
+                {opt.key}.
+              </span>
+              <span className="text-gray-800">{opt.text}</span>
+            </button>
+          )
+        })}
+      </div>
+
+      <div className="flex items-center justify-between">
+        <button
+          onClick={onPrev}
+          disabled={currentIndex === 0}
+          className="inline-flex items-center gap-2 px-5 py-3 rounded-sm font-medium text-gray-600 disabled:opacity-30 hover:text-[#143D2D]"
+        >
+          <ArrowLeft size={16} /> Previous
+        </button>
+
+        {currentIndex < totalQuestions - 1 ? (
+          <button
+            onClick={onNext}
+            className="inline-flex items-center gap-2 bg-[#143D2D] hover:bg-[#1E5C3A] text-white px-6 py-3 rounded-sm font-medium transition-colors"
+          >
+            Next <ArrowRight size={16} />
+          </button>
+        ) : (
+          <button
+            onClick={onSubmit}
+            className="inline-flex items-center gap-2 bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-6 py-3 rounded-sm font-medium transition-colors"
+          >
+            Submit
+          </button>
+        )}
+      </div>
     </div>
   )
 }

@@ -209,4 +209,106 @@ export const ericScenarios: PMPScenario[] = [
       },
     ],
   },
+  {
+    id: 3,
+    title: 'Practice Questions — AI Risks',
+    questions: [
+      {
+        id: 1,
+        domain: 'Process',
+        topic: 'AI Strategy Types (Automation vs Augmentation)',
+        prompt:
+          'You are managing a project to deliver a new battery type for electric vehicles. The project sponsor suggests that you use AI to auto-generate weekly status reports, and use AI for pattern recognition to adjust the ROI for new risks and their responses. What AI strategies are these, respectively?',
+        options: [
+          { key: 'a', text: 'Automation; Augmentation.' },
+          { key: 'b', text: 'Assistance; Automation.' },
+          { key: 'c', text: 'Augmentation; Assistance.' },
+          { key: 'd', text: 'Automation; Assistance.' },
+        ],
+        correct: 'a',
+        explanation:
+          "Auto-generating the status reports replaces a manual task outright — that's automation. Using AI pattern recognition to help adjust ROI for risks and responses supports and enhances the PM's own judgment rather than replacing it — that's augmentation.",
+      },
+      {
+        id: 2,
+        domain: 'Process',
+        topic: 'AI Risk Mitigation (Bias)',
+        prompt:
+          'A project manager wants to reduce the risk of bias in an AI tool used for resource allocation decisions across multiple departments. Which of the following actions best mitigates this risk?',
+        options: [
+          { key: 'a', text: 'Increase the frequency of AI-generated reviews.' },
+          { key: 'b', text: 'Diversify the data sets used to train the AI system.' },
+          { key: 'c', text: 'Restrict AI use to cost-related calculations.' },
+          { key: 'd', text: 'Require executive approval for every AI query.' },
+        ],
+        correct: 'b',
+        explanation:
+          "Bias mitigation for an AI system centers on diversifying the training data sets, periodic bias testing, and involving different teams in the AI system's development. Increasing review frequency, restricting AI to cost calculations, or requiring sign-off on every query don't touch the root cause of bias.",
+      },
+      {
+        id: 3,
+        domain: 'Process',
+        topic: 'AI Risk Categorization (IP Ownership)',
+        prompt:
+          'You are leading a project where the team uses an AI tool to summarize contractual obligations. During a risk workshop the legal department flags that portions of the training data may have been sourced without proper licensing of the information. How will you raise this in the Risk Register?',
+        options: [
+          { key: 'a', text: 'Bias in the training data set.' },
+          { key: 'b', text: 'Reliability of the summarization accuracy.' },
+          { key: 'c', text: 'Ownership rights over AI-generated content.' },
+          { key: 'd', text: 'Transparency in how the model was trained.' },
+        ],
+        correct: 'c',
+        explanation:
+          "Improperly licensed training data is fundamentally an IP and usage-rights exposure — it's a question of whether the organization actually owns or has rights to the content the model produces, not a data-quality issue like bias (A), an accuracy concern (B), or a documentation gap about training methodology (D).",
+      },
+      {
+        id: 4,
+        domain: 'Business Environment',
+        topic: 'AI Data Privacy Risk',
+        prompt:
+          'Your team uses an AI tool to analyze team performance data, including personal work patterns and communication logs, without informing team members or securing consent. After learning about this, one of your team members raises concerns. What does this scenario show?',
+        options: [
+          { key: 'a', text: 'Unclear accountability for AI decisions.' },
+          { key: 'b', text: 'Lack of proper data privacy safeguards.' },
+          { key: 'c', text: 'Missing bias testing on the model.' },
+          { key: 'd', text: 'Nothing - your team is completely justified in using the data.' },
+        ],
+        correct: 'b',
+        explanation:
+          "Analyzing personal work patterns and communication logs without informing people or securing consent is a data privacy and consent failure — not an accountability gap (A), a bias issue (C), and certainly not something the team was justified in doing (D).",
+      },
+      {
+        id: 5,
+        domain: 'Process',
+        topic: 'AI Deployment Risk Controls',
+        prompt:
+          'You are leading a project that deploys an AI system to monitor equipment in a manufacturing plant. During testing, the AI occasionally recommends actions that could create unsafe operating conditions. What should you do before approving deployment?',
+        options: [
+          { key: 'a', text: 'Validate safety controls and require human oversight.' },
+          { key: 'b', text: 'Increase AI training data before deployment.' },
+          { key: 'c', text: 'Only allow experienced operators to ignore unsafe recommendations.' },
+          { key: 'd', text: 'Reduce the AI confidence threshold to improve responsiveness.' },
+        ],
+        correct: 'a',
+        explanation:
+          "Occasional unsafe recommendations are a safety risk that must be controlled directly — validating safety controls and requiring human oversight addresses that head-on. More training data doesn't guarantee safety, letting operators selectively ignore unsafe output still lets unsafe recommendations occur, and lowering the confidence threshold would likely surface more, not fewer, questionable recommendations.",
+      },
+      {
+        id: 6,
+        domain: 'People',
+        topic: 'AI Decision Accountability',
+        prompt:
+          'You are managing a project that uses AI to prioritize vendor selections. After implementation, stakeholders discover the AI recommended a supplier with significant compliance issues. Senior management asks who is responsible for the decision. What is the best response?',
+        options: [
+          { key: 'a', text: 'Raise a legal claim against the AI vendor to ensure accountability.' },
+          { key: 'b', text: 'Assign accountability to the AI development team.' },
+          { key: 'c', text: 'Accept AI recommendations as objective project decisions.' },
+          { key: 'd', text: 'Project leaders remain accountable, even for AI-supported decisions.' },
+        ],
+        correct: 'd',
+        explanation:
+          "Accountability for a decision can't be outsourced to a tool or its vendor — project leaders remain accountable for decisions made with AI support, which is why pursuing the AI vendor (A), shifting blame to the AI development team (B), and treating AI output as inherently objective (C) all misplace responsibility.",
+      },
+    ],
+  },
 ]

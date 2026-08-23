@@ -122,7 +122,7 @@ function RouteComponent() {
                   <div>
                     <h2 className="text-xl font-bold text-white mb-2">Eric Scenario Practice</h2>
                     <p className="text-sm text-gray-300 font-light">
-                      Deep-dive scenarios with 6-7 questions each. The scenario stays visible while you work through its questions.
+                      Deep-dive scenarios plus a themed AI-risks question set. Each scenario's narrative stays visible while you work through its questions.
                     </p>
                   </div>
                   <ArrowRight className="text-white shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
