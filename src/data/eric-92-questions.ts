@@ -1,6 +1,6 @@
 import type { PMPQuestion } from './pmp-quiz-types'
 
-export const eric96Questions: PMPQuestion[] = [
+export const eric92Questions: PMPQuestion[] = [
   {
     id: 1,
     domain: 'Process',
@@ -1718,118 +1718,6 @@ export const eric96Questions: PMPQuestion[] = [
   },
   {
     id: 69,
-    domain: 'Business Environment',
-    topic: 'Cross-Functional Regulatory Compliance',
-    prompt:
-      'Scenario Context: You are the Lead Project Manager for "Project Titan" at a global logistics firm. Hybrid initiative with hardware (predictive) and software (agile). Currently 6 months into execution. | A new international data privacy regulation is passed that restricts how logistics metadata can be transferred across borders. The agile software team identifies that their planned architecture violates this regulation, while the predictive hardware team\'s embedded firmware requires cross-border telemetry data to function properly. What must the project manager do first?',
-    options: [
-      {
-        key: 'a',
-        text: 'Halt all hardware and software development until the regulatory body provides an explicit project exemption.',
-      },
-      {
-        key: 'b',
-        text: 'Direct the software team to implement local data encryption while allowing hardware telemetry to proceed unchanged.',
-      },
-      {
-        key: 'c',
-        text: 'Convene a cross-functional compliance review to assess impacts across both hardware and software streams.',
-      },
-      {
-        key: 'd',
-        text: 'Submit a formal change request to increase the budget for external legal fees and compliance software tools.',
-      },
-    ],
-    correct: 'c',
-    explanation:
-      'Same as the Project Titan compliance conflict elsewhere in this set: a cross-functional compliance review across both hardware and software streams comes before halting work, changing one stream unilaterally, or requesting more budget.',
-  },
-  {
-    id: 70,
-    domain: 'People',
-    topic: 'Cross-Team Conflict Resolution',
-    prompt:
-      'Following the compliance assessment, the predictive engineering leads blame the agile developers for moving too fast without proper architecture reviews, while the agile developers accuse the predictive leads of bureaucratic delay that threatens sprint commitments. Relationships have deteriorated significantly. How should the project manager resolve this inter-team conflict?',
-    options: [
-      {
-        key: 'a',
-        text: 'Reassign the integration touchpoints to a separate third-party vendor to eliminate internal interaction.',
-      },
-      {
-        key: 'b',
-        text: 'Facilitate collaborative alignment workshops to establish shared goals and joint integration milestones.',
-      },
-      {
-        key: 'c',
-        text: 'Instruct the functional managers of both departments to discipline the non-cooperative team leaders.',
-      },
-      {
-        key: 'd',
-        text: 'Transition the software team to a waterfall framework to match the operational cadence of the hardware team.',
-      },
-    ],
-    correct: 'b',
-    explanation:
-      "Same as the Project Titan conflict elsewhere in this set: collaborative alignment workshops rebuild shared goals and joint milestones better than outsourcing integration, disciplining leaders, or forcing one team's framework onto the other.",
-  },
-  {
-    id: 71,
-    domain: 'Process',
-    topic: 'Scope-Schedule-Cost Trade-off Analysis',
-    prompt:
-      "To meet the data privacy regulations, the agile product owner adds several complex compliance features to the product backlog. The executive sponsor, concerned about potential delivery delays, demands that the project team incorporate these compliance stories without altering the final target release date or increasing funding. What is the project manager's correct approach?",
-    options: [
-      {
-        key: 'a',
-        text: "Accept the sponsor's mandate and instruct the team to work overtime to deliver the complete scope on time.",
-      },
-      {
-        key: 'b',
-        text: 'Perform a trade-off analysis on existing backlog items and present delivery scenarios to the sponsor.',
-      },
-      {
-        key: 'c',
-        text: 'Refuse to add the regulatory stories and proceed with the original baseline schedule and scope targets.',
-      },
-      {
-        key: 'd',
-        text: "Escalate the sponsor's behavior to the governance board for violating agile principles and sponsor standards.",
-      },
-    ],
-    correct: 'b',
-    explanation:
-      'Same as the Project Titan sponsor-mandate scenario elsewhere in this set: a trade-off analysis with delivery scenarios presented to the sponsor beats silent overtime, refusing mandatory regulatory work, or escalating instead of solving the problem.',
-  },
-  {
-    id: 72,
-    domain: 'Business Environment',
-    topic: 'Benefits Realization & Phase Closure',
-    prompt:
-      'Project Titan successfully navigates the regulatory changes and completes joint testing. The hardware and software components meet all technical specifications outlined in the scope baseline. However, during phase-gate review, the operations business lead notes that system throughput is only 80% of the operational cost-benefit baseline promised in the business case. What should the project manager do?',
-    options: [
-      {
-        key: 'a',
-        text: 'Delay phase sign-off and re-engineer the system hardware until 100% throughput target is achieved.',
-      },
-      {
-        key: 'b',
-        text: 'Close the phase after documenting actual benefit metrics and transitioning operational risks to business owners.',
-      },
-      {
-        key: 'c',
-        text: 'Modify the original business case metrics to match current system performance data prior to closing.',
-      },
-      {
-        key: 'd',
-        text: 'Refuse project closure and request budget approval to initiate a complete re-baseline of the initiative.',
-      },
-    ],
-    correct: 'b',
-    explanation:
-      'Same as the Project Titan closure scenario elsewhere in this set: close the phase after documenting actual benefit metrics and transitioning the shortfall to business owners, rather than blocking closure, rewriting the business case, or demanding a full re-baseline.',
-  },
-  {
-    id: 73,
     domain: 'People',
     topic: 'Role Clarity & Decision Authority',
     prompt:
@@ -1857,7 +1745,7 @@ export const eric96Questions: PMPQuestion[] = [
       'A dual product-owner/functional-manager role creating confusion needs explicit decision-making boundaries and escalation paths set through working agreements — recusal from ceremonies (A), reassigning the role (C), or just documenting and escalating for a redesign (D) are heavier-handed than clarifying boundaries first.',
   },
   {
-    id: 74,
+    id: 70,
     domain: 'People',
     topic: 'Cross-Cultural Facilitation',
     prompt:
@@ -1882,7 +1770,7 @@ export const eric96Questions: PMPQuestion[] = [
       'Members from a high-context culture staying silent in group refinement are better reached through structured input techniques and one-on-one interviews — separating groups by culture (A) segregates rather than includes, an external facilitator (C) is a bigger intervention than needed, and forcing one communication standard (D) ignores the cultural dynamic entirely.',
   },
   {
-    id: 75,
+    id: 71,
     domain: 'People',
     topic: 'Knowledge Transfer on Departure',
     prompt:
@@ -1901,7 +1789,7 @@ export const eric96Questions: PMPQuestion[] = [
       'With a key technical lead departing in two weeks and a six-week replacement ramp, the PM should immediately engage the departing lead in knowledge transfer while recruiting — a counter-offer (A) is not guaranteed to work and delays the real fix, reassigning work cold (C) risks quality, and escalating without acting (D) wastes the two weeks available.',
   },
   {
-    id: 76,
+    id: 72,
     domain: 'People',
     topic: 'Matrix Team Formation',
     prompt:
@@ -1920,7 +1808,7 @@ export const eric96Questions: PMPQuestion[] = [
       'A newly formed cross-departmental team with competing priorities and terminology needs an early shared glossary, working norms, and cross-functional accountability — a full-time translator (B), imposing a hierarchy (C), or requiring everyone to report to the PM (D) are heavier structural changes than the situation calls for.',
   },
   {
-    id: 77,
+    id: 73,
     domain: 'People',
     topic: 'Psychological Safety Recovery',
     prompt:
@@ -1939,7 +1827,7 @@ export const eric96Questions: PMPQuestion[] = [
       "After a public-blame incident eroded psychological safety, the scrum master should address the breach directly and establish norms against public blame — skipping the retrospective (B), escalating to HR (C), or sidelining the blamed members (D) don't repair the team's trust.",
   },
   {
-    id: 78,
+    id: 74,
     domain: 'People',
     topic: 'Informal Authority & Governance',
     prompt:
@@ -1961,7 +1849,7 @@ export const eric96Questions: PMPQuestion[] = [
       'An architect whose informal influence overrides governance is best handled by recognizing their expertise while clarifying formal roles and redirecting that influence through governance channels — abruptly imposing strict change control (A), escalating to remove their informal authority (C), or building a parallel review board around them (D) are more disruptive than necessary.',
   },
   {
-    id: 79,
+    id: 75,
     domain: 'People',
     topic: 'Cross-Organizational Communication Styles',
     prompt:
@@ -1980,7 +1868,7 @@ export const eric96Questions: PMPQuestion[] = [
       "A style clash between a vendor lead and the PM is best resolved by facilitating a discussion on communication preferences and establishing a bridge protocol — requesting a different vendor lead (A), routing everything through a single liaison (C), or just documenting delays for escalation (D) don't fix the actual communication mismatch.",
   },
   {
-    id: 80,
+    id: 76,
     domain: 'People',
     topic: 'Standard Adoption & Buy-in',
     prompt:
@@ -1999,7 +1887,7 @@ export const eric96Questions: PMPQuestion[] = [
       'An engineer resisting a quality standard is better engaged by involving them in designing how the standard adapts without sacrificing innovation — granting an exception (A) undermines consistency, blanket enforcement (C) ignores their legitimate concern, and escalating to the quality office (D) skips direct engagement first.',
   },
   {
-    id: 81,
+    id: 77,
     domain: 'Process',
     topic: 'AI-Assisted Testing Validation',
     prompt:
@@ -2018,7 +1906,7 @@ export const eric96Questions: PMPQuestion[] = [
       'AI test suggestions that are sometimes unnecessary should be validated against actual bug data with defined acceptance thresholds — disabling the tool (A) throws away its value, accepting everything blindly (C) wastes effort, and using it only for brainstorming while overriding all output (D) discards its usefulness entirely.',
   },
   {
-    id: 82,
+    id: 78,
     domain: 'Process',
     topic: 'Schedule Compression Strategy',
     prompt:
@@ -2037,7 +1925,7 @@ export const eric96Questions: PMPQuestion[] = [
       "A hard deadline six months earlier with insufficient float calls for analyzing dependencies and value to restructure delivery into concurrent increments — crashing everything equally (A) is blunt and costly, uniform scope cuts (C) ignore value differences, and requesting a waiver (D) doesn't solve the delivery problem.",
   },
   {
-    id: 83,
+    id: 79,
     domain: 'Process',
     topic: 'Statistical Process Control',
     prompt:
@@ -2056,7 +1944,7 @@ export const eric96Questions: PMPQuestion[] = [
       'Seven consecutive measurements trending upward — even within control limits — should be investigated for assignable causes before the escape rate becomes unacceptable, rather than waiting for a breach (B), widening the limits (C), or just documenting for later (D).',
   },
   {
-    id: 84,
+    id: 80,
     domain: 'Process',
     topic: 'Vendor Invoice Validation',
     prompt:
@@ -2072,7 +1960,7 @@ export const eric96Questions: PMPQuestion[] = [
       'A 20%-hours discrepancy on a time-and-materials invoice should be checked against the contract terms, scope, and detailed timesheets before any decision — approving now and investigating later (A), outright rejecting the invoice (B), or escalating straight to a formal audit (D) skip the direct verification step.',
   },
   {
-    id: 85,
+    id: 81,
     domain: 'Process',
     topic: 'Backlog Refinement Strategy',
     prompt:
@@ -2091,7 +1979,7 @@ export const eric96Questions: PMPQuestion[] = [
       "A 150-story backlog with no prioritization is best handled by refining and prioritizing just the next few sprints' worth based on value and dependencies — trying to fully order all 150 upfront (A, C) is wasted effort on stories that will change, and executing in arbitrary existing order (D) ignores value entirely.",
   },
   {
-    id: 86,
+    id: 82,
     domain: 'Process',
     topic: 'Earned Value Forecasting (EAC)',
     prompt:
@@ -2107,7 +1995,7 @@ export const eric96Questions: PMPQuestion[] = [
       "CPI = EV/AC = 500/520 ≈ 0.96, so EAC = BAC/CPI ≈ $1,000,000/0.96 ≈ $1.04M — trending over the $1M budget, so the honest answer is likely no, not that spending is fine (A) or that cost variance is minimal and schedule recoverable (C), and there's enough data here to say more than 'uncertain' (D).",
   },
   {
-    id: 87,
+    id: 83,
     domain: 'Process',
     topic: 'Quality Metric Root-Cause Analysis',
     prompt:
@@ -2123,7 +2011,7 @@ export const eric96Questions: PMPQuestion[] = [
       "Declining test coverage against a stated goal calls for investigating the root causes (time pressure, scope changes) and addressing them systematically — mandating higher coverage with penalties (A) doesn't fix the cause, accepting the trade-off silently (C) abandons the goal, and hiring dedicated QA (D) treats a symptom without fixing process.",
   },
   {
-    id: 88,
+    id: 84,
     domain: 'Process',
     topic: 'Unauthorized Baseline Deviation',
     prompt:
@@ -2145,7 +2033,7 @@ export const eric96Questions: PMPQuestion[] = [
       "An informally removed dependency creating schedule risk needs its impacts analyzed and a proper change request to restore the dependency or mitigate the risk — retroactively updating the baseline to match reality (A) legitimizes an unauthorized change, just logging it for lessons learned (C) leaves the risk live, and escalating to question the dependency's original validity (D) doesn't address the current risk.",
   },
   {
-    id: 89,
+    id: 85,
     domain: 'Business Environment',
     topic: 'Total Cost of Ownership & Sustainability',
     prompt:
@@ -2161,7 +2049,7 @@ export const eric96Questions: PMPQuestion[] = [
       'A long-lived capital project facing a future carbon-neutral mandate should have its total cost of ownership evaluated, including long-term carbon impact — proceeding and addressing this post-launch (A) defers a cost that only grows, automatically retrofitting without evaluation (C) may be more than necessary, and escalating to the CFO before any evaluation (D) is premature.',
   },
   {
-    id: 90,
+    id: 86,
     domain: 'Business Environment',
     topic: 'Adoption & Benefits Realization',
     prompt:
@@ -2177,7 +2065,7 @@ export const eric96Questions: PMPQuestion[] = [
       "Low adoption threatening $2M in expected annual benefits calls for partnering with business and operations to investigate adoption barriers and adjust — declaring the project closed regardless (A), fully offloading responsibility to operations (C), or forcing compliance through training (D) don't address why users aren't adopting the solution.",
   },
   {
-    id: 91,
+    id: 87,
     domain: 'Business Environment',
     topic: 'Proactive Regulatory Timing Decision',
     prompt:
@@ -2199,7 +2087,7 @@ export const eric96Questions: PMPQuestion[] = [
       'A future regulation requiring rework of already-completed work, with 18 months of lead time, calls for assessing timing and evaluating whether proactive rework is more cost-effective than waiting — continuing and doing reactive rework later (A), halting the project now (C), or seeking a waiver (D) all skip that cost-effectiveness evaluation.',
   },
   {
-    id: 92,
+    id: 88,
     domain: 'Business Environment',
     topic: 'Business Case Reassessment',
     prompt:
@@ -2218,7 +2106,7 @@ export const eric96Questions: PMPQuestion[] = [
       "An acquired company's shifting strategy calls for reassessing the business drivers, market context, and synergy assumptions, then presenting a go/no-go decision — maintaining the original business case unchanged (A), delaying execution indefinitely (C), or deferring the whole decision to leadership without doing the reassessment first (D) don't give decision-makers what they need.",
   },
   {
-    id: 93,
+    id: 89,
     domain: 'Business Environment',
     topic: 'Cross-Stream Regulatory Impact Assessment',
     prompt:
@@ -2237,7 +2125,7 @@ export const eric96Questions: PMPQuestion[] = [
       "A new interoperability regulation landing four months before completion, spanning both a waterfall and an agile stream, calls for a cross-stream assessment to quantify impacts and evaluate options before committing to any one path — immediately halting one stream (A), getting a vendor quote before assessing scope (C), or telling stakeholders the deadline can't be met before even assessing options (D) are all premature.",
   },
   {
-    id: 94,
+    id: 90,
     domain: 'People',
     topic: 'Multi-Party Coordination & Facilitation',
     prompt:
@@ -2259,7 +2147,7 @@ export const eric96Questions: PMPQuestion[] = [
       "With a resistant vendor, a concerned agile team, and finance questioning contract impacts, the PM should facilitate joint planning across all three to align sequencing, dependencies, and shared criteria — favoring the vendor unilaterally (A), escalating straight to each sponsor (C), or arbitrarily splitting the work (D) don't bring the parties to actual alignment.",
   },
   {
-    id: 95,
+    id: 91,
     domain: 'Process',
     topic: 'Go-Live Decision Analysis',
     prompt:
@@ -2281,7 +2169,7 @@ export const eric96Questions: PMPQuestion[] = [
       'Critical defects found close to go-live call for analyzing defect severity and presenting real go-live alternatives — delay, phased rollout, or scope reduction — rather than proceeding at some sites while leaving one behind without that analysis (A), compressing testing to force the original date (C), or jumping straight to an exception/schedule extension without analysis (D).',
   },
   {
-    id: 96,
+    id: 92,
     domain: 'Business Environment',
     topic: 'Benefits Realization & Phase Closure',
     prompt:

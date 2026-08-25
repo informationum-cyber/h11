@@ -6,7 +6,7 @@ import { ScenarioQuizPage } from '../components/ScenarioQuizPage'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
 import { ericExamQuestions } from '../data/eric-exam-questions'
 import { ericScenarios } from '../data/eric-scenario-questions'
-import { eric96Questions } from '../data/eric-96-questions'
+import { eric92Questions } from '../data/eric-92-questions'
 
 export const Route = createFileRoute('/eric-exam')({
   component: RouteComponent,
@@ -60,10 +60,10 @@ function RouteComponent() {
       <PMPQuizPage
         config={{
           slug: SLUG,
-          title: "Eric's 96-Question PMP Exam",
+          title: "Eric's 92-Question PMP Exam",
           password: PASSWORD,
-          questions: eric96Questions,
-          durationMinutes: 117,
+          questions: eric92Questions,
+          durationMinutes: 112,
           skipGate: true,
         }}
       />
@@ -136,9 +136,9 @@ function RouteComponent() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-white mb-2">96-Question Exam</h2>
+                    <h2 className="text-xl font-bold text-white mb-2">92-Question Exam</h2>
                     <p className="text-sm text-gray-300 font-light">
-                      The biggest practice set yet — 96 questions, 117 minutes, all three PMP domains.
+                      The biggest practice set yet — 92 questions, 112 minutes, all three PMP domains.
                     </p>
                   </div>
                   <ArrowRight className="text-white shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
