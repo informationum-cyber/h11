@@ -1,12 +1,13 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Lock, ArrowRight, ListChecks, BookOpen, Layers } from 'lucide-react'
+import { Lock, ArrowRight, ListChecks, BookOpen, Layers, RotateCcw } from 'lucide-react'
 import { PMPQuizPage } from '../components/PMPQuizPage'
 import { ScenarioQuizPage } from '../components/ScenarioQuizPage'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
 import { ericExamQuestions } from '../data/eric-exam-questions'
 import { ericScenarios } from '../data/eric-scenario-questions'
 import { eric92Questions } from '../data/eric-92-questions'
+import { ericPrePmpQuestions } from '../data/eric-prepmp-questions'
 
 export const Route = createFileRoute('/eric-exam')({
   component: RouteComponent,
@@ -16,7 +17,7 @@ const SLUG = 'eric-exam'
 const PASSWORD = 'ERIC123'
 const UNLOCK_KEY = `pmp_unlocked_${SLUG}`
 
-type Mode = 'gate' | 'choose' | 'regular' | 'scenario' | 'big'
+type Mode = 'gate' | 'choose' | 'regular' | 'scenario' | 'big' | 'prepmp'
 
 function RouteComponent() {
   const [mode, setMode] = useState<Mode>('gate')
@@ -64,6 +65,21 @@ function RouteComponent() {
           password: PASSWORD,
           questions: eric92Questions,
           durationMinutes: 112,
+          skipGate: true,
+        }}
+      />
+    )
+  }
+
+  if (mode === 'prepmp') {
+    return (
+      <PMPQuizPage
+        config={{
+          slug: SLUG,
+          title: "Eric's Pre-PMP Exam",
+          password: PASSWORD,
+          questions: ericPrePmpQuestions,
+          durationMinutes: 56,
           skipGate: true,
         }}
       />
@@ -175,6 +191,24 @@ function RouteComponent() {
                     <h2 className="text-xl font-bold text-[#143D2D] mb-2">50-Question Regular Exam</h2>
                     <p className="text-sm text-gray-600 font-light">
                       The original timed practice exam — 50 questions, 100 minutes, all three PMP domains.
+                    </p>
+                  </div>
+                  <ArrowRight className="text-[#1E5C3A] shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
+                </div>
+              </button>
+
+              <button
+                onClick={() => setMode('prepmp')}
+                className="w-full text-left bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-7 transition-all group"
+              >
+                <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-gray-400 mb-3">
+                  <RotateCcw size={14} /> Review
+                </div>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">Eric's Pre-PMP Exam</h2>
+                    <p className="text-sm text-gray-600 font-light">
+                      46 questions built from your missed answers on a prior practice run — see exactly which ones you get wrong when you finish.
                     </p>
                   </div>
                   <ArrowRight className="text-[#1E5C3A] shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
