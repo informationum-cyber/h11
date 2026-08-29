@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
+import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as EricExamRouteImport } from './routes/eric-exam'
@@ -29,6 +30,11 @@ const VizhunRoute = VizhunRouteImport.update({
 const Pmp24q40mRoute = Pmp24q40mRouteImport.update({
   id: '/pmp24q40m',
   path: '/pmp24q40m',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const People_testRoute = People_testRouteImport.update({
+  id: '/people_test',
+  path: '/people_test',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PaymentSuccessRoute = PaymentSuccessRouteImport.update({
@@ -87,6 +93,7 @@ export interface FileRoutesByFullPath {
   '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
+  '/people_test': typeof People_testRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -100,6 +107,7 @@ export interface FileRoutesByTo {
   '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
+  '/people_test': typeof People_testRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -114,6 +122,7 @@ export interface FileRoutesById {
   '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
+  '/people_test': typeof People_testRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -129,6 +138,7 @@ export interface FileRouteTypes {
     | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
+    | '/people_test'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -142,6 +152,7 @@ export interface FileRouteTypes {
     | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
+    | '/people_test'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -155,6 +166,7 @@ export interface FileRouteTypes {
     | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
+    | '/people_test'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -169,6 +181,7 @@ export interface RootRouteChildren {
   EricExamRoute: typeof EricExamRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
+  People_testRoute: typeof People_testRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
   VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
@@ -188,6 +201,13 @@ declare module '@tanstack/react-router' {
       path: '/pmp24q40m'
       fullPath: '/pmp24q40m'
       preLoaderRoute: typeof Pmp24q40mRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people_test': {
+      id: '/people_test'
+      path: '/people_test'
+      fullPath: '/people_test'
+      preLoaderRoute: typeof People_testRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/payment-success': {
@@ -265,6 +285,7 @@ const rootRouteChildren: RootRouteChildren = {
   EricExamRoute: EricExamRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
+  People_testRoute: People_testRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
   VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
