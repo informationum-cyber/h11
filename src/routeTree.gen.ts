@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
+import { Route as People_test_reviewRouteImport } from './routes/people_test_review'
 import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
@@ -30,6 +31,11 @@ const VizhunRoute = VizhunRouteImport.update({
 const Pmp24q40mRoute = Pmp24q40mRouteImport.update({
   id: '/pmp24q40m',
   path: '/pmp24q40m',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const People_test_reviewRoute = People_test_reviewRouteImport.update({
+  id: '/people_test_review',
+  path: '/people_test_review',
   getParentRoute: () => rootRouteImport,
 } as any)
 const People_testRoute = People_testRouteImport.update({
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
+  '/people_test_review': typeof People_test_reviewRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
+  '/people_test_review': typeof People_test_reviewRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
+  '/people_test_review': typeof People_test_reviewRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
+    | '/people_test_review'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
+    | '/people_test_review'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
+    | '/people_test_review'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -182,6 +194,7 @@ export interface RootRouteChildren {
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
   People_testRoute: typeof People_testRoute
+  People_test_reviewRoute: typeof People_test_reviewRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
   VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
@@ -201,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/pmp24q40m'
       fullPath: '/pmp24q40m'
       preLoaderRoute: typeof Pmp24q40mRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/people_test_review': {
+      id: '/people_test_review'
+      path: '/people_test_review'
+      fullPath: '/people_test_review'
+      preLoaderRoute: typeof People_test_reviewRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/people_test': {
@@ -286,6 +306,7 @@ const rootRouteChildren: RootRouteChildren = {
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
   People_testRoute: People_testRoute,
+  People_test_reviewRoute: People_test_reviewRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
   VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
