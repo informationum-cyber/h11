@@ -1,6 +1,6 @@
 import type { PMPQuestion } from './pmp-quiz-types'
 
-export const ericPrePmpQuestions: PMPQuestion[] = [
+export const pmpMissedQuestions: PMPQuestion[] = [
   {
     id: 1,
     domain: 'Process',
