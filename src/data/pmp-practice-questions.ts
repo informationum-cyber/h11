@@ -1,6 +1,6 @@
 import type { PMPQuestion } from './pmp-quiz-types'
 
-export const ericExamQuestions: PMPQuestion[] = [
+export const pmpPracticeQuestions: PMPQuestion[] = [
   {
     id: 1,
     domain: 'People',

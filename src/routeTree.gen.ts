@@ -11,11 +11,11 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
+import { Route as PmpPracticeRouteImport } from './routes/pmp-practice'
 import { Route as People_test_reviewRouteImport } from './routes/people_test_review'
 import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
-import { Route as EricExamRouteImport } from './routes/eric-exam'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
@@ -31,6 +31,11 @@ const VizhunRoute = VizhunRouteImport.update({
 const Pmp24q40mRoute = Pmp24q40mRouteImport.update({
   id: '/pmp24q40m',
   path: '/pmp24q40m',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PmpPracticeRoute = PmpPracticeRouteImport.update({
+  id: '/pmp-practice',
+  path: '/pmp-practice',
   getParentRoute: () => rootRouteImport,
 } as any)
 const People_test_reviewRoute = People_test_reviewRouteImport.update({
@@ -51,11 +56,6 @@ const PaymentSuccessRoute = PaymentSuccessRouteImport.update({
 const LearningTransformationRoute = LearningTransformationRouteImport.update({
   id: '/learning-transformation',
   path: '/learning-transformation',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const EricExamRoute = EricExamRouteImport.update({
-  id: '/eric-exam',
-  path: '/eric-exam',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnterpriseTransformationRoute =
@@ -96,11 +96,11 @@ export interface FileRoutesByFullPath {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
-  '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
   '/people_test_review': typeof People_test_reviewRoute
+  '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -111,11 +111,11 @@ export interface FileRoutesByTo {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
-  '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
   '/people_test_review': typeof People_test_reviewRoute
+  '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -127,11 +127,11 @@ export interface FileRoutesById {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
-  '/eric-exam': typeof EricExamRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
   '/people_test_review': typeof People_test_reviewRoute
+  '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
@@ -144,11 +144,11 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/enterprise-transformation'
-    | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
     | '/people_test_review'
+    | '/pmp-practice'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -159,11 +159,11 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/enterprise-transformation'
-    | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
     | '/people_test_review'
+    | '/pmp-practice'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -174,11 +174,11 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/enterprise-transformation'
-    | '/eric-exam'
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
     | '/people_test_review'
+    | '/pmp-practice'
     | '/pmp24q40m'
     | '/vizhun'
     | '/products/$productId'
@@ -190,11 +190,11 @@ export interface RootRouteChildren {
   AygulQuizRoute: typeof AygulQuizRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
-  EricExamRoute: typeof EricExamRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
   People_testRoute: typeof People_testRoute
   People_test_reviewRoute: typeof People_test_reviewRoute
+  PmpPracticeRoute: typeof PmpPracticeRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
   VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
@@ -214,6 +214,13 @@ declare module '@tanstack/react-router' {
       path: '/pmp24q40m'
       fullPath: '/pmp24q40m'
       preLoaderRoute: typeof Pmp24q40mRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pmp-practice': {
+      id: '/pmp-practice'
+      path: '/pmp-practice'
+      fullPath: '/pmp-practice'
+      preLoaderRoute: typeof PmpPracticeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/people_test_review': {
@@ -242,13 +249,6 @@ declare module '@tanstack/react-router' {
       path: '/learning-transformation'
       fullPath: '/learning-transformation'
       preLoaderRoute: typeof LearningTransformationRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/eric-exam': {
-      id: '/eric-exam'
-      path: '/eric-exam'
-      fullPath: '/eric-exam'
-      preLoaderRoute: typeof EricExamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enterprise-transformation': {
@@ -302,11 +302,11 @@ const rootRouteChildren: RootRouteChildren = {
   AygulQuizRoute: AygulQuizRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
-  EricExamRoute: EricExamRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
   People_testRoute: People_testRoute,
   People_test_reviewRoute: People_test_reviewRoute,
+  PmpPracticeRoute: PmpPracticeRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
   VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,

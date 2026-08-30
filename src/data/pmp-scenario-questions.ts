@@ -1,6 +1,6 @@
 import type { PMPScenario } from './pmp-quiz-types'
 
-export const ericScenarios: PMPScenario[] = [
+export const pmpScenarios: PMPScenario[] = [
   {
     id: 1,
     title: 'FinVision Project Scenario',

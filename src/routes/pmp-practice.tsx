@@ -4,17 +4,17 @@ import { Lock, ArrowRight, ListChecks, BookOpen, Layers, RotateCcw } from 'lucid
 import { PMPQuizPage } from '../components/PMPQuizPage'
 import { ScenarioQuizPage } from '../components/ScenarioQuizPage'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
-import { ericExamQuestions } from '../data/eric-exam-questions'
-import { ericScenarios } from '../data/eric-scenario-questions'
-import { eric92Questions } from '../data/eric-92-questions'
-import { ericPrePmpQuestions } from '../data/eric-prepmp-questions'
+import { pmpPracticeQuestions } from '../data/pmp-practice-questions'
+import { pmpScenarios } from '../data/pmp-scenario-questions'
+import { pmp92Questions } from '../data/pmp-92-questions'
+import { pmpMissedQuestions } from '../data/pmp-missed-questions'
 
-export const Route = createFileRoute('/eric-exam')({
+export const Route = createFileRoute('/pmp-practice')({
   component: RouteComponent,
 })
 
-const SLUG = 'eric-exam'
-const PASSWORD = 'ERIC123'
+const SLUG = 'pmp-practice'
+const PASSWORD = 'PMP1232026'
 const UNLOCK_KEY = `pmp_unlocked_${SLUG}`
 
 type Mode = 'gate' | 'choose' | 'regular' | 'scenario' | 'big' | 'prepmp'
@@ -46,9 +46,9 @@ function RouteComponent() {
       <PMPQuizPage
         config={{
           slug: SLUG,
-          title: "Eric's PMP Practice Exam",
+          title: 'PMP Practice Exam',
           password: PASSWORD,
-          questions: ericExamQuestions,
+          questions: pmpPracticeQuestions,
           durationMinutes: 100,
           skipGate: true,
         }}
@@ -61,9 +61,9 @@ function RouteComponent() {
       <PMPQuizPage
         config={{
           slug: SLUG,
-          title: "Eric's 92-Question PMP Exam",
+          title: '92-Question PMP Practice Exam',
           password: PASSWORD,
-          questions: eric92Questions,
+          questions: pmp92Questions,
           durationMinutes: 112,
           skipGate: true,
         }}
@@ -76,9 +76,9 @@ function RouteComponent() {
       <PMPQuizPage
         config={{
           slug: SLUG,
-          title: "Eric's Pre-PMP Exam",
+          title: 'Pre-PMP Practice Exam',
           password: PASSWORD,
-          questions: ericPrePmpQuestions,
+          questions: pmpMissedQuestions,
           durationMinutes: 56,
           skipGate: true,
         }}
@@ -91,9 +91,9 @@ function RouteComponent() {
       <ScenarioQuizPage
         config={{
           slug: SLUG,
-          title: 'Eric Scenario Practice',
+          title: 'PMP Scenario Practice',
           password: PASSWORD,
-          scenarios: ericScenarios,
+          scenarios: pmpScenarios,
           skipGate: true,
         }}
         onExit={() => setMode('choose')}
@@ -111,7 +111,7 @@ function RouteComponent() {
             <div className="w-14 h-14 rounded-full bg-[#143D2D] flex items-center justify-center mx-auto mb-6">
               <Lock className="text-white" size={22} />
             </div>
-            <h1 className="text-3xl font-bold text-[#143D2D] mb-3">Eric's PMP Practice</h1>
+            <h1 className="text-3xl font-bold text-[#143D2D] mb-3">PMP Practice Test</h1>
             <p className="text-gray-600 mb-8 font-light">
               This area is restricted to enrolled students. Enter your access password to continue.
             </p>
@@ -138,7 +138,7 @@ function RouteComponent() {
         {mode === 'choose' && (
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
-              <h1 className="text-4xl font-bold text-[#143D2D] mb-4">Eric's PMP Practice</h1>
+              <h1 className="text-4xl font-bold text-[#143D2D] mb-4">PMP Practice Test</h1>
               <p className="text-gray-600 font-light text-lg">Choose which practice you want to run.</p>
             </div>
 
@@ -170,7 +170,7 @@ function RouteComponent() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">Eric Scenario Practice</h2>
+                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">PMP Scenario Practice</h2>
                     <p className="text-sm text-gray-600 font-light">
                       Deep-dive scenarios plus themed question sets. Each scenario's narrative stays visible while you work through its questions.
                     </p>
@@ -206,7 +206,7 @@ function RouteComponent() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">Eric's Pre-PMP Exam</h2>
+                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">Pre-PMP Practice Exam</h2>
                     <p className="text-sm text-gray-600 font-light">
                       46 questions built from your missed answers on a prior practice run — see exactly which ones you get wrong when you finish.
                     </p>
