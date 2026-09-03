@@ -17,6 +17,8 @@ import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
+import { Route as ContractorOnboardingRouteImport } from './routes/contractor-onboarding'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
 import { Route as AboutRouteImport } from './routes/about'
@@ -64,6 +66,16 @@ const EnterpriseTransformationRoute =
     path: '/enterprise-transformation',
     getParentRoute: () => rootRouteImport,
   } as any)
+const ContractorOnboardingRoute = ContractorOnboardingRouteImport.update({
+  id: '/contractor-onboarding',
+  path: '/contractor-onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareerTransformationRoute = CareerTransformationRouteImport.update({
   id: '/career-transformation',
   path: '/career-transformation',
@@ -95,6 +107,8 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
+  '/careers': typeof CareersRoute
+  '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
@@ -110,6 +124,8 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
+  '/careers': typeof CareersRoute
+  '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
@@ -126,6 +142,8 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
+  '/careers': typeof CareersRoute
+  '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
@@ -143,6 +161,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/aygul-quiz'
     | '/career-transformation'
+    | '/careers'
+    | '/contractor-onboarding'
     | '/enterprise-transformation'
     | '/learning-transformation'
     | '/payment-success'
@@ -158,6 +178,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/aygul-quiz'
     | '/career-transformation'
+    | '/careers'
+    | '/contractor-onboarding'
     | '/enterprise-transformation'
     | '/learning-transformation'
     | '/payment-success'
@@ -173,6 +195,8 @@ export interface FileRouteTypes {
     | '/about'
     | '/aygul-quiz'
     | '/career-transformation'
+    | '/careers'
+    | '/contractor-onboarding'
     | '/enterprise-transformation'
     | '/learning-transformation'
     | '/payment-success'
@@ -189,6 +213,8 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AygulQuizRoute: typeof AygulQuizRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
+  CareersRoute: typeof CareersRoute
+  ContractorOnboardingRoute: typeof ContractorOnboardingRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
@@ -258,6 +284,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnterpriseTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contractor-onboarding': {
+      id: '/contractor-onboarding'
+      path: '/contractor-onboarding'
+      fullPath: '/contractor-onboarding'
+      preLoaderRoute: typeof ContractorOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/career-transformation': {
       id: '/career-transformation'
       path: '/career-transformation'
@@ -301,6 +341,8 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AygulQuizRoute: AygulQuizRoute,
   CareerTransformationRoute: CareerTransformationRoute,
+  CareersRoute: CareersRoute,
+  ContractorOnboardingRoute: ContractorOnboardingRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
