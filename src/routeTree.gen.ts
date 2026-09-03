@@ -18,6 +18,7 @@ import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as ContractorOnboardingRouteImport } from './routes/contractor-onboarding'
+import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
@@ -71,6 +72,11 @@ const ContractorOnboardingRoute = ContractorOnboardingRouteImport.update({
   path: '/contractor-onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ContractorAdminRoute = ContractorAdminRouteImport.update({
+  id: '/contractor-admin',
+  path: '/contractor-admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
@@ -108,6 +114,7 @@ export interface FileRoutesByFullPath {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
+  '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
@@ -125,6 +132,7 @@ export interface FileRoutesByTo {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
+  '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
@@ -143,6 +151,7 @@ export interface FileRoutesById {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
+  '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
   '/learning-transformation': typeof LearningTransformationRoute
@@ -162,6 +171,7 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
+    | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
     | '/learning-transformation'
@@ -179,6 +189,7 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
+    | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
     | '/learning-transformation'
@@ -196,6 +207,7 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
+    | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
     | '/learning-transformation'
@@ -214,6 +226,7 @@ export interface RootRouteChildren {
   AygulQuizRoute: typeof AygulQuizRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   CareersRoute: typeof CareersRoute
+  ContractorAdminRoute: typeof ContractorAdminRoute
   ContractorOnboardingRoute: typeof ContractorOnboardingRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
@@ -291,6 +304,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContractorOnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/contractor-admin': {
+      id: '/contractor-admin'
+      path: '/contractor-admin'
+      fullPath: '/contractor-admin'
+      preLoaderRoute: typeof ContractorAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/careers': {
       id: '/careers'
       path: '/careers'
@@ -342,6 +362,7 @@ const rootRouteChildren: RootRouteChildren = {
   AygulQuizRoute: AygulQuizRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   CareersRoute: CareersRoute,
+  ContractorAdminRoute: ContractorAdminRoute,
   ContractorOnboardingRoute: ContractorOnboardingRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
   LearningTransformationRoute: LearningTransformationRoute,
