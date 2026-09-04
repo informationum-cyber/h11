@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Lock, CheckCircle2, Download, AlertCircle } from 'lucide-react'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
 
@@ -10,6 +10,7 @@ export const Route = createFileRoute('/contractor-onboarding')({
 const SLUG = 'contractor-onboarding'
 const PASSWORD = 'CONTRACT2026'
 const UNLOCK_KEY = `pmp_unlocked_${SLUG}`
+const IFRAME_NAME = 'contractor-onboarding-submit-frame'
 
 // Deliberately not a discoverable filename — see /public/documents.
 const JUNG_DOCUMENT_URL = '/documents/e0a0d10f9ac8b42fbef0cec2d245c6d9f82c36f0.pdf'
@@ -27,16 +28,25 @@ function RouteComponent() {
   const [dateOfBirth, setDateOfBirth] = useState('')
   const [sinConsent, setSinConsent] = useState<'yes' | 'no' | ''>('')
   const [sin, setSin] = useState('')
-  const [photoFile, setPhotoFile] = useState<File | null>(null)
   const [photoConsent, setPhotoConsent] = useState(false)
   const [termsRead, setTermsRead] = useState<'yes' | 'no' | ''>('')
   const [idType, setIdType] = useState('')
-  const [idFile, setIdFile] = useState<File | null>(null)
   const [declareTrue, setDeclareTrue] = useState(false)
+
+  const formRef = useRef<HTMLFormElement>(null)
+  const submittedAtRef = useRef<HTMLInputElement>(null)
+  const awaitingSubmitRef = useRef(false)
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
     if (sessionStorage.getItem(UNLOCK_KEY) === 'true') {
       setUnlocked(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current)
     }
   }, [])
 
@@ -51,7 +61,7 @@ function RouteComponent() {
     }
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
 
     if (sinConsent === 'no') {
@@ -59,35 +69,33 @@ function RouteComponent() {
       return
     }
 
-    setStage('submitting')
-
-    try {
-      const formData = new FormData()
-      formData.append('form-name', 'contractor-onboarding')
-      formData.append('bot-field', '')
-      formData.append('submittedAt', new Date().toLocaleString())
-      formData.append('fullName', fullName)
-      formData.append('dateOfBirth', dateOfBirth)
-      formData.append('sinConsent', sinConsent)
-      formData.append('sin', sin)
-      formData.append('photoConsent', photoConsent ? 'yes' : 'no')
-      formData.append('termsRead', termsRead)
-      formData.append('idType', idType)
-      formData.append('declareTrue', declareTrue ? 'yes' : 'no')
-      if (photoFile) formData.append('photo', photoFile, photoFile.name)
-      if (idFile) formData.append('idDocument', idFile, idFile.name)
-
-      const res = await fetch('/__forms.html', {
-        method: 'POST',
-        body: formData,
-      })
-
-      if (!res.ok) throw new Error(`Submission failed: ${res.status}`)
-
-      setStage('success')
-    } catch {
-      setStage('error')
+    if (submittedAtRef.current) {
+      submittedAtRef.current.value = new Date().toLocaleString()
     }
+
+    setStage('submitting')
+    awaitingSubmitRef.current = true
+
+    // Real native multipart form submission into a hidden iframe — Netlify
+    // Forms doesn't process file uploads submitted via fetch/AJAX, only
+    // genuine browser form submissions. The iframe keeps this an SPA flow
+    // (no visible page navigation) while still using a real submit.
+    formRef.current?.submit()
+
+    // Safety net in case the iframe's load event doesn't fire (e.g. blocked).
+    timeoutRef.current = setTimeout(() => {
+      if (awaitingSubmitRef.current) {
+        awaitingSubmitRef.current = false
+        setStage('success')
+      }
+    }, 8000)
+  }
+
+  function handleIframeLoad() {
+    if (!awaitingSubmitRef.current) return
+    awaitingSubmitRef.current = false
+    if (timeoutRef.current) clearTimeout(timeoutRef.current)
+    setStage('success')
   }
 
   const lastName = fullName.trim().split(/\s+/).pop()?.toLowerCase() ?? ''
@@ -163,7 +171,19 @@ function RouteComponent() {
               <p className="text-gray-600 font-light">All fields are required to complete your onboarding.</p>
             </div>
 
-            <form onSubmit={handleSubmit} className="space-y-8">
+            <form
+              ref={formRef}
+              onSubmit={handleSubmit}
+              action="/__forms.html"
+              method="POST"
+              encType="multipart/form-data"
+              target={IFRAME_NAME}
+              className="space-y-8"
+            >
+              <input type="hidden" name="form-name" value="contractor-onboarding" />
+              <input type="hidden" name="bot-field" value="" />
+              <input type="hidden" name="submittedAt" ref={submittedAtRef} />
+
               {/* A) Name */}
               <div>
                 <label className="block text-sm font-semibold text-[#143D2D] mb-2">
@@ -171,6 +191,7 @@ function RouteComponent() {
                 </label>
                 <input
                   type="text"
+                  name="fullName"
                   required
                   value={fullName}
                   onChange={(e) => setFullName(e.target.value)}
@@ -184,6 +205,7 @@ function RouteComponent() {
                 <label className="block text-sm font-semibold text-[#143D2D] mb-2">B) Date of birth</label>
                 <input
                   type="date"
+                  name="dateOfBirth"
                   required
                   value={dateOfBirth}
                   onChange={(e) => setDateOfBirth(e.target.value)}
@@ -233,6 +255,7 @@ function RouteComponent() {
                 <label className="block text-sm font-semibold text-[#143D2D] mb-2">D) Enter SIN</label>
                 <input
                   type="password"
+                  name="sin"
                   inputMode="numeric"
                   autoComplete="off"
                   required={sinConsent !== 'no'}
@@ -251,14 +274,16 @@ function RouteComponent() {
                 </label>
                 <input
                   type="file"
+                  name="photo"
                   accept="image/*"
                   required={sinConsent !== 'no'}
-                  onChange={(e) => setPhotoFile(e.target.files?.[0] ?? null)}
                   className="w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:bg-[#f0f7f2] file:text-[#1E5C3A] file:font-medium"
                 />
                 <label className="flex items-start gap-2 text-sm text-gray-700 mt-3">
                   <input
                     type="checkbox"
+                    name="photoConsent"
+                    value="yes"
                     required={sinConsent !== 'no'}
                     checked={photoConsent}
                     onChange={(e) => setPhotoConsent(e.target.checked)}
@@ -306,6 +331,7 @@ function RouteComponent() {
                 </label>
                 <p className="text-xs text-gray-500 mb-3">License, PR card, or passport</p>
                 <select
+                  name="idType"
                   required={sinConsent !== 'no'}
                   value={idType}
                   onChange={(e) => setIdType(e.target.value)}
@@ -320,9 +346,9 @@ function RouteComponent() {
                 </select>
                 <input
                   type="file"
+                  name="idDocument"
                   accept="image/*,.pdf"
                   required={sinConsent !== 'no'}
-                  onChange={(e) => setIdFile(e.target.files?.[0] ?? null)}
                   className="w-full text-sm text-gray-600 file:mr-4 file:py-2 file:px-4 file:rounded-sm file:border-0 file:bg-[#f0f7f2] file:text-[#1E5C3A] file:font-medium"
                 />
               </div>
@@ -332,6 +358,8 @@ function RouteComponent() {
                 <label className="flex items-start gap-2 text-sm text-gray-700">
                   <input
                     type="checkbox"
+                    name="declareTrue"
+                    value="yes"
                     required={sinConsent !== 'no'}
                     checked={declareTrue}
                     onChange={(e) => setDeclareTrue(e.target.checked)}
@@ -355,6 +383,9 @@ function RouteComponent() {
                 {stage === 'submitting' ? 'Submitting…' : 'Submit'}
               </button>
             </form>
+
+            {/* Hidden target so the native multipart submit doesn't navigate the page. */}
+            <iframe name={IFRAME_NAME} title="submission" hidden onLoad={handleIframeLoad} />
           </div>
         )}
       </main>
