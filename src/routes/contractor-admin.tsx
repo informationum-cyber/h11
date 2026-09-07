@@ -1,8 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Lock, RefreshCw, Eye, EyeOff, ExternalLink, AlertCircle } from 'lucide-react'
+import { Lock, RefreshCw, Eye, EyeOff, ExternalLink, AlertCircle, Trash2 } from 'lucide-react'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
-import { getContractorSubmissions } from '../server/adminForms.functions'
+import { getContractorSubmissions, deleteContractorSubmissions } from '../server/adminForms.functions'
 
 export const Route = createFileRoute('/contractor-admin')({
   component: RouteComponent,
@@ -96,6 +96,41 @@ function RouteComponent() {
   const [submissions, setSubmissions] = useState<Submission[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
+  const [deleting, setDeleting] = useState(false)
+
+  function toggleSelected(id: string) {
+    setSelectedIds((prev) => {
+      const next = new Set(prev)
+      if (next.has(id)) {
+        next.delete(id)
+      } else {
+        next.add(id)
+      }
+      return next
+    })
+  }
+
+  async function handleDeleteSelected() {
+    if (selectedIds.size === 0) return
+    const count = selectedIds.size
+    const confirmed = window.confirm(
+      `Permanently delete ${count} submission${count === 1 ? '' : 's'}? This cannot be undone.`,
+    )
+    if (!confirmed) return
+
+    setDeleting(true)
+    setError('')
+    try {
+      await deleteContractorSubmissions({ data: { password, submissionIds: Array.from(selectedIds) } })
+      setSelectedIds(new Set())
+      await fetchSubmissions(password)
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to delete submissions.')
+    } finally {
+      setDeleting(false)
+    }
+  }
 
   async function fetchSubmissions(pw: string) {
     setLoading(true)
@@ -188,14 +223,26 @@ function RouteComponent() {
                   {submissions ? `${submissions.length} submission${submissions.length === 1 ? '' : 's'}` : ''}
                 </p>
               </div>
-              <button
-                onClick={() => fetchSubmissions(password)}
-                disabled={loading}
-                className="inline-flex items-center gap-2 text-sm font-medium text-[#1E5C3A] hover:text-[#144D2E] disabled:opacity-60"
-              >
-                <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
-                Refresh
-              </button>
+              <div className="flex items-center gap-4">
+                {selectedIds.size > 0 && (
+                  <button
+                    onClick={handleDeleteSelected}
+                    disabled={deleting}
+                    className="inline-flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 disabled:opacity-60"
+                  >
+                    <Trash2 size={16} />
+                    {deleting ? 'Deleting…' : `Delete selected (${selectedIds.size})`}
+                  </button>
+                )}
+                <button
+                  onClick={() => fetchSubmissions(password)}
+                  disabled={loading}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-[#1E5C3A] hover:text-[#144D2E] disabled:opacity-60"
+                >
+                  <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+                  Refresh
+                </button>
+              </div>
             </div>
 
             {error && (
@@ -216,9 +263,21 @@ function RouteComponent() {
 
             <div className="space-y-6">
               {submissions?.map((s) => (
-                <div key={s.id} className="rounded-2xl border border-gray-100 overflow-hidden">
-                  <div className="px-6 py-3 bg-gray-50 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A] flex justify-between">
-                    <span>Submission #{s.number}</span>
+                <div
+                  key={s.id}
+                  className={`rounded-2xl border overflow-hidden ${
+                    selectedIds.has(s.id) ? 'border-red-200' : 'border-gray-100'
+                  }`}
+                >
+                  <div className="px-6 py-3 bg-gray-50 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A] flex justify-between items-center">
+                    <label className="flex items-center gap-3 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        checked={selectedIds.has(s.id)}
+                        onChange={() => toggleSelected(s.id)}
+                      />
+                      <span>Submission #{s.number}</span>
+                    </label>
                     <span className="text-gray-400 normal-case font-normal">
                       {new Date(s.createdAt).toLocaleString()}
                     </span>

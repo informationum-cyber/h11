@@ -71,3 +71,45 @@ export const getContractorSubmissions = createServerFn({ method: 'POST' })
         })),
     }
   })
+
+export const deleteContractorSubmissions = createServerFn({ method: 'POST' })
+  .inputValidator((data: { password: string; submissionIds: string[] }) => data)
+  .handler(async ({ data }) => {
+    if (data.password !== ADMIN_PASSWORD) {
+      throw new Error('Unauthorized')
+    }
+
+    if (data.submissionIds.length === 0) {
+      return { deleted: 0 }
+    }
+
+    const token = process.env.NETLIFY_API_TOKEN
+    if (!token) {
+      throw new Error(
+        'Netlify API not configured. Set NETLIFY_API_TOKEN and NETLIFY_SITE_ID as environment variables on the Netlify site.',
+      )
+    }
+
+    const authHeaders = { Authorization: `Bearer ${token}` }
+
+    const results = await Promise.all(
+      data.submissionIds.map(async (id) => {
+        const res = await fetch(`https://api.netlify.com/api/v1/submissions/${id}`, {
+          method: 'DELETE',
+          headers: authHeaders,
+        })
+        return { id, ok: res.ok, status: res.status }
+      }),
+    )
+
+    const failed = results.filter((r) => !r.ok)
+    if (failed.length > 0) {
+      throw new Error(
+        `Deleted ${results.length - failed.length} of ${results.length}. Failed: ${failed
+          .map((f) => `${f.id} (${f.status})`)
+          .join(', ')}`,
+      )
+    }
+
+    return { deleted: results.length }
+  })
