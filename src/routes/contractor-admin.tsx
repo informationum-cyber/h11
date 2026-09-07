@@ -10,11 +10,18 @@ export const Route = createFileRoute('/contractor-admin')({
 
 const UNLOCK_KEY = 'pmp_unlocked_contractor-admin'
 
+type NetlifyFileValue = { filename: string; type: string; size: number; url: string }
+type FieldRawValue = string | NetlifyFileValue
+
 type Submission = {
   id: string
   number: number
   createdAt: string
-  data: Record<string, string>
+  data: Record<string, FieldRawValue>
+}
+
+function isFileValue(value: unknown): value is NetlifyFileValue {
+  return typeof value === 'object' && value !== null && 'url' in value
 }
 
 const FIELD_LABELS: Record<string, string> = {
@@ -31,7 +38,6 @@ const FIELD_LABELS: Record<string, string> = {
   submittedAt: 'Submitted At',
 }
 
-const FILE_FIELDS = new Set(['photo', 'idDocument'])
 const FIELD_ORDER = [
   'fullName',
   'dateOfBirth',
@@ -63,20 +69,21 @@ function SinValue({ value }: { value: string }) {
   )
 }
 
-function FieldValue({ fieldKey, value }: { fieldKey: string; value: string }) {
-  if (fieldKey === 'sin') return <SinValue value={value} />
-  if (FILE_FIELDS.has(fieldKey) && /^https?:\/\//.test(value)) {
+function FieldValue({ fieldKey, value }: { fieldKey: string; value: FieldRawValue }) {
+  if (isFileValue(value)) {
+    if (!value.url) return <span className="text-gray-400">No file</span>
     return (
       <a
-        href={value}
+        href={value.url}
         target="_blank"
         rel="noreferrer"
         className="inline-flex items-center gap-1 text-[#1E5C3A] hover:underline"
       >
-        View file <ExternalLink size={12} />
+        {value.filename || 'View file'} <ExternalLink size={12} />
       </a>
     )
   }
+  if (fieldKey === 'sin') return <SinValue value={value} />
   return <span>{value || '—'}</span>
 }
 

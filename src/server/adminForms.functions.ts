@@ -7,11 +7,13 @@ interface NetlifyForm {
   name: string
 }
 
+type NetlifyFileValue = { filename: string; type: string; size: number; url: string }
+
 interface NetlifySubmission {
   id: string
   number: number
   created_at: string
-  data: Record<string, string>
+  data: Record<string, string | NetlifyFileValue>
 }
 
 export const getContractorSubmissions = createServerFn({ method: 'POST' })
@@ -40,7 +42,14 @@ export const getContractorSubmissions = createServerFn({ method: 'POST' })
     const forms = (await formsRes.json()) as NetlifyForm[]
     const form = forms.find((f) => f.name === 'contractor-onboarding')
     if (!form) {
-      return { submissions: [] as Array<{ id: string; number: number; createdAt: string; data: Record<string, string> }> }
+      return {
+        submissions: [] as Array<{
+          id: string
+          number: number
+          createdAt: string
+          data: Record<string, string | NetlifyFileValue>
+        }>,
+      }
     }
 
     const subsRes = await fetch(`https://api.netlify.com/api/v1/forms/${form.id}/submissions`, {
