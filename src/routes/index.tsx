@@ -68,7 +68,7 @@ function LandingPage() {
         <div className="mb-4 md:mb-0">
           <img src="/logo.png" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
         </div>
-        <nav className="flex gap-6 text-sm font-medium text-gray-600">
+        <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
           <Link to="/about" className="hover:text-[#1E5C3A] transition-colors">About</Link>
           <Link to="/enterprise-transformation" className="hover:text-[#1E5C3A] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#1E5C3A] transition-colors">Career</Link>
