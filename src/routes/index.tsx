@@ -74,6 +74,7 @@ function LandingPage() {
           <Link to="/career-transformation" className="hover:text-[#1E5C3A] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#1E5C3A] transition-colors">Learning</Link>
           <Link to="/vizhun" className="hover:text-[#1E5C3A] transition-colors">Vizhun</Link>
+          <Link to="/careers" className="hover:text-[#1E5C3A] transition-colors">Jobs @ Hansel</Link>
         </nav>
       </header>
 
