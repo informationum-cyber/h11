@@ -19,6 +19,7 @@ import { Route as LearningTransformationRouteImport } from './routes/learning-tr
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as ContractorOnboardingRouteImport } from './routes/contractor-onboarding'
 import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
+import { Route as ClassRegisterRouteImport } from './routes/class-register'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
@@ -77,6 +78,11 @@ const ContractorAdminRoute = ContractorAdminRouteImport.update({
   path: '/contractor-admin',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ClassRegisterRoute = ClassRegisterRouteImport.update({
+  id: '/class-register',
+  path: '/class-register',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CareersRoute = CareersRouteImport.update({
   id: '/careers',
   path: '/careers',
@@ -114,6 +120,7 @@ export interface FileRoutesByFullPath {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
+  '/class-register': typeof ClassRegisterRoute
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
@@ -132,6 +139,7 @@ export interface FileRoutesByTo {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
+  '/class-register': typeof ClassRegisterRoute
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
@@ -151,6 +159,7 @@ export interface FileRoutesById {
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
+  '/class-register': typeof ClassRegisterRoute
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
@@ -171,6 +180,7 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
+    | '/class-register'
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
@@ -189,6 +199,7 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
+    | '/class-register'
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
@@ -207,6 +218,7 @@ export interface FileRouteTypes {
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
+    | '/class-register'
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
@@ -226,6 +238,7 @@ export interface RootRouteChildren {
   AygulQuizRoute: typeof AygulQuizRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   CareersRoute: typeof CareersRoute
+  ClassRegisterRoute: typeof ClassRegisterRoute
   ContractorAdminRoute: typeof ContractorAdminRoute
   ContractorOnboardingRoute: typeof ContractorOnboardingRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
@@ -311,6 +324,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContractorAdminRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/class-register': {
+      id: '/class-register'
+      path: '/class-register'
+      fullPath: '/class-register'
+      preLoaderRoute: typeof ClassRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/careers': {
       id: '/careers'
       path: '/careers'
@@ -362,6 +382,7 @@ const rootRouteChildren: RootRouteChildren = {
   AygulQuizRoute: AygulQuizRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   CareersRoute: CareersRoute,
+  ClassRegisterRoute: ClassRegisterRoute,
   ContractorAdminRoute: ContractorAdminRoute,
   ContractorOnboardingRoute: ContractorOnboardingRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
