@@ -9,7 +9,7 @@ const team = [
   {
     name: 'Alex G',
     role: 'Product & Technology Consultant',
-    initials: 'AG',
+    photo: '/team/alex-g.jpg',
     bio: [
       'Alex is a graduate of the University of Chicago Booth School of Business, where he earned his MBA. He is passionate about getting digital products from ideation to impact—combining user-centric design, data-informed decisions, and emerging technologies to build solutions that solve real problems.',
       'In his free time, Alex loves to play sports and has twice won MVP at the state level tennis championships.',
@@ -18,7 +18,7 @@ const team = [
   {
     name: 'Sanya A',
     role: 'Change & Business Transformation Consultant',
-    initials: 'SA',
+    photo: '/team/sanya-a.jpg',
     bio: [
       'Sanya holds a graduate degree in Fine Arts and a degree in Business Management from Mumbai. This unique blend of creativity and business acumen helps her see the bigger picture while paying attention to the details that drive meaningful change.',
       'A classical dancer, Sanya has performed in several dance dramas on stage, where her discipline, expression, and storytelling skills come to life.',
@@ -27,7 +27,7 @@ const team = [
   {
     name: 'Kim D',
     role: 'Operations & Client Success Consultant',
-    initials: 'KD',
+    photo: '/team/kim-d.jpg',
     bio: [
       'Kim has extensive experience in client-facing roles, managing operations and operations teams in large companies in Korea before relocating to Canada. He is known for building efficient processes, leading high-performing teams, and delivering exceptional client experiences.',
       'In his free time, Kim practices taekwondo and enjoys playing video games—two passions that keep him focused, agile, and always up for a challenge.',
@@ -125,10 +125,8 @@ function About() {
             {team.map((member) => (
               <div key={member.name} className="flex flex-col">
                 {/* Avatar */}
-                <div className="w-full aspect-square rounded-2xl bg-[#143D2D]/5 border border-gray-100 flex items-center justify-center mb-6 overflow-hidden">
-                  <span className="text-5xl font-black text-[#143D2D]/30 tracking-tight select-none">
-                    {member.initials}
-                  </span>
+                <div className="w-full aspect-square rounded-2xl border border-gray-100 mb-6 overflow-hidden">
+                  <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
                 </div>
                 <h3 className="text-2xl font-bold text-[#143D2D] mb-1">{member.name}</h3>
                 <p className="text-[#1E5C3A] font-semibold text-sm mb-4">{member.role}</p>
