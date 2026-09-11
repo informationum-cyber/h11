@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
+import { Route as ReimbursementRouteImport } from './routes/reimbursement'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
 import { Route as PmpPracticeRouteImport } from './routes/pmp-practice'
 import { Route as People_test_reviewRouteImport } from './routes/people_test_review'
@@ -30,6 +31,11 @@ import { Route as ProductsProductIdRouteImport } from './routes/products/$produc
 const VizhunRoute = VizhunRouteImport.update({
   id: '/vizhun',
   path: '/vizhun',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReimbursementRoute = ReimbursementRouteImport.update({
+  id: '/reimbursement',
+  path: '/reimbursement',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Pmp24q40mRoute = Pmp24q40mRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/people_test_review': typeof People_test_reviewRoute
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
+  '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/people_test_review': typeof People_test_reviewRoute
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
+  '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -169,6 +177,7 @@ export interface FileRoutesById {
   '/people_test_review': typeof People_test_reviewRoute
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
+  '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
@@ -190,6 +199,7 @@ export interface FileRouteTypes {
     | '/people_test_review'
     | '/pmp-practice'
     | '/pmp24q40m'
+    | '/reimbursement'
     | '/vizhun'
     | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
@@ -209,6 +219,7 @@ export interface FileRouteTypes {
     | '/people_test_review'
     | '/pmp-practice'
     | '/pmp24q40m'
+    | '/reimbursement'
     | '/vizhun'
     | '/products/$productId'
   id:
@@ -228,6 +239,7 @@ export interface FileRouteTypes {
     | '/people_test_review'
     | '/pmp-practice'
     | '/pmp24q40m'
+    | '/reimbursement'
     | '/vizhun'
     | '/products/$productId'
   fileRoutesById: FileRoutesById
@@ -248,6 +260,7 @@ export interface RootRouteChildren {
   People_test_reviewRoute: typeof People_test_reviewRoute
   PmpPracticeRoute: typeof PmpPracticeRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
+  ReimbursementRoute: typeof ReimbursementRoute
   VizhunRoute: typeof VizhunRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
@@ -259,6 +272,13 @@ declare module '@tanstack/react-router' {
       path: '/vizhun'
       fullPath: '/vizhun'
       preLoaderRoute: typeof VizhunRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reimbursement': {
+      id: '/reimbursement'
+      path: '/reimbursement'
+      fullPath: '/reimbursement'
+      preLoaderRoute: typeof ReimbursementRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pmp24q40m': {
@@ -392,6 +412,7 @@ const rootRouteChildren: RootRouteChildren = {
   People_test_reviewRoute: People_test_reviewRoute,
   PmpPracticeRoute: PmpPracticeRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
+  ReimbursementRoute: ReimbursementRoute,
   VizhunRoute: VizhunRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
 }
