@@ -27,5 +27,15 @@
       <input type="file" name="photo" />
       <input type="file" name="idDocument" />
     </form>
+
+    <form name="reimbursement-request" netlify netlify-honeypot="bot-field" enctype="multipart/form-data" hidden>
+      <input type="text" name="bot-field" />
+      <input type="text" name="submittedAt" />
+      <input type="text" name="employeeName" />
+      <input type="text" name="employeeId" />
+      <input type="text" name="amount" />
+      <input type="text" name="acknowledged" />
+      <input type="file" name="receipt" />
+    </form>
   </body>
 </html>
