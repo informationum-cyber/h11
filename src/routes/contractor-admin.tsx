@@ -2,13 +2,15 @@ import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
 import { Lock, RefreshCw, Eye, EyeOff, ExternalLink, AlertCircle, Trash2 } from 'lucide-react'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
-import { getContractorSubmissions, deleteContractorSubmissions } from '../server/adminForms.functions'
+import { getContractorSubmissions, getReimbursementClaims, deleteSubmissions } from '../server/adminForms.functions'
 
 export const Route = createFileRoute('/contractor-admin')({
   component: RouteComponent,
 })
 
 const UNLOCK_KEY = 'pmp_unlocked_contractor-admin'
+
+type Tab = 'contractors' | 'reimbursements'
 
 type NetlifyFileValue = { filename: string; type: string; size: number; url: string }
 type FieldRawValue = string | NetlifyFileValue
@@ -24,33 +26,61 @@ function isFileValue(value: unknown): value is NetlifyFileValue {
   return typeof value === 'object' && value !== null && 'url' in value
 }
 
-const FIELD_LABELS: Record<string, string> = {
-  fullName: 'Legal Name',
-  dateOfBirth: 'Date of Birth',
-  sinConsent: 'Background Check Consent',
-  sin: 'SIN',
-  photoConsent: 'Photo Storage Consent',
-  termsRead: 'Terms of Employment Read',
-  idType: 'ID Type',
-  declareTrue: 'Declared Info True',
-  photo: 'Identity Photo',
-  idDocument: 'ID Document',
-  submittedAt: 'Submitted At',
+const TAB_CONFIG: Record<
+  Tab,
+  {
+    label: string
+    title: string
+    fieldLabels: Record<string, string>
+    fieldOrder: string[]
+    sinField?: string
+  }
+> = {
+  contractors: {
+    label: 'Contractor Submissions',
+    title: 'Contractor Submissions',
+    fieldLabels: {
+      fullName: 'Legal Name',
+      dateOfBirth: 'Date of Birth',
+      sinConsent: 'Background Check Consent',
+      sin: 'SIN',
+      photoConsent: 'Photo Storage Consent',
+      termsRead: 'Terms of Employment Read',
+      idType: 'ID Type',
+      declareTrue: 'Declared Info True',
+      photo: 'Identity Photo',
+      idDocument: 'ID Document',
+      submittedAt: 'Submitted At',
+    },
+    fieldOrder: [
+      'fullName',
+      'dateOfBirth',
+      'sinConsent',
+      'sin',
+      'photoConsent',
+      'photo',
+      'termsRead',
+      'idType',
+      'idDocument',
+      'declareTrue',
+      'submittedAt',
+    ],
+    sinField: 'sin',
+  },
+  reimbursements: {
+    label: 'Reimbursement Claims',
+    title: 'Reimbursement Claims',
+    fieldLabels: {
+      employeeName: 'Employee Name',
+      employeeId: 'Employee ID',
+      amount: 'Amount',
+      receipt: 'Receipt',
+      acknowledged: 'Acknowledged',
+      submittedAt: 'Submitted At',
+    },
+    fieldOrder: ['employeeName', 'employeeId', 'amount', 'receipt', 'acknowledged', 'submittedAt'],
+  },
 }
-
-const FIELD_ORDER = [
-  'fullName',
-  'dateOfBirth',
-  'sinConsent',
-  'sin',
-  'photoConsent',
-  'photo',
-  'termsRead',
-  'idType',
-  'idDocument',
-  'declareTrue',
-  'submittedAt',
-]
 
 function SinValue({ value }: { value: string }) {
   const [revealed, setRevealed] = useState(false)
@@ -69,7 +99,7 @@ function SinValue({ value }: { value: string }) {
   )
 }
 
-function FieldValue({ fieldKey, value }: { fieldKey: string; value: FieldRawValue }) {
+function FieldValue({ fieldKey, value, sinField }: { fieldKey: string; value: FieldRawValue; sinField?: string }) {
   if (isFileValue(value)) {
     if (!value.url) return <span className="text-gray-400">No file</span>
     return (
@@ -83,7 +113,7 @@ function FieldValue({ fieldKey, value }: { fieldKey: string; value: FieldRawValu
       </a>
     )
   }
-  if (fieldKey === 'sin') return <SinValue value={value} />
+  if (sinField && fieldKey === sinField) return <SinValue value={value} />
   return <span>{value || '—'}</span>
 }
 
@@ -93,11 +123,14 @@ function RouteComponent() {
   const [password, setPassword] = useState('')
   const [passwordError, setPasswordError] = useState('')
 
+  const [tab, setTab] = useState<Tab>('contractors')
   const [submissions, setSubmissions] = useState<Submission[] | null>(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set())
   const [deleting, setDeleting] = useState(false)
+
+  const config = TAB_CONFIG[tab]
 
   function toggleSelected(id: string) {
     setSelectedIds((prev) => {
@@ -122,9 +155,9 @@ function RouteComponent() {
     setDeleting(true)
     setError('')
     try {
-      await deleteContractorSubmissions({ data: { password, submissionIds: Array.from(selectedIds) } })
+      await deleteSubmissions({ data: { password, submissionIds: Array.from(selectedIds) } })
       setSelectedIds(new Set())
-      await fetchSubmissions(password)
+      await fetchSubmissions(password, tab)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to delete submissions.')
     } finally {
@@ -132,11 +165,12 @@ function RouteComponent() {
     }
   }
 
-  async function fetchSubmissions(pw: string) {
+  async function fetchSubmissions(pw: string, forTab: Tab) {
     setLoading(true)
     setError('')
     try {
-      const result = await getContractorSubmissions({ data: { password: pw } })
+      const fetcher = forTab === 'contractors' ? getContractorSubmissions : getReimbursementClaims
+      const result = await fetcher({ data: { password: pw } })
       setSubmissions(result.submissions)
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load submissions.')
@@ -151,10 +185,17 @@ function RouteComponent() {
     if (stored) {
       setPassword(stored)
       setUnlocked(true)
-      fetchSubmissions(stored)
+      fetchSubmissions(stored, 'contractors')
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  function handleTabChange(nextTab: Tab) {
+    setTab(nextTab)
+    setSelectedIds(new Set())
+    setSubmissions(null)
+    fetchSubmissions(password, nextTab)
+  }
 
   async function handleUnlock(e: React.FormEvent) {
     e.preventDefault()
@@ -193,7 +234,7 @@ function RouteComponent() {
             <div className="w-14 h-14 rounded-full bg-[#143D2D] flex items-center justify-center mx-auto mb-6">
               <Lock className="text-white" size={22} />
             </div>
-            <h1 className="text-3xl font-bold text-[#143D2D] mb-3">Contractor Submissions</h1>
+            <h1 className="text-3xl font-bold text-[#143D2D] mb-3">Admin</h1>
             <p className="text-gray-600 mb-8 font-light">Admin access only.</p>
             <form onSubmit={handleUnlock} className="space-y-4">
               <input
@@ -216,9 +257,25 @@ function RouteComponent() {
           </div>
         ) : (
           <div>
+            <div className="flex gap-2 mb-8 border-b border-gray-100">
+              {(Object.keys(TAB_CONFIG) as Tab[]).map((t) => (
+                <button
+                  key={t}
+                  onClick={() => handleTabChange(t)}
+                  className={`px-4 py-2.5 text-sm font-medium border-b-2 -mb-px transition-colors ${
+                    tab === t
+                      ? 'border-[#1E5C3A] text-[#1E5C3A]'
+                      : 'border-transparent text-gray-500 hover:text-gray-700'
+                  }`}
+                >
+                  {TAB_CONFIG[t].label}
+                </button>
+              ))}
+            </div>
+
             <div className="flex items-center justify-between mb-10">
               <div>
-                <h1 className="text-3xl font-bold text-[#143D2D] mb-1">Contractor Submissions</h1>
+                <h1 className="text-3xl font-bold text-[#143D2D] mb-1">{config.title}</h1>
                 <p className="text-gray-600 font-light text-sm">
                   {submissions ? `${submissions.length} submission${submissions.length === 1 ? '' : 's'}` : ''}
                 </p>
@@ -235,7 +292,7 @@ function RouteComponent() {
                   </button>
                 )}
                 <button
-                  onClick={() => fetchSubmissions(password)}
+                  onClick={() => fetchSubmissions(password, tab)}
                   disabled={loading}
                   className="inline-flex items-center gap-2 text-sm font-medium text-[#1E5C3A] hover:text-[#144D2E] disabled:opacity-60"
                 >
@@ -283,25 +340,25 @@ function RouteComponent() {
                     </span>
                   </div>
                   <div className="p-6 grid sm:grid-cols-2 gap-4">
-                    {FIELD_ORDER.filter((k) => k in s.data).map((key) => (
+                    {config.fieldOrder.filter((k) => k in s.data).map((key) => (
                       <div key={key}>
                         <div className="text-xs font-semibold tracking-wide uppercase text-gray-400 mb-1">
-                          {FIELD_LABELS[key] ?? key}
+                          {config.fieldLabels[key] ?? key}
                         </div>
                         <div className="text-sm text-gray-800">
-                          <FieldValue fieldKey={key} value={s.data[key]} />
+                          <FieldValue fieldKey={key} value={s.data[key]} sinField={config.sinField} />
                         </div>
                       </div>
                     ))}
                     {Object.keys(s.data)
-                      .filter((k) => !FIELD_ORDER.includes(k) && k !== 'bot-field')
+                      .filter((k) => !config.fieldOrder.includes(k) && k !== 'bot-field')
                       .map((key) => (
                         <div key={key}>
                           <div className="text-xs font-semibold tracking-wide uppercase text-gray-400 mb-1">
                             {key}
                           </div>
                           <div className="text-sm text-gray-800">
-                            <FieldValue fieldKey={key} value={s.data[key]} />
+                            <FieldValue fieldKey={key} value={s.data[key]} sinField={config.sinField} />
                           </div>
                         </div>
                       ))}
