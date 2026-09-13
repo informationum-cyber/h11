@@ -64,12 +64,7 @@ function LearningTransformation() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       {/* HEADER */}
-      <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-100">
-        <div className="mb-4 md:mb-0">
-          <Link to="/">
-            <img src="/logo.png" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
-          </Link>
-        </div>
+      <header className="w-full max-w-7xl mx-auto px-6 py-8 flex justify-center items-center border-b border-gray-100">
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
           <Link to="/about" className="hover:text-[#1E5C3A] transition-colors">About</Link>
           <Link to="/enterprise-transformation" className="hover:text-[#1E5C3A] transition-colors">Enterprise</Link>
@@ -89,6 +84,20 @@ function LearningTransformation() {
           <p className="text-xl text-gray-600 font-light max-w-3xl">
             Empowering professionals with top-tier certification training, mentoring, and thought leadership. We proudly maintain a <strong className="font-semibold text-[#1E5C3A]">100% pass rate</strong> for our PMP and Agile certification students.
           </p>
+        </div>
+
+        {/* PRACTICE EXAMS */}
+        <div className="mb-12 bg-[#f0f7f2] border border-[#1E5C3A]/20 rounded-2xl p-6 flex items-center justify-between gap-4 flex-wrap">
+          <div>
+            <h2 className="text-lg font-bold text-[#143D2D] mb-1">PMP Practice Exams</h2>
+            <p className="text-sm text-gray-600">Timed practice tests with instant scoring and a personalized study report.</p>
+          </div>
+          <Link
+            to="/pmp-practice"
+            className="inline-flex items-center gap-2 bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-5 py-3 rounded-sm font-medium transition-colors shrink-0"
+          >
+            Start Practicing <ArrowRight size={16} />
+          </Link>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">

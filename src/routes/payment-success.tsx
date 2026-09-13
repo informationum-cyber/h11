@@ -8,12 +8,6 @@ export const Route = createFileRoute('/payment-success')({
 function PaymentSuccess() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans flex flex-col">
-      <header className="w-full max-w-5xl mx-auto px-6 py-8 flex justify-center">
-        <Link to="/">
-          <img src="/logo.jpeg" alt="Hansel Eleven Logo" className="h-20 w-auto object-contain" />
-        </Link>
-      </header>
-
       <main className="flex-1 flex items-center justify-center px-6 py-16">
         <div className="max-w-xl w-full text-center">
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-[#d6faff] mb-8">
