@@ -1,13 +1,14 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useEffect, useState } from 'react'
-import { Lock, ArrowRight, ListChecks, BookOpen, Layers, RotateCcw } from 'lucide-react'
+import { Lock, ArrowRight, ListChecks, Users, GitBranch } from 'lucide-react'
 import { PMPQuizPage } from '../components/PMPQuizPage'
-import { ScenarioQuizPage } from '../components/ScenarioQuizPage'
+import { FullMockExamPage } from '../components/FullMockExamPage'
 import { QuizHeader, QuizFooter } from '../components/QuizChrome'
-import { pmpPracticeQuestions } from '../data/pmp-practice-questions'
-import { pmpScenarios } from '../data/pmp-scenario-questions'
-import { pmp92Questions } from '../data/pmp-92-questions'
-import { pmpMissedQuestions } from '../data/pmp-missed-questions'
+import { pmpMockExamSectionA } from '../data/pmp-mock-exam-section-a'
+import { pmpMockExamSectionB } from '../data/pmp-mock-exam-section-b'
+import { pmpMockExamSectionC } from '../data/pmp-mock-exam-section-c'
+import { pmpPeopleDrillQuestions } from '../data/pmp-people-drill-questions'
+import { pmpProcessDrillQuestions } from '../data/pmp-process-drill-questions'
 
 export const Route = createFileRoute('/pmp-practice')({
   component: RouteComponent,
@@ -17,7 +18,7 @@ const SLUG = 'pmp-practice'
 const PASSWORD = 'PMP1232026'
 const UNLOCK_KEY = `pmp_unlocked_${SLUG}`
 
-type Mode = 'gate' | 'choose' | 'regular' | 'scenario' | 'big' | 'prepmp'
+type Mode = 'gate' | 'choose' | 'mock' | 'peopleDrill' | 'processDrill'
 
 function RouteComponent() {
   const [mode, setMode] = useState<Mode>('gate')
@@ -41,62 +42,49 @@ function RouteComponent() {
     }
   }
 
-  if (mode === 'regular') {
+  if (mode === 'mock') {
     return (
-      <PMPQuizPage
+      <FullMockExamPage
         config={{
           slug: SLUG,
-          title: 'PMP Practice Exam',
+          title: 'Full PMP Mock Exam',
           password: PASSWORD,
-          questions: pmpPracticeQuestions,
-          durationMinutes: 100,
+          sectionA: pmpMockExamSectionA,
+          sectionB: pmpMockExamSectionB,
+          sectionC: pmpMockExamSectionC,
+          durationMinutes: 230,
           skipGate: true,
         }}
       />
     )
   }
 
-  if (mode === 'big') {
+  if (mode === 'peopleDrill') {
     return (
       <PMPQuizPage
         config={{
           slug: SLUG,
-          title: '92-Question PMP Practice Exam',
+          title: 'People Domain Drill',
           password: PASSWORD,
-          questions: pmp92Questions,
-          durationMinutes: 112,
+          questions: pmpPeopleDrillQuestions,
+          durationMinutes: Math.round(pmpPeopleDrillQuestions.length * 1.28),
           skipGate: true,
         }}
       />
     )
   }
 
-  if (mode === 'prepmp') {
+  if (mode === 'processDrill') {
     return (
       <PMPQuizPage
         config={{
           slug: SLUG,
-          title: 'Pre-PMP Practice Exam',
+          title: 'Process Domain Drill',
           password: PASSWORD,
-          questions: pmpMissedQuestions,
-          durationMinutes: 56,
+          questions: pmpProcessDrillQuestions,
+          durationMinutes: Math.round(pmpProcessDrillQuestions.length * 1.28),
           skipGate: true,
         }}
-      />
-    )
-  }
-
-  if (mode === 'scenario') {
-    return (
-      <ScenarioQuizPage
-        config={{
-          slug: SLUG,
-          title: 'PMP Scenario Practice',
-          password: PASSWORD,
-          scenarios: pmpScenarios,
-          skipGate: true,
-        }}
-        onExit={() => setMode('choose')}
       />
     )
   }
@@ -139,80 +127,72 @@ function RouteComponent() {
           <div className="max-w-2xl mx-auto">
             <div className="text-center mb-12">
               <h1 className="text-4xl font-bold text-[#143D2D] mb-4">PMP Practice Test</h1>
-              <p className="text-gray-600 font-light text-lg">Choose which practice you want to run.</p>
+              <p className="text-gray-600 font-light text-lg">
+                Structured to match the real 2026 PMP exam: 33% People, 41% Process, 26% Business Environment.
+              </p>
             </div>
 
-            <div className="space-y-5">
+            <button
+              onClick={() => setMode('mock')}
+              className="w-full text-left bg-[#143D2D] hover:bg-[#0E2E21] rounded-2xl p-8 transition-colors group mb-10"
+            >
+              <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-[#a8d5b5] mb-3">
+                <ListChecks size={14} /> Full mock exam
+              </div>
+              <div className="flex items-center justify-between">
+                <div>
+                  <h2 className="text-2xl font-bold text-white mb-2">Full PMP Mock Exam</h2>
+                  <p className="text-sm text-gray-300 font-light">
+                    180 questions, 230 minutes — a Section A case-study set (40) followed by two independent-question
+                    sections (70 + 70), domain-weighted exactly like the real exam.
+                  </p>
+                </div>
+                <ArrowRight className="text-white shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
+              </div>
+            </button>
+
+            <div className="text-center mb-6">
+              <p className="text-sm font-semibold uppercase tracking-wide text-gray-400">Domain Drills</p>
+              <p className="text-sm text-gray-500 font-light mt-1">Focus on one domain at a time.</p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <button
-                onClick={() => setMode('big')}
-                className="w-full text-left bg-[#143D2D] hover:bg-[#0E2E21] rounded-2xl p-7 transition-colors group"
+                onClick={() => setMode('peopleDrill')}
+                className="text-left bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-6 transition-all group"
               >
-                <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-[#a8d5b5] mb-3">
-                  <Layers size={14} /> New
+                <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-gray-400 mb-3">
+                  <Users size={14} /> People
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-white mb-2">92-Question Exam</h2>
-                    <p className="text-sm text-gray-300 font-light">
-                      The biggest practice set yet — 92 questions, 112 minutes, all three PMP domains.
+                    <h2 className="text-lg font-bold text-[#143D2D] mb-1">People Domain Drill</h2>
+                    <p className="text-sm text-gray-600 font-light">
+                      {pmpPeopleDrillQuestions.length} questions focused entirely on team leadership, conflict, and
+                      stakeholder engagement.
                     </p>
                   </div>
-                  <ArrowRight className="text-white shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
                 </div>
+                <ArrowRight className="text-[#1E5C3A] mt-4 group-hover:translate-x-1 transition-transform" size={18} />
               </button>
 
               <button
-                onClick={() => setMode('scenario')}
-                className="w-full text-left bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-7 transition-all group"
+                onClick={() => setMode('processDrill')}
+                className="text-left bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-6 transition-all group"
               >
                 <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-gray-400 mb-3">
-                  <BookOpen size={14} /> Scenario practice
+                  <GitBranch size={14} /> Process
                 </div>
                 <div className="flex items-center justify-between">
                   <div>
-                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">PMP Scenario Practice</h2>
+                    <h2 className="text-lg font-bold text-[#143D2D] mb-1">Process Domain Drill</h2>
                     <p className="text-sm text-gray-600 font-light">
-                      Deep-dive scenarios plus themed question sets. Each scenario's narrative stays visible while you work through its questions.
+                      {pmpProcessDrillQuestions.length} questions focused entirely on schedule, cost, risk, and
+                      delivery mechanics.
                     </p>
                   </div>
-                  <ArrowRight className="text-[#1E5C3A] shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
                 </div>
-              </button>
-
-              <button
-                onClick={() => setMode('regular')}
-                className="w-full text-left bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-7 transition-all group"
-              >
-                <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-gray-400 mb-3">
-                  <ListChecks size={14} /> Full exam
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">50-Question Regular Exam</h2>
-                    <p className="text-sm text-gray-600 font-light">
-                      The original timed practice exam — 50 questions, 100 minutes, all three PMP domains.
-                    </p>
-                  </div>
-                  <ArrowRight className="text-[#1E5C3A] shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
-                </div>
-              </button>
-
-              <button
-                onClick={() => setMode('prepmp')}
-                className="w-full text-left bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-7 transition-all group"
-              >
-                <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-gray-400 mb-3">
-                  <RotateCcw size={14} /> Review
-                </div>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h2 className="text-xl font-bold text-[#143D2D] mb-2">Pre-PMP Practice Exam</h2>
-                    <p className="text-sm text-gray-600 font-light">
-                      46 questions built from your missed answers on a prior practice run — see exactly which ones you get wrong when you finish.
-                    </p>
-                  </div>
-                  <ArrowRight className="text-[#1E5C3A] shrink-0 ml-4 group-hover:translate-x-1 transition-transform" size={20} />
-                </div>
+                <ArrowRight className="text-[#1E5C3A] mt-4 group-hover:translate-x-1 transition-transform" size={18} />
               </button>
             </div>
           </div>
