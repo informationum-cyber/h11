@@ -1,11 +1,21 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Linkedin } from 'lucide-react'
+import { Linkedin, ArrowRight } from 'lucide-react'
 
 export const Route = createFileRoute('/about')({
   component: About,
 })
 
 const team = [
+  {
+    name: 'Matthew Wang',
+    role: 'Financial Strategy & Analytics Consultant',
+    photo: '/team/matthew-wang.jpg',
+    href: '/consultants/matthew-wang',
+    bio: [
+      'Matthew turns complex business and finance questions into decision-ready insights — driver-based Excel models, valuations, and KPI dashboards built for executive audiences. He studied Economics and Communication, Culture, Information & Technology at the University of Toronto, with executive certificate experience at SKEMA Business School.',
+      'His work spans acquisition ROI modeling, equity valuation, and liquidity risk simulation — blending financial rigor with clear, stakeholder-ready storytelling.',
+    ],
+  },
   {
     name: 'Alex G',
     role: 'Product & Technology Consultant',
@@ -41,32 +51,62 @@ function About() {
       {/* HEADER */}
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex justify-center items-center border-b border-gray-100">
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
-          <Link to="/about" className="text-[#1E5C3A] font-semibold">About</Link>
-          <Link to="/enterprise-transformation" className="hover:text-[#1E5C3A] transition-colors">Enterprise</Link>
-          <Link to="/career-transformation" className="hover:text-[#1E5C3A] transition-colors">Career</Link>
-          <Link to="/learning-transformation" className="hover:text-[#1E5C3A] transition-colors">Learning</Link>
-          <Link to="/vizhun" className="hover:text-[#1E5C3A] transition-colors">Vizhun</Link>
+          <Link to="/about" className="text-[#1E5C3A] font-semibold">
+            About
+          </Link>
+          <Link
+            to="/enterprise-transformation"
+            className="hover:text-[#1E5C3A] transition-colors"
+          >
+            Enterprise
+          </Link>
+          <Link
+            to="/career-transformation"
+            className="hover:text-[#1E5C3A] transition-colors"
+          >
+            Career
+          </Link>
+          <Link
+            to="/learning-transformation"
+            className="hover:text-[#1E5C3A] transition-colors"
+          >
+            Learning
+          </Link>
+          <Link to="/vizhun" className="hover:text-[#1E5C3A] transition-colors">
+            Vizhun
+          </Link>
         </nav>
       </header>
 
       <main className="w-full max-w-6xl mx-auto px-6 py-16">
-        <Link to="/" className="text-sm font-medium text-gray-500 hover:text-[#1E5C3A] inline-flex items-center gap-2 mb-10">
+        <Link
+          to="/"
+          className="text-sm font-medium text-gray-500 hover:text-[#1E5C3A] inline-flex items-center gap-2 mb-10"
+        >
           &larr; Back to Home
         </Link>
 
         {/* PAGE TITLE */}
         <div className="mb-20">
-          <h1 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-6">About Hansel Eleven</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-6">
+            About Hansel Eleven
+          </h1>
           <p className="text-xl text-gray-600 font-light max-w-3xl leading-relaxed">
-            A boutique transformation and professional enablement firm dedicated to guiding organizations and individuals through complexity — with empathy, structure, and a human-centered approach.
+            A boutique transformation and professional enablement firm dedicated
+            to guiding organizations and individuals through complexity — with
+            empathy, structure, and a human-centered approach.
           </p>
         </div>
 
         {/* MISSION */}
         <section className="bg-[#143D2D] rounded-2xl p-10 md:p-14 mb-20">
-          <p className="text-sm font-semibold tracking-widest text-[#6BAF8A] uppercase mb-4">Our Mission</p>
+          <p className="text-sm font-semibold tracking-widest text-[#6BAF8A] uppercase mb-4">
+            Our Mission
+          </p>
           <blockquote className="text-2xl md:text-3xl font-light text-white leading-relaxed italic">
-            "To empower professionals and organizations to navigate complexity and achieve sustainable growth through human-centered, adaptive, and structured transformation."
+            "To empower professionals and organizations to navigate complexity
+            and achieve sustainable growth through human-centered, adaptive, and
+            structured transformation."
           </blockquote>
         </section>
 
@@ -77,17 +117,31 @@ function About() {
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <div>
-              <h2 className="text-4xl font-bold text-[#143D2D] mb-2">Deepak S</h2>
-              <p className="text-[#1E5C3A] font-semibold mb-8">Founder & Principal Consultant</p>
+              <h2 className="text-4xl font-bold text-[#143D2D] mb-2">
+                Deepak S
+              </h2>
+              <p className="text-[#1E5C3A] font-semibold mb-8">
+                Founder & Principal Consultant
+              </p>
               <div className="space-y-5 text-gray-700 font-light leading-relaxed text-lg">
                 <p>
-                  Based in Canada, Deepak is a transformation and delivery leader with nearly two decades of experience across banking, financial services, and enterprise PMO leadership. As the founder of Hansel Eleven, he has successfully spearheaded large-scale transformation initiatives, operating seamlessly across traditional, agile, and hybrid models.
+                  Based in Canada, Deepak is a transformation and delivery
+                  leader with nearly two decades of experience across banking,
+                  financial services, and enterprise PMO leadership. As the
+                  founder of Hansel Eleven, he has successfully spearheaded
+                  large-scale transformation initiatives, operating seamlessly
+                  across traditional, agile, and hybrid models.
                 </p>
                 <p>
-                  A passionate advocate for human-centered delivery, he is dedicated to mentoring early-career talent and coaching delivery professionals to thrive in an ever-evolving landscape.
+                  A passionate advocate for human-centered delivery, he is
+                  dedicated to mentoring early-career talent and coaching
+                  delivery professionals to thrive in an ever-evolving
+                  landscape.
                 </p>
                 <p>
-                  Deepak is also a published researcher — his work on meeting economics, human organizational dynamics, and product stewardship is featured across GovWhitePapers and Figshare.
+                  Deepak is also a published researcher — his work on meeting
+                  economics, human organizational dynamics, and product
+                  stewardship is featured across GovWhitePapers and Figshare.
                 </p>
               </div>
               <a
@@ -115,21 +169,39 @@ function About() {
           <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-4">
             THE TEAM
           </div>
-          <h2 className="text-3xl md:text-4xl font-bold text-[#143D2D] mb-12">The people behind the work</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#143D2D] mb-12">
+            The people behind the work
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member) => (
               <div key={member.name} className="flex flex-col">
                 {/* Avatar */}
                 <div className="w-full aspect-square rounded-2xl border border-gray-100 mb-6 overflow-hidden">
-                  <img src={member.photo} alt={member.name} className="w-full h-full object-cover" />
+                  <img
+                    src={member.photo}
+                    alt={member.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="text-2xl font-bold text-[#143D2D] mb-1">{member.name}</h3>
-                <p className="text-[#1E5C3A] font-semibold text-sm mb-4">{member.role}</p>
+                <h3 className="text-2xl font-bold text-[#143D2D] mb-1">
+                  {member.name}
+                </h3>
+                <p className="text-[#1E5C3A] font-semibold text-sm mb-4">
+                  {member.role}
+                </p>
                 <div className="space-y-3 text-gray-600 font-light leading-relaxed text-sm">
                   {member.bio.map((para, i) => (
                     <p key={i}>{para}</p>
                   ))}
                 </div>
+                {'href' in member && member.href && (
+                  <Link
+                    to={member.href}
+                    className="inline-flex items-center gap-2 mt-5 text-[#1E5C3A] hover:text-[#143D2D] transition-colors font-medium text-sm"
+                  >
+                    View full profile <ArrowRight size={16} />
+                  </Link>
+                )}
               </div>
             ))}
           </div>
@@ -140,15 +212,23 @@ function About() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
             <div>
               <div className="text-4xl font-black text-[#143D2D] mb-2">~20</div>
-              <div className="text-gray-600 font-light">Years of combined delivery experience</div>
+              <div className="text-gray-600 font-light">
+                Years of combined delivery experience
+              </div>
             </div>
             <div>
-              <div className="text-4xl font-black text-[#143D2D] mb-2">100%</div>
-              <div className="text-gray-600 font-light">PMP first-attempt pass rate</div>
+              <div className="text-4xl font-black text-[#143D2D] mb-2">
+                100%
+              </div>
+              <div className="text-gray-600 font-light">
+                PMP first-attempt pass rate
+              </div>
             </div>
             <div>
               <div className="text-4xl font-black text-[#143D2D] mb-2">7</div>
-              <div className="text-gray-600 font-light">Cities we serve globally</div>
+              <div className="text-gray-600 font-light">
+                Cities we serve globally
+              </div>
             </div>
           </div>
         </section>
@@ -157,14 +237,20 @@ function About() {
       {/* FOOTER */}
       <footer className="bg-[#143D2D] text-white py-12 text-center mt-20">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-2xl font-black tracking-tight mb-4">HANSEL ELEVEN</div>
-          <p className="text-[#6BAF8A] mb-4">Transformation & Professional Enablement</p>
+          <div className="text-2xl font-black tracking-tight mb-4">
+            HANSEL ELEVEN
+          </div>
+          <p className="text-[#6BAF8A] mb-4">
+            Transformation & Professional Enablement
+          </p>
           <p className="text-gray-300 text-sm mb-8 font-light tracking-wide">
             Supporting companies and people in <br className="md:hidden" />
-            Toronto | San Francisco | Warsaw | Dubai | Chennai | Seoul | Hong Kong
+            Toronto | San Francisco | Warsaw | Dubai | Chennai | Seoul | Hong
+            Kong
           </p>
           <div className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Hansel Eleven Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} Hansel Eleven Inc. All rights
+            reserved.
           </div>
         </div>
       </footer>

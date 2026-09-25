@@ -25,9 +25,11 @@ import { Route as ClassRegisterRouteImport } from './routes/class-register'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
+import { Route as AnastasiaBizenvRouteImport } from './routes/anastasia-bizenv'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
+import { Route as ConsultantsMatthewWangRouteImport } from './routes/consultants/matthew-wang'
 
 const VizhunRoute = VizhunRouteImport.update({
   id: '/vizhun',
@@ -110,6 +112,11 @@ const AygulQuizRoute = AygulQuizRouteImport.update({
   path: '/aygul-quiz',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AnastasiaBizenvRoute = AnastasiaBizenvRouteImport.update({
+  id: '/anastasia-bizenv',
+  path: '/anastasia-bizenv',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -125,10 +132,16 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
   path: '/products/$productId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultantsMatthewWangRoute = ConsultantsMatthewWangRouteImport.update({
+  id: '/consultants/matthew-wang',
+  path: '/consultants/matthew-wang',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
@@ -145,11 +158,13 @@ export interface FileRoutesByFullPath {
   '/pmp25q50m': typeof Pmp25q50mRoute
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
+  '/consultants/matthew-wang': typeof ConsultantsMatthewWangRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
@@ -166,12 +181,14 @@ export interface FileRoutesByTo {
   '/pmp25q50m': typeof Pmp25q50mRoute
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
+  '/consultants/matthew-wang': typeof ConsultantsMatthewWangRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
@@ -188,6 +205,7 @@ export interface FileRoutesById {
   '/pmp25q50m': typeof Pmp25q50mRoute
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
+  '/consultants/matthew-wang': typeof ConsultantsMatthewWangRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRouteTypes {
@@ -195,6 +213,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/anastasia-bizenv'
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
@@ -211,11 +230,13 @@ export interface FileRouteTypes {
     | '/pmp25q50m'
     | '/reimbursement'
     | '/vizhun'
+    | '/consultants/matthew-wang'
     | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
+    | '/anastasia-bizenv'
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
@@ -232,11 +253,13 @@ export interface FileRouteTypes {
     | '/pmp25q50m'
     | '/reimbursement'
     | '/vizhun'
+    | '/consultants/matthew-wang'
     | '/products/$productId'
   id:
     | '__root__'
     | '/'
     | '/about'
+    | '/anastasia-bizenv'
     | '/aygul-quiz'
     | '/career-transformation'
     | '/careers'
@@ -253,12 +276,14 @@ export interface FileRouteTypes {
     | '/pmp25q50m'
     | '/reimbursement'
     | '/vizhun'
+    | '/consultants/matthew-wang'
     | '/products/$productId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  AnastasiaBizenvRoute: typeof AnastasiaBizenvRoute
   AygulQuizRoute: typeof AygulQuizRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   CareersRoute: typeof CareersRoute
@@ -275,6 +300,7 @@ export interface RootRouteChildren {
   Pmp25q50mRoute: typeof Pmp25q50mRoute
   ReimbursementRoute: typeof ReimbursementRoute
   VizhunRoute: typeof VizhunRoute
+  ConsultantsMatthewWangRoute: typeof ConsultantsMatthewWangRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
 
@@ -392,6 +418,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AygulQuizRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/anastasia-bizenv': {
+      id: '/anastasia-bizenv'
+      path: '/anastasia-bizenv'
+      fullPath: '/anastasia-bizenv'
+      preLoaderRoute: typeof AnastasiaBizenvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -413,12 +446,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consultants/matthew-wang': {
+      id: '/consultants/matthew-wang'
+      path: '/consultants/matthew-wang'
+      fullPath: '/consultants/matthew-wang'
+      preLoaderRoute: typeof ConsultantsMatthewWangRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  AnastasiaBizenvRoute: AnastasiaBizenvRoute,
   AygulQuizRoute: AygulQuizRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   CareersRoute: CareersRoute,
@@ -435,6 +476,7 @@ const rootRouteChildren: RootRouteChildren = {
   Pmp25q50mRoute: Pmp25q50mRoute,
   ReimbursementRoute: ReimbursementRoute,
   VizhunRoute: VizhunRoute,
+  ConsultantsMatthewWangRoute: ConsultantsMatthewWangRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
 }
 export const routeTree = rootRouteImport
