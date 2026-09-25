@@ -8,16 +8,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project operates in a heavily regulated industry. Midway through execution, a new regulation is issued that affects one deliverable. What should the project manager do FIRST?',
     options: [
-      { key: 'a', text: 'Ignore it until the enforcement date arrives.' },
+      {
+        key: 'a',
+        text: 'Ignore it until the enforcement date arrives, since project baselines take priority over pending regulations.',
+      },
       {
         key: 'b',
-        text: "Assess the regulation's impact and route the change through governance/change control.",
+        text: "Assess the regulation's impact and route the change through the appropriate governance/change control process.",
       },
       {
         key: 'c',
-        text: 'Unilaterally redesign the deliverable without informing stakeholders.',
+        text: 'Unilaterally redesign the deliverable without informing stakeholders or assessing the actual impact.',
       },
-      { key: 'd', text: 'Escalate to legal and take no further action.' },
+      {
+        key: 'd',
+        text: 'Escalate to legal and take no further action, leaving the assessment and change process to someone else.',
+      },
     ],
     correct: 'b',
     explanation:
@@ -32,13 +38,19 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Reinstate the checkpoint and explain its purpose to the team.',
+        text: 'Reinstate the mandatory checkpoint immediately and explain its purpose and importance to the team.',
       },
-      { key: 'b', text: 'Ignore the finding since no incident has occurred.' },
-      { key: 'c', text: 'Wait for the next audit cycle before acting.' },
+      {
+        key: 'b',
+        text: 'Ignore the finding since no incident has occurred as a result of skipping the checkpoint so far.',
+      },
+      {
+        key: 'c',
+        text: 'Wait for the next scheduled audit cycle before taking any corrective action on the checkpoint.',
+      },
       {
         key: 'd',
-        text: 'Ask the sponsor to informally waive the requirement.',
+        text: 'Ask the sponsor to informally waive the requirement so the team can keep moving quickly.',
       },
     ],
     correct: 'a',
@@ -52,21 +64,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project will collect customer data across multiple countries. What should the project manager confirm before data collection begins?',
     options: [
-      { key: 'a', text: 'That collection will speed up delivery.' },
+      {
+        key: 'a',
+        text: 'That collection will speed up delivery timelines across all of the participating regional teams.',
+      },
       {
         key: 'b',
-        text: 'That data handling complies with the privacy regulations of each applicable jurisdiction.',
+        text: 'That the development team prefers the chosen data collection and storage tooling over alternatives.',
       },
       {
         key: 'c',
-        text: 'That the development team prefers the chosen data tool.',
+        text: 'That the sponsor has personally approved the visual design of the resulting data dashboard.',
       },
       {
         key: 'd',
-        text: 'That the sponsor approves the data dashboard design.',
+        text: 'That data handling complies with the privacy regulations of every applicable jurisdiction before collection begins.',
       },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Cross-border data collection must comply with the privacy/data-protection regulations of every applicable jurisdiction, verified before collection starts.',
   },
@@ -79,16 +94,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Nothing; benefits tracking is entirely operations’ responsibility.',
+        text: "Nothing; benefits tracking is entirely operations' responsibility once the project formally closes.",
       },
       {
         key: 'b',
-        text: 'A benefits realization plan with post-launch measurement and ownership.',
+        text: 'A larger contingency reserve set aside specifically to cover unexpected cost overruns.',
       },
-      { key: 'c', text: 'A larger contingency reserve.' },
-      { key: 'd', text: 'A stricter change control process.' },
+      {
+        key: 'c',
+        text: 'A benefits realization plan defining post-launch measurement, ownership, and tracking of the expected savings.',
+      },
+      {
+        key: 'd',
+        text: 'A stricter change control process applied to future scope requests after go-live.',
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'Delivering outputs does not guarantee benefits. A benefits realization plan defines how and by whom value will be measured after go-live.',
   },
@@ -101,22 +122,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Deliverables completed are the only meaningful measure of success.',
+        text: 'Track and report progress toward the intended business outcome/value achieved, not merely output completion.',
       },
       {
         key: 'b',
-        text: 'Track and report progress toward the intended business outcome/value, not just output completion.',
+        text: 'Deliverables completed on time and on budget are the only meaningful measure of project success.',
       },
       {
         key: 'c',
-        text: 'Refer the sponsor’s question to operations and take no further action.',
+        text: "Refer the sponsor's question to operations and take no further action on it directly.",
       },
       {
         key: 'd',
-        text: 'Consider the project complete once scope is delivered and close it without further reporting.',
+        text: 'Consider the project complete once scope is delivered, and close it without any further outcome reporting.',
       },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'The 2026 ECO emphasizes outcomes and value over output completion; the project manager should connect delivery to intended business results.',
   },
@@ -129,16 +150,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Approve it, since additional scope generally improves the product.',
+        text: 'Approve it immediately, since additional scope generally improves the final product.',
       },
       {
         key: 'b',
-        text: 'Present the cost-benefit analysis to the appropriate governance body for a value-based decision.',
+        text: 'Reject it unilaterally without analysis, since the cost figure alone looks too high.',
       },
-      { key: 'c', text: 'Reject it unilaterally without analysis.' },
-      { key: 'd', text: 'Approve it without informing the sponsor.' },
+      {
+        key: 'c',
+        text: 'Approve it quietly without informing the sponsor or documenting the rationale.',
+      },
+      {
+        key: 'd',
+        text: 'Present the cost-benefit analysis to the appropriate governance body for a value-based funding decision.',
+      },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Scope decisions with a weak cost-benefit ratio should be surfaced with data to governance/business stakeholders rather than decided unilaterally.',
   },
@@ -151,17 +178,20 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Nothing; an approved business case does not need revisiting.',
+        text: 'Nothing; an approved business case does not need revisiting once the project is underway.',
       },
       {
         key: 'b',
-        text: 'Reassess the business case against current external conditions with the sponsor.',
+        text: 'Reassess the business case against current external conditions together with the sponsor.',
       },
       {
         key: 'c',
-        text: 'Wait until the project ends to check whether it is still relevant.',
+        text: 'Wait until the project ends to check whether the business case is still relevant.',
       },
-      { key: 'd', text: 'Ask the team to vote on whether to continue.' },
+      {
+        key: 'd',
+        text: 'Ask the team to vote informally on whether the project should continue as planned.',
+      },
     ],
     correct: 'b',
     explanation:
@@ -174,18 +204,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'During execution, a competitor releases a similar product ahead of schedule. What is the MOST appropriate immediate step?',
     options: [
-      { key: 'a', text: 'Continue exactly as planned with no reassessment.' },
+      {
+        key: 'a',
+        text: 'Continue exactly as planned with no reassessment of the competitive shift.',
+      },
       {
         key: 'b',
-        text: "Notify business stakeholders and evaluate whether the project's approach or priorities need adjustment.",
+        text: 'Rush the project to completion regardless of any resulting quality or cost impact.',
       },
       {
         key: 'c',
-        text: 'Rush the project to completion regardless of quality or cost impact.',
+        text: "Notify business stakeholders and evaluate whether the project's approach or priorities need adjustment.",
       },
-      { key: 'd', text: 'Cancel the project immediately.' },
+      {
+        key: 'd',
+        text: 'Cancel the project immediately without consulting the sponsor or business stakeholders.',
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'A material competitive shift warrants evaluation with business stakeholders before deciding whether or how to adjust course.',
   },
@@ -196,18 +232,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       "A project's cost estimates were based on stable material prices. A sudden market shift causes significant price volatility. What should the project manager do?",
     options: [
-      { key: 'a', text: 'Absorb any cost overruns without reporting them.' },
+      {
+        key: 'a',
+        text: 'Reassess cost and risk exposure, then communicate the impact through the appropriate change/governance process.',
+      },
       {
         key: 'b',
-        text: 'Reassess cost and risk exposure and communicate the impact through the appropriate change/governance process.',
+        text: 'Absorb any resulting cost overruns quietly, without reporting them to the sponsor.',
       },
-      { key: 'c', text: 'Cancel all procurement activity immediately.' },
+      {
+        key: 'c',
+        text: 'Cancel all procurement activity immediately, regardless of what is already committed.',
+      },
       {
         key: 'd',
-        text: 'Ignore the volatility since it is an external factor.',
+        text: 'Ignore the volatility, since price movements are an external factor outside the plan.',
       },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'External economic shifts that affect cost still require impact assessment and transparent communication through governance.',
   },
@@ -218,18 +260,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project will change how several departments operate day-to-day. What should be planned alongside the technical delivery?',
     options: [
-      { key: 'a', text: 'Nothing beyond standard training material.' },
+      {
+        key: 'a',
+        text: 'Nothing beyond the standard technical training material already planned for the rollout.',
+      },
       {
         key: 'b',
-        text: 'An organizational change management plan addressing readiness, communication, and adoption.',
+        text: 'A stricter production deadline set to force faster adoption of the new process.',
       },
-      { key: 'c', text: 'A stricter production deadline.' },
+      {
+        key: 'c',
+        text: 'Reduced stakeholder communication, to avoid provoking early resistance to the change.',
+      },
       {
         key: 'd',
-        text: 'Reduced stakeholder communication, to avoid provoking resistance.',
+        text: 'An organizational change management plan addressing readiness, communication, and adoption.',
       },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Operational change requires a deliberate change management plan covering readiness, communication, and adoption, not just technical training.',
   },
@@ -242,16 +290,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Launch anyway, since the system itself is technically ready.',
+        text: 'Launch anyway, since the system itself is already technically ready for production use.',
       },
       {
         key: 'b',
+        text: 'Postpone the project indefinitely until every user reports feeling fully prepared.',
+      },
+      {
+        key: 'c',
         text: 'Address the readiness gap with targeted communication and training before or during rollout.',
       },
-      { key: 'c', text: 'Postpone the project indefinitely.' },
-      { key: 'd', text: 'Report only technical readiness to the sponsor.' },
+      {
+        key: 'd',
+        text: "Report only the system's technical readiness to the sponsor, omitting user feedback.",
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'Technical readiness is not sufficient; organizational/user readiness gaps should be closed with targeted support before or during rollout.',
   },
@@ -264,7 +318,7 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Approve the change immediately, since it reduces cost.',
+        text: 'Approve the change immediately, since it reduces overall contract cost.',
       },
       {
         key: 'b',
@@ -272,11 +326,11 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
       },
       {
         key: 'c',
-        text: 'Approve it without review, trusting the vendor’s judgment.',
+        text: "Approve it without review, trusting the vendor's judgment on data residency.",
       },
       {
         key: 'd',
-        text: 'Ignore the clause since legal, not the project team, wrote it.',
+        text: 'Ignore the clause entirely, since legal, not the project team, originally wrote it.',
       },
     ],
     correct: 'b',
@@ -292,22 +346,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Hiring permanent staff regardless of the project’s duration.',
+        text: 'A make-or-buy analysis, weighing external procurement against internal staffing for the defined work.',
       },
       {
         key: 'b',
-        text: 'A make-or-buy analysis, considering external procurement for the defined, specialized work.',
+        text: 'Hiring permanent staff for the role, regardless of how long the project actually runs.',
       },
       {
         key: 'c',
-        text: 'Delaying the project until staff can be trained internally.',
+        text: 'Delaying the project until internal staff can be trained to fill the specialized gap.',
       },
       {
         key: 'd',
-        text: 'Ignoring the resource gap and proceeding as planned.',
+        text: 'Ignoring the resource gap entirely and proceeding on the current plan and schedule.',
       },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'A make-or-buy analysis helps decide whether well-defined, specialized work is better sourced externally than staffed internally.',
   },
@@ -318,18 +372,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       "A project's chosen materials and technology have a significant environmental footprint. Consistent with the July 2026 ECO's expanded business-environment emphasis, what should the project manager do?",
     options: [
-      { key: 'a', text: 'Address only cost and schedule impacts.' },
+      {
+        key: 'a',
+        text: 'Address only the cost and schedule impacts, leaving sustainability for a later phase.',
+      },
       {
         key: 'b',
-        text: 'Assess sustainability implications alongside cost, schedule, and risk, and involve relevant stakeholders.',
+        text: 'Ignore sustainability entirely, since it falls outside the traditional triple constraint.',
       },
       {
         key: 'c',
-        text: 'Ignore sustainability since it falls outside the triple constraint.',
+        text: 'Delegate the sustainability decision entirely to the vendor without further review.',
       },
-      { key: 'd', text: 'Delegate the decision entirely to the vendor.' },
+      {
+        key: 'd',
+        text: 'Assess sustainability implications alongside cost, schedule, and risk, involving the relevant stakeholders.',
+      },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Sustainability is part of current business-environment judgment and should be weighed alongside cost, schedule, and risk with the relevant stakeholders.',
   },
@@ -340,15 +400,21 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       "A sponsor asks whether the project's outcomes align with the organization's published ESG commitments. What should the project manager do?",
     options: [
-      { key: 'a', text: 'State that ESG is not part of project management.' },
+      {
+        key: 'a',
+        text: 'State plainly that ESG considerations are not part of project management.',
+      },
       {
         key: 'b',
-        text: 'Evaluate and report on the project’s alignment (or gaps) with the relevant ESG commitments.',
+        text: "Evaluate and report on the project's alignment, or gaps, with the relevant ESG commitments.",
       },
-      { key: 'c', text: 'Refer the question to the marketing department.' },
+      {
+        key: 'c',
+        text: "Refer the sponsor's question directly to the marketing department instead.",
+      },
       {
         key: 'd',
-        text: 'Avoid answering since ESG was not mentioned in the original charter.',
+        text: 'Avoid answering, since ESG was never explicitly mentioned in the original charter.',
       },
     ],
     correct: 'b',
@@ -364,22 +430,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Continue, since the project charter was already approved.',
+        text: 'Continue exactly as planned, since the project charter was already formally approved.',
       },
       {
         key: 'b',
-        text: 'Raise the misalignment with the sponsor/governance body for a decision on continuation, adjustment, or closure.',
+        text: 'Continue silently and hope that no one notices the strategic shift has occurred.',
       },
       {
         key: 'c',
-        text: 'Continue silently and hope no one notices the shift.',
+        text: 'Raise the misalignment with the sponsor/governance body for a decision on continuation, adjustment, or closure.',
       },
       {
         key: 'd',
-        text: 'Unilaterally change the project scope to realign it.',
+        text: "Unilaterally change the project's scope in an attempt to realign it with strategy.",
       },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'A project that no longer aligns with strategy should be surfaced to governance for a deliberate decision, not adjusted or ignored unilaterally.',
   },
@@ -392,16 +458,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Ignore it, since the business case was already approved.',
+        text: 'Reassess the business case using updated assumptions and inform governance of any resulting impact.',
       },
       {
         key: 'b',
-        text: 'Reassess the business case with updated assumptions and inform governance of any impact.',
+        text: 'Ignore it, since the original business case was already formally approved.',
       },
-      { key: 'c', text: 'Keep executing without informing anyone.' },
-      { key: 'd', text: 'Cancel the project unilaterally.' },
+      {
+        key: 'c',
+        text: 'Keep executing exactly as planned, without informing anyone of the discrepancy.',
+      },
+      {
+        key: 'd',
+        text: 'Cancel the project unilaterally, without consulting the sponsor or governance.',
+      },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'An invalidated assumption should trigger reassessment of the business case and transparent communication with governance.',
   },
@@ -414,22 +486,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Nothing; departments should be left to self-organize.',
+        text: 'Nothing; the departments should be left entirely to self-organize on decisions.',
       },
       {
         key: 'b',
-        text: 'A clear governance structure defining roles, decision rights, and escalation paths.',
+        text: 'A single department owning all decisions, regardless of its actual area of expertise.',
       },
       {
         key: 'c',
-        text: 'A single department owning all decisions, regardless of expertise.',
+        text: 'No formal governance structure at all, in order to preserve maximum flexibility.',
       },
       {
         key: 'd',
-        text: 'No formal structure, to preserve maximum flexibility.',
+        text: 'A clear governance structure defining roles, decision rights, and escalation paths.',
       },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Cross-departmental ambiguity is resolved by establishing clear governance: who decides what, and how issues escalate.',
   },
@@ -440,15 +512,21 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A steering committee meets quarterly, but a significant risk has emerged that could affect the next milestone. What should the project manager do?',
     options: [
-      { key: 'a', text: 'Wait for the next scheduled quarterly meeting.' },
+      {
+        key: 'a',
+        text: 'Wait for the next scheduled quarterly steering committee meeting to raise it.',
+      },
       {
         key: 'b',
-        text: 'Escalate the risk to the steering committee/sponsor outside the normal cadence, given its urgency.',
+        text: 'Escalate the risk to the steering committee or sponsor outside the normal cadence, given its urgency.',
       },
-      { key: 'c', text: 'Handle it alone without informing governance.' },
+      {
+        key: 'c',
+        text: 'Handle the risk alone, without informing governance of what has emerged.',
+      },
       {
         key: 'd',
-        text: 'Document it only in the risk register and take no other action.',
+        text: 'Document it only in the risk register, and take no other action for now.',
       },
     ],
     correct: 'b',
@@ -462,18 +540,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project team is working across two organizational cultures with different norms around hierarchy and decision-making. What should the project manager do?',
     options: [
-      { key: 'a', text: "Impose one culture's norms on the entire team." },
+      {
+        key: 'a',
+        text: "Impose one culture's hierarchy and decision-making norms on the entire team.",
+      },
       {
         key: 'b',
-        text: 'Understand and adapt facilitation/communication approaches to bridge the cultural differences.',
+        text: 'Ignore the cultural differences entirely, treating them as irrelevant to delivery.',
       },
       {
         key: 'c',
-        text: 'Ignore cultural differences as irrelevant to delivery.',
+        text: 'Understand and adapt facilitation and communication approaches to bridge the cultural differences.',
       },
-      { key: 'd', text: 'Split the team permanently along cultural lines.' },
+      {
+        key: 'd',
+        text: 'Split the team permanently into two groups, along the existing cultural lines.',
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'Enterprise environmental factors like organizational culture should be understood and adapted to, not imposed over or ignored.',
   },
@@ -486,16 +570,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Nothing; starting from scratch preserves objectivity.',
+        text: 'Organizational process assets such as lessons learned, templates, and historical data from similar past projects.',
       },
       {
         key: 'b',
-        text: 'Organizational process assets such as lessons learned, templates, and historical data from similar projects.',
+        text: 'Nothing; starting entirely from scratch is thought to preserve objectivity and avoid old biases.',
       },
-      { key: 'c', text: "Only the current team's personal opinions." },
-      { key: 'd', text: 'Competitor websites.' },
+      {
+        key: 'c',
+        text: "Only the current team's personal opinions about what worked well on their last assignment.",
+      },
+      {
+        key: 'd',
+        text: 'Public competitor websites describing their own similar initiatives and marketing claims.',
+      },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'Organizational process assets — lessons learned, templates, historical data — should inform planning for a similar new initiative.',
   },
@@ -508,19 +598,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Continue building to the original requirements without revisiting customer input.',
+        text: 'Continuing to build strictly to the original requirements, without revisiting customer input.',
       },
       {
         key: 'b',
-        text: 'Periodic customer/market feedback loops to validate the product still meets evolving needs.',
+        text: 'Avoiding further customer contact entirely, in order to prevent scope creep.',
       },
-      { key: 'c', text: 'Avoiding customer contact, to prevent scope creep.' },
+      {
+        key: 'c',
+        text: 'Relying solely on the original requirements document for the rest of the project.',
+      },
       {
         key: 'd',
-        text: 'Relying solely on the original requirements document.',
+        text: 'Periodic customer and market feedback loops to validate the product still meets evolving needs.',
       },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Ongoing customer/market feedback keeps delivery aligned with real, evolving needs rather than a static original requirements set.',
   },
@@ -533,16 +626,19 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Launch on the original date regardless of the research.',
+        text: 'Launch on the original date regardless of what the market research indicates.',
       },
       {
         key: 'b',
         text: 'Present the market timing data to business stakeholders for a value-based launch-date decision.',
       },
-      { key: 'c', text: 'Decide unilaterally to delay the launch.' },
+      {
+        key: 'c',
+        text: 'Decide unilaterally to delay the launch, without consulting business stakeholders.',
+      },
       {
         key: 'd',
-        text: "Ignore market research since it wasn't in the project plan.",
+        text: "Ignore the market research entirely, since it wasn't part of the original project plan.",
       },
     ],
     correct: 'b',
@@ -556,15 +652,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project is deploying an AI-assisted decision tool that affects customers. What business-environment consideration is MOST important before go-live?',
     options: [
-      { key: 'a', text: 'Only whether the model is technically accurate.' },
+      {
+        key: 'a',
+        text: 'Only whether the underlying model is technically accurate in its predictions and outputs.',
+      },
       {
         key: 'b',
-        text: "Whether the tool's use complies with ethical, regulatory, and governance expectations, in addition to technical accuracy.",
+        text: 'Whether the tool reduces headcount by the largest amount possible across the department.',
       },
-      { key: 'c', text: 'Whether it reduces headcount the most.' },
-      { key: 'd', text: 'Whether competitors use similar tools.' },
+      {
+        key: 'c',
+        text: "Whether the tool's use complies with ethical, regulatory, and governance expectations, beyond just technical accuracy.",
+      },
+      {
+        key: 'd',
+        text: 'Whether competing organizations are already using similar AI-assisted tools in production.',
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'Responsible AI use requires ethical, regulatory, and governance considerations alongside technical performance.',
   },
@@ -575,15 +680,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project will use customer data from multiple existing systems to train an internal analytics tool. What should the project manager verify FIRST?',
     options: [
-      { key: 'a', text: 'That the data is technically accessible.' },
+      {
+        key: 'a',
+        text: 'That the data is technically accessible across all of the source systems involved.',
+      },
       {
         key: 'b',
+        text: 'That the data looks reasonably clean and complete at a first glance.',
+      },
+      {
+        key: 'c',
+        text: 'That the software vendor recommends this particular approach to training.',
+      },
+      {
+        key: 'd',
         text: 'That data usage complies with applicable data governance, consent, and privacy requirements.',
       },
-      { key: 'c', text: 'That the data looks clean at a glance.' },
-      { key: 'd', text: 'That the vendor recommends this approach.' },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Before repurposing customer data, compliance with data governance, consent, and privacy requirements must be verified.',
   },
@@ -596,19 +710,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Discard the findings, since the project is already complete.',
+        text: 'Document the lessons learned and feed them into organizational process assets for future projects.',
       },
       {
         key: 'b',
-        text: 'Document lessons learned and feed them into organizational process assets for future projects.',
+        text: 'Discard the findings entirely, since the project is already formally complete.',
       },
-      { key: 'c', text: 'Keep the findings private.' },
+      {
+        key: 'c',
+        text: 'Keep the findings private, sharing them with no one outside the immediate team.',
+      },
       {
         key: 'd',
-        text: 'Blame individual team members in the closeout report.',
+        text: 'Blame individual team members by name in the official closeout report.',
       },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'Closeout inefficiencies should become documented lessons learned that improve future projects via organizational process assets.',
   },
@@ -619,15 +736,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       "An organization must choose between funding this project's next phase or a competing initiative; both are technically sound. What information is MOST relevant to the decision?",
     options: [
-      { key: 'a', text: 'Which project the team personally prefers.' },
+      {
+        key: 'a',
+        text: 'Which project the team happens to personally prefer working on this quarter.',
+      },
       {
         key: 'b',
-        text: 'Each initiative’s expected value, cost, risk, and strategic alignment relative to organizational priorities.',
+        text: 'Which of the two projects happened to start first, chronologically speaking.',
       },
-      { key: 'c', text: 'Which project started first.' },
-      { key: 'd', text: 'Relative seniority of each project’s team.' },
+      {
+        key: 'c',
+        text: "Each initiative's expected value, cost, risk, and strategic alignment against organizational priorities.",
+      },
+      {
+        key: 'd',
+        text: "The relative seniority of the people currently staffed on each project's team.",
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'Portfolio-level funding decisions should be driven by comparative value, cost, risk, and strategic alignment, not preference or precedence.',
   },
@@ -638,13 +764,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project will use a third-party algorithm in the final product. What should the project manager confirm before deployment?',
     options: [
-      { key: 'a', text: 'That the algorithm works technically.' },
+      {
+        key: 'a',
+        text: 'That the third-party algorithm works correctly in technical testing.',
+      },
       {
         key: 'b',
-        text: 'That licensing/IP rights permit the intended commercial use.',
+        text: 'That licensing/IP rights permit the intended commercial use of the algorithm.',
       },
-      { key: 'c', text: 'That the algorithm is popular among developers.' },
-      { key: 'd', text: 'That it was free to download.' },
+      {
+        key: 'c',
+        text: 'That the algorithm is broadly popular and well-regarded among developers.',
+      },
+      {
+        key: 'd',
+        text: 'That the algorithm was free to download from its original source.',
+      },
     ],
     correct: 'b',
     explanation:
@@ -659,19 +794,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Handle the vendor issue in isolation without informing others.',
+        text: 'Handle the vendor issue in isolation, without informing anyone else in the organization.',
       },
       {
         key: 'b',
-        text: 'Escalate the pattern of vendor performance to the business/procurement stakeholders who manage the broader relationship.',
+        text: "Terminate the vendor's contract unilaterally, without consulting procurement or other affected teams.",
       },
-      { key: 'c', text: 'Terminate the contract unilaterally.' },
+      {
+        key: 'c',
+        text: "Ignore it for now, since the decline hasn't caused a missed milestone on this project yet.",
+      },
       {
         key: 'd',
-        text: "Ignore it, since it hasn't caused a milestone miss yet.",
+        text: 'Escalate the pattern of vendor performance to the business/procurement stakeholders managing the broader relationship.',
       },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'A vendor issue with implications beyond one project should be escalated to those managing the broader strategic relationship.',
   },
@@ -682,15 +820,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project is nearing completion and will hand off to an operations team unfamiliar with the solution. What should the project manager prioritize before closeout?',
     options: [
-      { key: 'a', text: 'Nothing; operations will figure it out.' },
+      {
+        key: 'a',
+        text: 'A structured knowledge transfer and transition plan, prepared in advance for the operations team.',
+      },
       {
         key: 'b',
-        text: 'A structured knowledge transfer and transition plan to operations.',
+        text: 'Nothing further; the operations team will figure out the solution on their own.',
       },
-      { key: 'c', text: 'A faster closeout to reduce cost.' },
-      { key: 'd', text: 'Keeping documentation with the project team only.' },
+      {
+        key: 'c',
+        text: 'A faster closeout process, mainly aimed at reducing remaining project cost.',
+      },
+      {
+        key: 'd',
+        text: "Keeping the solution's documentation with the project team, rather than sharing it.",
+      },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'A structured transition/knowledge-transfer plan protects the solution and its benefits once operations takes over.',
   },
@@ -701,15 +848,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'Shortly after a successful launch, the project team disbands. Three months later, no one is tracking whether the expected benefits are being realized. What was missing from the plan?',
     options: [
-      { key: 'a', text: 'A larger contingency budget.' },
+      {
+        key: 'a',
+        text: 'A larger contingency budget set aside for unexpected costs during execution.',
+      },
       {
         key: 'b',
-        text: 'A benefits sustainment/ownership plan defining who tracks value after project closure.',
+        text: 'A longer project schedule, giving the team more time to finish each deliverable.',
       },
-      { key: 'c', text: 'A longer project schedule.' },
-      { key: 'd', text: 'More detailed Gantt charts.' },
+      {
+        key: 'c',
+        text: 'A benefits sustainment and ownership plan defining who tracks realized value after project closure.',
+      },
+      {
+        key: 'd',
+        text: 'More detailed Gantt charts, tracking each task at a finer level of granularity.',
+      },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
       'Without a defined owner and plan for tracking benefits post-closure, realized value often goes unmeasured after the team disbands.',
   },
@@ -720,13 +876,22 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       "A new industry standard is expected to become mandatory next year, and the project's current design does not meet it. Adoption is optional today. What should the project manager do?",
     options: [
-      { key: 'a', text: "Ignore it, since it isn't yet mandatory." },
+      {
+        key: 'a',
+        text: "Ignore it entirely for now, since the new standard isn't legally mandatory yet.",
+      },
       {
         key: 'b',
         text: 'Assess the cost/benefit of designing for the upcoming standard now versus retrofitting later, and inform governance.',
       },
-      { key: 'c', text: 'Redesign immediately without any analysis.' },
-      { key: 'd', text: 'Wait until it becomes mandatory to even discuss it.' },
+      {
+        key: 'c',
+        text: 'Redesign the project immediately, without doing any cost/benefit analysis first.',
+      },
+      {
+        key: 'd',
+        text: 'Wait until the standard actually becomes mandatory before discussing it with anyone at all.',
+      },
     ],
     correct: 'b',
     explanation:
@@ -739,15 +904,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'Two key stakeholder groups define project "success" differently — one values speed, the other values thoroughness. What should the project manager do?',
     options: [
-      { key: 'a', text: "Pick one group's definition arbitrarily." },
+      {
+        key: 'a',
+        text: 'Facilitate alignment between the two groups on shared success criteria that reflect the intended value.',
+      },
       {
         key: 'b',
-        text: 'Facilitate alignment on shared success criteria that reflect the intended business value.',
+        text: "Pick one group's definition of success arbitrarily, without further discussion.",
       },
-      { key: 'c', text: 'Ignore both and use only the original schedule.' },
-      { key: 'd', text: 'Let the disagreement resolve itself over time.' },
+      {
+        key: 'c',
+        text: 'Ignore both definitions and fall back on only the original project schedule.',
+      },
+      {
+        key: 'd',
+        text: 'Let the disagreement between the two groups resolve itself naturally over time.',
+      },
     ],
-    correct: 'b',
+    correct: 'a',
     explanation:
       'Conflicting definitions of success should be resolved through facilitated alignment on shared, value-based criteria.',
   },
@@ -758,15 +932,24 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     prompt:
       'A project introduces a capability the organization has never operated before (e.g., a new service line). What should the project manager assess in addition to technical delivery?',
     options: [
-      { key: 'a', text: 'Nothing beyond the technical build.' },
+      {
+        key: 'a',
+        text: "Nothing beyond the technical build itself, since the rest is operations' concern.",
+      },
       {
         key: 'b',
+        text: 'Only the logistics of the initial launch event, not what happens afterward.',
+      },
+      {
+        key: 'c',
+        text: 'The marketing budget alone, set aside to promote the new capability.',
+      },
+      {
+        key: 'd',
         text: "The organization's operational readiness and capability to sustain the new function after go-live.",
       },
-      { key: 'c', text: 'Only the initial launch event logistics.' },
-      { key: 'd', text: 'The marketing budget alone.' },
     ],
-    correct: 'b',
+    correct: 'd',
     explanation:
       'Introducing a genuinely new organizational capability requires assessing operational readiness to sustain it, not just building it.',
   },
@@ -779,23 +962,23 @@ export const anastasiaBizEnvQuestions: PMPQuestion[] = [
     options: [
       {
         key: 'a',
-        text: 'Use one country’s calendar and labor rules for simplicity.',
+        text: "Use a single country's calendar and labor rules across the entire project for simplicity.",
       },
       {
         key: 'b',
-        text: "Incorporate each region's applicable labor laws, holidays, and working norms into planning.",
+        text: 'Ignore the regional differences entirely, since the overall deadline is already fixed.',
       },
       {
         key: 'c',
-        text: 'Ignore regional differences since the deadline is fixed.',
+        text: "Incorporate each region's applicable labor laws, holidays, and working norms into the schedule.",
       },
       {
         key: 'd',
-        text: 'Assign all work to a single region to avoid complexity.',
+        text: 'Assign all of the work to a single region, in order to avoid the added complexity.',
       },
     ],
-    correct: 'b',
+    correct: 'c',
     explanation:
-      'Multi-country delivery requires the schedule and resourcing plan to reflect each region’s actual labor laws, holidays, and norms.',
+      "Multi-country delivery requires the schedule and resourcing plan to reflect each region's actual labor laws, holidays, and norms.",
   },
 ]
