@@ -35,12 +35,13 @@ const team = [
     ],
   },
   {
-    name: 'Kim D',
-    role: 'Operations & Client Success Consultant',
-    photo: '/team/kim-d.jpg',
+    name: 'Ji-Won (Shawn) Jung',
+    role: 'Business & Operations Consultant',
+    photo: '/team/shawn-jung.jpg',
+    href: '/consultants/shawn-jung',
     bio: [
-      'Kim has extensive experience in client-facing roles, managing operations and operations teams in large companies in Korea before relocating to Canada. He is known for building efficient processes, leading high-performing teams, and delivering exceptional client experiences.',
-      'In his free time, Kim practices taekwondo and enjoys playing video games—two passions that keep him focused, agile, and always up for a challenge.',
+      'Shawn is a Business Administration student at the University of Toronto Scarborough, specializing in Accounting with a minor in Economics and working toward his CPA designation. His foundation comes from 5+ years in operations and people management across Canada and South Korea.',
+      'He brings a cross-cultural, people-first approach to every team he joins — fluent in English and Korean, with working proficiency in French.',
     ],
   },
 ]

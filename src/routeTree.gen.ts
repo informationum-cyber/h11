@@ -29,6 +29,7 @@ import { Route as AnastasiaBizenvRouteImport } from './routes/anastasia-bizenv'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ProductsProductIdRouteImport } from './routes/products/$productId'
+import { Route as ConsultantsShawnJungRouteImport } from './routes/consultants/shawn-jung'
 import { Route as ConsultantsMatthewWangRouteImport } from './routes/consultants/matthew-wang'
 
 const VizhunRoute = VizhunRouteImport.update({
@@ -132,6 +133,11 @@ const ProductsProductIdRoute = ProductsProductIdRouteImport.update({
   path: '/products/$productId',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultantsShawnJungRoute = ConsultantsShawnJungRouteImport.update({
+  id: '/consultants/shawn-jung',
+  path: '/consultants/shawn-jung',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ConsultantsMatthewWangRoute = ConsultantsMatthewWangRouteImport.update({
   id: '/consultants/matthew-wang',
   path: '/consultants/matthew-wang',
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/consultants/matthew-wang': typeof ConsultantsMatthewWangRoute
+  '/consultants/shawn-jung': typeof ConsultantsShawnJungRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesByTo {
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/consultants/matthew-wang': typeof ConsultantsMatthewWangRoute
+  '/consultants/shawn-jung': typeof ConsultantsShawnJungRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRoutesById {
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/consultants/matthew-wang': typeof ConsultantsMatthewWangRoute
+  '/consultants/shawn-jung': typeof ConsultantsShawnJungRoute
   '/products/$productId': typeof ProductsProductIdRoute
 }
 export interface FileRouteTypes {
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/reimbursement'
     | '/vizhun'
     | '/consultants/matthew-wang'
+    | '/consultants/shawn-jung'
     | '/products/$productId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/reimbursement'
     | '/vizhun'
     | '/consultants/matthew-wang'
+    | '/consultants/shawn-jung'
     | '/products/$productId'
   id:
     | '__root__'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/reimbursement'
     | '/vizhun'
     | '/consultants/matthew-wang'
+    | '/consultants/shawn-jung'
     | '/products/$productId'
   fileRoutesById: FileRoutesById
 }
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   ReimbursementRoute: typeof ReimbursementRoute
   VizhunRoute: typeof VizhunRoute
   ConsultantsMatthewWangRoute: typeof ConsultantsMatthewWangRoute
+  ConsultantsShawnJungRoute: typeof ConsultantsShawnJungRoute
   ProductsProductIdRoute: typeof ProductsProductIdRoute
 }
 
@@ -446,6 +459,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProductsProductIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consultants/shawn-jung': {
+      id: '/consultants/shawn-jung'
+      path: '/consultants/shawn-jung'
+      fullPath: '/consultants/shawn-jung'
+      preLoaderRoute: typeof ConsultantsShawnJungRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/consultants/matthew-wang': {
       id: '/consultants/matthew-wang'
       path: '/consultants/matthew-wang'
@@ -477,6 +497,7 @@ const rootRouteChildren: RootRouteChildren = {
   ReimbursementRoute: ReimbursementRoute,
   VizhunRoute: VizhunRoute,
   ConsultantsMatthewWangRoute: ConsultantsMatthewWangRoute,
+  ConsultantsShawnJungRoute: ConsultantsShawnJungRoute,
   ProductsProductIdRoute: ProductsProductIdRoute,
 }
 export const routeTree = rootRouteImport
