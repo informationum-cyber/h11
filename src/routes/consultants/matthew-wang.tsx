@@ -93,18 +93,10 @@ function MatthewWang() {
           </p>
           <div className="flex flex-wrap gap-4">
             <a
-              href={`${PORTFOLIO_BASE}assets/Resume-Matthew-Wei-Wang-Autodesk-FA.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-6 py-3 rounded-sm font-medium transition-colors"
-            >
-              Download Resume
-            </a>
-            <a
               href={`${PORTFOLIO_BASE}portfolio.html`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 border border-[#1E5C3A] text-[#1E5C3A] hover:bg-[#1E5C3A] hover:text-white px-6 py-3 rounded-sm font-medium transition-colors"
+              className="inline-flex items-center gap-2 bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-6 py-3 rounded-sm font-medium transition-colors"
             >
               View Portfolio <ExternalLink size={16} />
             </a>
@@ -177,14 +169,6 @@ function MatthewWang() {
                 className="inline-flex items-center gap-2 bg-white text-[#143D2D] px-5 py-2.5 rounded-sm font-medium hover:bg-gray-100 transition-colors"
               >
                 Learn more <ExternalLink size={14} />
-              </a>
-              <a
-                href={`${PORTFOLIO_BASE}assets/Resume-Matthew-Wei-Wang-Autodesk-FA.pdf`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 border border-white/40 text-white px-5 py-2.5 rounded-sm font-medium hover:bg-white/10 transition-colors"
-              >
-                Download Resume (PDF)
               </a>
             </div>
           </div>

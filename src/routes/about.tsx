@@ -7,6 +7,16 @@ export const Route = createFileRoute('/about')({
 
 const team = [
   {
+    name: 'Revthee Ganesan',
+    role: 'Advisory Consultant — Special Projects',
+    photo: '/team/revthee-ganesan.jpg',
+    href: '/consultants/revthee-ganesan',
+    bio: [
+      'With over 20 years of experience, Revthee brings a unique blend of product ownership, quality assurance, and software management expertise, grounded in certifications including Certified Scrum Master, Certified Scrum Product Owner, and ISTQB.',
+      'Based in Houston, her focus is on advancing quality assurance and agile delivery — building high-performing, cross-functional workflows that keep the highest standards of quality.',
+    ],
+  },
+  {
     name: 'Matthew Wang',
     role: 'Financial Strategy & Analytics Consultant',
     photo: '/team/matthew-wang.jpg',
@@ -17,30 +27,13 @@ const team = [
     ],
   },
   {
-    name: 'Alex G',
-    role: 'Product & Technology Consultant',
-    photo: '/team/alex-g.jpg',
+    name: 'Ji-Won (Shawn) Jung',
+    role: 'Business & Operations Consultant',
+    photo: '/team/shawn-jung.jpg',
+    href: '/consultants/shawn-jung',
     bio: [
-      'Alex is a graduate of the University of Chicago Booth School of Business, where he earned his MBA. He is passionate about getting digital products from ideation to impact—combining user-centric design, data-informed decisions, and emerging technologies to build solutions that solve real problems.',
-      'In his free time, Alex loves to play sports and has twice won MVP at the state level tennis championships.',
-    ],
-  },
-  {
-    name: 'Sanya A',
-    role: 'Change & Business Transformation Consultant',
-    photo: '/team/sanya-a.jpg',
-    bio: [
-      'Sanya holds a graduate degree in Fine Arts and a degree in Business Management from Mumbai. This unique blend of creativity and business acumen helps her see the bigger picture while paying attention to the details that drive meaningful change.',
-      'A classical dancer, Sanya has performed in several dance dramas on stage, where her discipline, expression, and storytelling skills come to life.',
-    ],
-  },
-  {
-    name: 'Kim D',
-    role: 'Operations & Client Success Consultant',
-    photo: '/team/kim-d.jpg',
-    bio: [
-      'Kim has extensive experience in client-facing roles, managing operations and operations teams in large companies in Korea before relocating to Canada. He is known for building efficient processes, leading high-performing teams, and delivering exceptional client experiences.',
-      'In his free time, Kim practices taekwondo and enjoys playing video games—two passions that keep him focused, agile, and always up for a challenge.',
+      'Shawn is a Business Administration student at the University of Toronto Scarborough, specializing in Accounting with a minor in Economics and working toward his CPA designation. His foundation comes from 5+ years in operations and people management across Canada and South Korea.',
+      'He brings a cross-cultural, people-first approach to every team he joins — fluent in English and Korean, with working proficiency in French.',
     ],
   },
 ]
