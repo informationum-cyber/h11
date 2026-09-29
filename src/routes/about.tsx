@@ -7,6 +7,16 @@ export const Route = createFileRoute('/about')({
 
 const team = [
   {
+    name: 'Revthee Ganesan',
+    role: 'Advisory Consultant — Special Projects',
+    photo: '/team/revthee-ganesan.jpg',
+    href: '/consultants/revthee-ganesan',
+    bio: [
+      'With over 20 years of experience, Revthee brings a unique blend of product ownership, quality assurance, and software management expertise, grounded in certifications including Certified Scrum Master, Certified Scrum Product Owner, and ISTQB.',
+      'Based in Houston, her focus is on advancing quality assurance and agile delivery — building high-performing, cross-functional workflows that keep the highest standards of quality.',
+    ],
+  },
+  {
     name: 'Matthew Wang',
     role: 'Financial Strategy & Analytics Consultant',
     photo: '/team/matthew-wang.jpg',
@@ -14,24 +24,6 @@ const team = [
     bio: [
       'Matthew turns complex business and finance questions into decision-ready insights — driver-based Excel models, valuations, and KPI dashboards built for executive audiences. He studied Economics and Communication, Culture, Information & Technology at the University of Toronto, with executive certificate experience at SKEMA Business School.',
       'His work spans acquisition ROI modeling, equity valuation, and liquidity risk simulation — blending financial rigor with clear, stakeholder-ready storytelling.',
-    ],
-  },
-  {
-    name: 'Alex G',
-    role: 'Product & Technology Consultant',
-    photo: '/team/alex-g.jpg',
-    bio: [
-      'Alex is a graduate of the University of Chicago Booth School of Business, where he earned his MBA. He is passionate about getting digital products from ideation to impact—combining user-centric design, data-informed decisions, and emerging technologies to build solutions that solve real problems.',
-      'In his free time, Alex loves to play sports and has twice won MVP at the state level tennis championships.',
-    ],
-  },
-  {
-    name: 'Sanya A',
-    role: 'Change & Business Transformation Consultant',
-    photo: '/team/sanya-a.jpg',
-    bio: [
-      'Sanya holds a graduate degree in Fine Arts and a degree in Business Management from Mumbai. This unique blend of creativity and business acumen helps her see the bigger picture while paying attention to the details that drive meaningful change.',
-      'A classical dancer, Sanya has performed in several dance dramas on stage, where her discipline, expression, and storytelling skills come to life.',
     ],
   },
   {

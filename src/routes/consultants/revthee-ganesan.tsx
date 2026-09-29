@@ -1,42 +1,41 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Briefcase, GraduationCap, Users, Globe2, Linkedin } from 'lucide-react'
+import { Award, Briefcase, GraduationCap, Target } from 'lucide-react'
 
-export const Route = createFileRoute('/consultants/shawn-jung')({
-  component: ShawnJung,
+export const Route = createFileRoute('/consultants/revthee-ganesan')({
+  component: RevtheeGanesan,
 })
 
 const highlights = [
   {
-    icon: GraduationCap,
-    meta: 'Education',
-    title: 'University of Toronto Scarborough',
-    description:
-      'Business Administration, specializing in Accounting with a minor in Economics — working toward his CPA designation.',
-  },
-  {
     icon: Briefcase,
-    meta: 'Business Consulting',
-    title: 'Business Consultant, Project Management Consulting Firm',
+    meta: 'Current Role',
+    title: 'Product Owner & QA Leadership, Force Marketing',
     description:
-      'Works across marketing and content creation, business plan development, R&D, and employee and consumer relations.',
+      'Combines product strategy, agile delivery, and QA leadership to accelerate time-to-market on automotive marketing campaigns.',
   },
   {
-    icon: Users,
-    meta: 'Operations Leadership',
-    title: '5+ Years in Operations & People Management',
+    icon: Award,
+    meta: 'Certifications',
+    title: 'CSM, CSPO & ISTQB Certified',
     description:
-      'Restaurant Manager, General Manager, and Sales Manager roles across Canada and South Korea — hiring, vendor negotiation, and day-to-day operations.',
+      'Certified Scrum Master, Certified Scrum Product Owner (SAFe® Product Owner/Product Manager), and ISTQB-certified in software quality assurance.',
   },
   {
-    icon: Globe2,
-    meta: 'Campus Leadership',
-    title: 'VP of Sponsorship, Infinite Aperture Club',
+    icon: Target,
+    meta: '20+ Years of Experience',
+    title: 'Product Ownership, QA & Software Management',
     description:
-      'Previously led corporate relations at UTKOS (Director, then VP) and HR at ACE UTSC, securing partnerships and building strong teams.',
+      'A career-long focus on advancing quality assurance and test assurance processes across cross-functional teams.',
+  },
+  {
+    icon: GraduationCap,
+    meta: 'Location',
+    title: 'Greater Houston, Texas',
+    description: 'University of Lynchburg graduate, based in Houston, Texas.',
   },
 ]
 
-function ShawnJung() {
+function RevtheeGanesan() {
   return (
     <div className="min-h-screen bg-white text-gray-900 font-sans">
       {/* HEADER */}
@@ -80,25 +79,16 @@ function ShawnJung() {
         {/* HERO */}
         <div className="max-w-3xl mb-20">
           <p className="text-sm font-semibold tracking-widest text-[#6BAF8A] uppercase mb-4">
-            Business &middot; Operations &middot; Accounting
+            Product Ownership &middot; Quality Assurance &middot; Agile Delivery
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-6">
-            Ji-Won (Shawn) Jung
+            Revthee Ganesan
           </h1>
-          <p className="text-xl text-gray-600 font-light leading-relaxed mb-8">
-            Business Consultant bringing hands-on operations and people
-            leadership from Canada and South Korea into strategic,
-            cross-functional problem solving.
+          <p className="text-xl text-gray-600 font-light leading-relaxed">
+            Advisory Consultant for special projects, bringing 20+ years of
+            product ownership, QA, and software management expertise to
+            high-performing, cross-functional teams.
           </p>
-          <a
-            href="https://www.linkedin.com/in/ji-won-jung"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-6 py-3 rounded-sm font-medium transition-colors"
-          >
-            <Linkedin size={18} />
-            Connect on LinkedIn
-          </a>
         </div>
 
         {/* HIGHLIGHTS */}
@@ -137,44 +127,40 @@ function ShawnJung() {
         <section className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch mb-20">
           <div className="bg-[#143D2D] rounded-2xl p-10 flex flex-col">
             <p className="text-sm font-semibold tracking-widest text-[#6BAF8A] uppercase mb-4">
-              About Shawn
+              About Revthee
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              A cross-cultural, people-first approach
+              Agile excellence, driven by quality
             </h2>
             <div className="space-y-4 text-gray-300 font-light leading-relaxed">
               <p>
-                Shawn is a Business Administration student at the University of
-                Toronto Scarborough, specializing in Accounting with a minor in
-                Economics and working toward his CPA designation.
+                With over 20 years of experience, Revthee brings a unique blend
+                of product ownership, quality assurance, and software management
+                expertise. At Force Marketing, she contributes to enhancing
+                automotive campaigns by combining product strategy, agile
+                delivery, and QA leadership to accelerate time-to-market and
+                drive measurable team performance improvement.
               </p>
               <p>
-                As a Business Consultant at a project management consulting
-                firm, he works across the business &mdash; from marketing and
-                content creation to business plan development, R&amp;D, and
-                employee and consumer relations. His foundation comes from 5+
-                years in operations and people management in Canada and South
-                Korea, including Restaurant Manager, General Manager, and Sales
-                Manager roles, where he led hiring, negotiated with vendors, and
-                ran day-to-day operations.
+                Her work is grounded in her certifications, including Certified
+                Scrum Master and SAFe&reg; Product Owner/Product Manager, which
+                underscore her commitment to driving agile excellence.
               </p>
               <p>
-                On campus, he serves as VP of Sponsorship for the Infinite
-                Aperture Club and previously led corporate relations at UTKOS
-                (Director, then VP) and HR at ACE UTSC, securing corporate
-                partnerships and building strong teams.
-              </p>
-              <p>
-                He is fluent in English and Korean, with working proficiency in
-                French, and brings a cross-cultural, people-first approach to
-                every team he joins.
+                Her focus is on advancing quality assurance analysis and test
+                assurance processes, ensuring seamless collaboration among
+                cross-functional teams and delivering impactful product
+                solutions. By leveraging a structured approach and a passion for
+                efficiency, she aims to create high-performing workflows that
+                empower teams to achieve their objectives while maintaining the
+                highest standards of quality.
               </p>
             </div>
           </div>
           <div className="rounded-2xl overflow-hidden border border-gray-100 relative min-h-[280px]">
             <img
-              src="/team/shawn-jung.jpg"
-              alt="Ji-Won (Shawn) Jung"
+              src="/team/revthee-ganesan.jpg"
+              alt="Revthee Ganesan"
               className="w-full h-full object-cover absolute inset-0"
             />
           </div>
