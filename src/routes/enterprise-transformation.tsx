@@ -11,7 +11,6 @@ function EnterpriseTransformation() {
       {/* HEADER */}
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex justify-center items-center border-b border-gray-100">
         <nav className="flex gap-6 text-sm font-medium text-gray-600">
-          <Link to="/about" className="hover:text-[#1E5C3A] transition-colors">About</Link>
           <Link to="/enterprise-transformation" className="text-[#1E5C3A] font-semibold">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#1E5C3A] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#1E5C3A] transition-colors">Learning</Link>
