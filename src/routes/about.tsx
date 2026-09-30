@@ -7,33 +7,13 @@ export const Route = createFileRoute('/about')({
 
 const team = [
   {
-    name: 'Revthee Ganesan',
-    role: 'Advisory Consultant — Special Projects',
-    photo: '/team/revthee-ganesan.jpg',
-    href: '/consultants/revthee-ganesan',
-    bio: [
-      'With over 20 years of experience, Revthee brings a unique blend of product ownership, quality assurance, and software management expertise, grounded in certifications including Certified Scrum Master, Certified Scrum Product Owner, and ISTQB.',
-      'Based in Houston, her focus is on advancing quality assurance and agile delivery — building high-performing, cross-functional workflows that keep the highest standards of quality.',
-    ],
-  },
-  {
-    name: 'Matthew Wang',
-    role: 'Financial Strategy & Analytics Consultant',
-    photo: '/team/matthew-wang.jpg',
-    href: '/consultants/matthew-wang',
-    bio: [
-      'Matthew turns complex business and finance questions into decision-ready insights — driver-based Excel models, valuations, and KPI dashboards built for executive audiences. He studied Economics and Communication, Culture, Information & Technology at the University of Toronto, with executive certificate experience at SKEMA Business School.',
-      'His work spans acquisition ROI modeling, equity valuation, and liquidity risk simulation — blending financial rigor with clear, stakeholder-ready storytelling.',
-    ],
-  },
-  {
     name: 'Ji-Won (Shawn) Jung',
-    role: 'Business & Operations Consultant',
+    role: 'Marketing & Business Development Consultant',
     photo: '/team/shawn-jung.jpg',
     href: '/consultants/shawn-jung',
     bio: [
-      'Shawn is a Business Administration student at the University of Toronto Scarborough, specializing in Accounting with a minor in Economics and working toward his CPA designation. His foundation comes from 5+ years in operations and people management across Canada and South Korea.',
-      'He brings a cross-cultural, people-first approach to every team he joins — fluent in English and Korean, with working proficiency in French.',
+      'At Hansel Eleven, Shawn leads LinkedIn content creation and R&D for our social media and web presence, and handles requirement analysis and project coordination for the Hansel Eleven Website Project.',
+      'He also supports company policy development and assists leadership with business development and marketing — bringing a foundation of 5+ years in operations and people management across Canada and South Korea.',
     ],
   },
 ]
@@ -159,41 +139,84 @@ function About() {
 
         {/* TEAM */}
         <section className="mb-20">
-          <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-4">
+          <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-8">
             THE TEAM
           </div>
           <h2 className="text-3xl md:text-4xl font-bold text-[#143D2D] mb-12">
             The people behind the work
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div
+            className={
+              team.length === 1
+                ? 'grid grid-cols-1 lg:grid-cols-2 gap-16 items-start'
+                : 'grid grid-cols-1 md:grid-cols-3 gap-8'
+            }
+          >
             {team.map((member) => (
-              <div key={member.name} className="flex flex-col">
-                {/* Avatar */}
-                <div className="w-full aspect-square rounded-2xl border border-gray-100 mb-6 overflow-hidden">
-                  <img
-                    src={member.photo}
-                    alt={member.name}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <h3 className="text-2xl font-bold text-[#143D2D] mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-[#1E5C3A] font-semibold text-sm mb-4">
-                  {member.role}
-                </p>
-                <div className="space-y-3 text-gray-600 font-light leading-relaxed text-sm">
-                  {member.bio.map((para, i) => (
-                    <p key={i}>{para}</p>
-                  ))}
-                </div>
-                {'href' in member && member.href && (
-                  <Link
-                    to={member.href}
-                    className="inline-flex items-center gap-2 mt-5 text-[#1E5C3A] hover:text-[#143D2D] transition-colors font-medium text-sm"
-                  >
-                    View full profile <ArrowRight size={16} />
-                  </Link>
+              <div
+                key={member.name}
+                className={team.length === 1 ? 'contents' : 'flex flex-col'}
+              >
+                {team.length === 1 ? (
+                  <>
+                    <div>
+                      <h3 className="text-4xl font-bold text-[#143D2D] mb-2">
+                        {member.name}
+                      </h3>
+                      <p className="text-[#1E5C3A] font-semibold mb-8">
+                        {member.role}
+                      </p>
+                      <div className="space-y-5 text-gray-700 font-light leading-relaxed text-lg">
+                        {member.bio.map((para, i) => (
+                          <p key={i}>{para}</p>
+                        ))}
+                      </div>
+                      {'href' in member && member.href && (
+                        <Link
+                          to={member.href}
+                          className="inline-flex items-center gap-2 mt-8 text-[#1E5C3A] hover:text-[#143D2D] transition-colors font-medium"
+                        >
+                          View full profile <ArrowRight size={16} />
+                        </Link>
+                      )}
+                    </div>
+                    <div className="flex justify-center lg:justify-start">
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-72 h-72 rounded-2xl object-cover shadow-lg border-4 border-white ring-1 ring-gray-100"
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-full aspect-square rounded-2xl border border-gray-100 mb-6 overflow-hidden">
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-2xl font-bold text-[#143D2D] mb-1">
+                      {member.name}
+                    </h3>
+                    <p className="text-[#1E5C3A] font-semibold text-sm mb-4">
+                      {member.role}
+                    </p>
+                    <div className="space-y-3 text-gray-600 font-light leading-relaxed text-sm">
+                      {member.bio.map((para, i) => (
+                        <p key={i}>{para}</p>
+                      ))}
+                    </div>
+                    {'href' in member && member.href && (
+                      <Link
+                        to={member.href}
+                        className="inline-flex items-center gap-2 mt-5 text-[#1E5C3A] hover:text-[#143D2D] transition-colors font-medium text-sm"
+                      >
+                        View full profile <ArrowRight size={16} />
+                      </Link>
+                    )}
+                  </>
                 )}
               </div>
             ))}
