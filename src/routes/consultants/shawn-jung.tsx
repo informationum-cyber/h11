@@ -1,5 +1,11 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Briefcase, GraduationCap, Users, Globe2, Linkedin } from 'lucide-react'
+import {
+  Megaphone,
+  Globe2,
+  ClipboardList,
+  Briefcase,
+  Linkedin,
+} from 'lucide-react'
 
 export const Route = createFileRoute('/consultants/shawn-jung')({
   component: ShawnJung,
@@ -7,32 +13,32 @@ export const Route = createFileRoute('/consultants/shawn-jung')({
 
 const highlights = [
   {
-    icon: GraduationCap,
-    meta: 'Education',
-    title: 'University of Toronto Scarborough',
+    icon: Megaphone,
+    meta: 'Marketing & Content',
+    title: 'LinkedIn Content Creation',
     description:
-      'Business Administration, specializing in Accounting with a minor in Economics — working toward his CPA designation.',
-  },
-  {
-    icon: Briefcase,
-    meta: 'Business Consulting',
-    title: 'Business Consultant, Project Management Consulting Firm',
-    description:
-      'Works across marketing and content creation, business plan development, R&D, and employee and consumer relations.',
-  },
-  {
-    icon: Users,
-    meta: 'Operations Leadership',
-    title: '5+ Years in Operations & People Management',
-    description:
-      'Restaurant Manager, General Manager, and Sales Manager roles across Canada and South Korea — hiring, vendor negotiation, and day-to-day operations.',
+      "Creates and manages content that grows Hansel Eleven's presence and engagement on LinkedIn.",
   },
   {
     icon: Globe2,
-    meta: 'Campus Leadership',
-    title: 'VP of Sponsorship, Infinite Aperture Club',
+    meta: 'Digital Strategy',
+    title: 'Social Media & Web Presence R&D',
     description:
-      'Previously led corporate relations at UTKOS (Director, then VP) and HR at ACE UTSC, securing partnerships and building strong teams.',
+      "Researches and develops strategies to strengthen Hansel Eleven's social media and web presence.",
+  },
+  {
+    icon: ClipboardList,
+    meta: 'Project Coordination',
+    title: 'Hansel Eleven Website Project',
+    description:
+      'Leads requirement analysis and coordinates delivery for the Hansel Eleven Website Project.',
+  },
+  {
+    icon: Briefcase,
+    meta: 'Leadership Support',
+    title: 'Policy & Business Development',
+    description:
+      'Supports company policy development and assists leadership with business development and marketing.',
   },
 ]
 
@@ -80,15 +86,15 @@ function ShawnJung() {
         {/* HERO */}
         <div className="max-w-3xl mb-20">
           <p className="text-sm font-semibold tracking-widest text-[#6BAF8A] uppercase mb-4">
-            Business &middot; Operations &middot; Accounting
+            Marketing &middot; Web Presence &middot; Business Development
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-6">
             Ji-Won (Shawn) Jung
           </h1>
           <p className="text-xl text-gray-600 font-light leading-relaxed mb-8">
-            Business Consultant bringing hands-on operations and people
-            leadership from Canada and South Korea into strategic,
-            cross-functional problem solving.
+            Driving Hansel Eleven's content, web presence, and business
+            development — from LinkedIn to the Website Project to company
+            policy.
           </p>
           <a
             href="https://www.linkedin.com/in/ji-won-jung"
@@ -140,34 +146,31 @@ function ShawnJung() {
               About Shawn
             </p>
             <h2 className="text-2xl md:text-3xl font-bold text-white mb-6">
-              A cross-cultural, people-first approach
+              Building Hansel Eleven's presence and processes
             </h2>
             <div className="space-y-4 text-gray-300 font-light leading-relaxed">
               <p>
-                Shawn is a Business Administration student at the University of
-                Toronto Scarborough, specializing in Accounting with a minor in
-                Economics and working toward his CPA designation.
+                At Hansel Eleven, Shawn leads LinkedIn content creation and
+                R&amp;D for our social media and web presence, and handles
+                requirement analysis and project coordination for the Hansel
+                Eleven Website Project.
               </p>
               <p>
-                As a Business Consultant at a project management consulting
-                firm, he works across the business &mdash; from marketing and
-                content creation to business plan development, R&amp;D, and
-                employee and consumer relations. His foundation comes from 5+
-                years in operations and people management in Canada and South
-                Korea, including Restaurant Manager, General Manager, and Sales
-                Manager roles, where he led hiring, negotiated with vendors, and
-                ran day-to-day operations.
+                He also supports company policy development and assists
+                leadership with business development and marketing.
+              </p>
+              <p>
+                He brings a foundation of 5+ years in operations and people
+                management across Canada and South Korea, and is a Business
+                Administration student at the University of Toronto Scarborough,
+                specializing in Accounting with a minor in Economics and working
+                toward his CPA designation.
               </p>
               <p>
                 On campus, he serves as VP of Sponsorship for the Infinite
                 Aperture Club and previously led corporate relations at UTKOS
-                (Director, then VP) and HR at ACE UTSC, securing corporate
-                partnerships and building strong teams.
-              </p>
-              <p>
-                He is fluent in English and Korean, with working proficiency in
-                French, and brings a cross-cultural, people-first approach to
-                every team he joins.
+                (Director, then VP) and HR at ACE UTSC. He is fluent in English
+                and Korean, with working proficiency in French.
               </p>
             </div>
           </div>

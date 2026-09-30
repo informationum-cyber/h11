@@ -8,12 +8,12 @@ export const Route = createFileRoute('/about')({
 const team = [
   {
     name: 'Ji-Won (Shawn) Jung',
-    role: 'Business & Operations Consultant',
+    role: 'Marketing & Business Development Consultant',
     photo: '/team/shawn-jung.jpg',
     href: '/consultants/shawn-jung',
     bio: [
-      'Shawn is a Business Administration student at the University of Toronto Scarborough, specializing in Accounting with a minor in Economics and working toward his CPA designation. His foundation comes from 5+ years in operations and people management across Canada and South Korea.',
-      'He brings a cross-cultural, people-first approach to every team he joins — fluent in English and Korean, with working proficiency in French.',
+      'At Hansel Eleven, Shawn leads LinkedIn content creation and R&D for our social media and web presence, and handles requirement analysis and project coordination for the Hansel Eleven Website Project.',
+      'He also supports company policy development and assists leadership with business development and marketing — bringing a foundation of 5+ years in operations and people management across Canada and South Korea.',
     ],
   },
 ]
