@@ -123,8 +123,8 @@ function LandingPage() {
             <h3 className="text-2xl font-bold text-[#202830] mb-3">Career Transformation</h3>
             <p className="text-gray-500 mb-6 font-medium">Transform your career path</p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> CECY Platform</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Coaching</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Career Coaching</li>
+              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Interview Prep</li>
               <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Transitions</li>
             </ul>
           </Link>

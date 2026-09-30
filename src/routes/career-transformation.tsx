@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Briefcase, ArrowRight, Compass, Users } from 'lucide-react'
+import { Briefcase, ArrowRight, Compass } from 'lucide-react'
 
 export const Route = createFileRoute('/career-transformation')({
   component: CareerTransformation,
@@ -30,34 +30,16 @@ function CareerTransformation() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 max-w-4xl mx-auto">
           {/* Card 1 */}
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
-            <div className="w-12 h-12 bg-[#1E5C3A]/10 rounded-lg flex items-center justify-center mb-6">
-              <Users className="w-6 h-6 text-[#1E5C3A]" />
-            </div>
-            <h2 className="text-2xl font-bold text-[#143D2D] mb-3">CECY Program</h2>
-            <p className="text-sm text-[#1E5C3A] font-semibold tracking-wide uppercase mb-4">Mentorship</p>
-            <p className="text-gray-600 mb-6 flex-grow">
-              Canadian Early Careers and Youth (CECY) Mentoring Program. We provide dedicated mentorship and training specifically tailored for co-ops and fresh graduates looking to build a strong foundation.
-            </p>
-            <div className="bg-gray-50 p-6 rounded-xl text-center">
-              <p className="text-lg font-bold text-[#143D2D] mb-4">Free Consult</p>
-              <a href="mailto:cecy@hanseleleven.com" className="inline-block w-full px-4 py-3 bg-[#143D2D] text-white rounded-sm font-medium hover:bg-[#0E2E21] transition-colors">
-                Request a 15-min Coffee Chat
-              </a>
-            </div>
-          </div>
-
-          {/* Card 2 */}
           <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
             <div className="w-12 h-12 bg-[#1E5C3A]/10 rounded-lg flex items-center justify-center mb-6">
               <Compass className="w-6 h-6 text-[#1E5C3A]" />
             </div>
-            <h2 className="text-2xl font-bold text-[#143D2D] mb-3">Early Career Coaching</h2>
+            <h2 className="text-2xl font-bold text-[#143D2D] mb-3">Career Coaching (All Stages)</h2>
             <p className="text-sm text-[#1E5C3A] font-semibold tracking-wide uppercase mb-4">1:1 Coaching</p>
             <p className="text-gray-600 mb-6 flex-grow">
-              Co-op opportunities, breaking into the corporate Canadian market, resume help, and 1:1 coaching. Specialized for early careers in IT, management, finance, and corporate communication.
+              Resume help, interview prep, and 1:1 coaching for professionals at any career stage — whether you're navigating a transition, aiming for promotion, or building expertise in IT, management, finance, or corporate communication.
             </p>
             <div className="bg-gray-50 p-6 rounded-xl flex flex-col gap-3">
               <div className="flex justify-between items-center bg-white p-3 rounded shadow-sm border border-gray-100">
@@ -71,7 +53,7 @@ function CareerTransformation() {
             </div>
           </div>
 
-          {/* Card 3 */}
+          {/* Card 2 */}
           <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
             <div className="w-12 h-12 bg-[#1E5C3A]/10 rounded-lg flex items-center justify-center mb-6">
               <Briefcase className="w-6 h-6 text-[#1E5C3A]" />
