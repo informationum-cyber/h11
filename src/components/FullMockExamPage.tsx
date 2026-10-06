@@ -15,6 +15,12 @@ export interface FullMockExamConfig {
   durationMinutes: number
   showTutoringCTA?: boolean
   skipGate?: boolean
+  /** Hide the "{domain} Domain · {topic}" line above each question — the topic often hints at the answer. Defaults to false. */
+  hideTopicHint?: boolean
+  /** Override the intro paragraph under the title. Defaults to the 3-domain mock-exam description. */
+  introDescription?: string
+  /** Override the "Section B" label shown in the status bar and dot navigation. Defaults to "Section B". */
+  sectionBLabel?: string
 }
 
 type Stage = 'gate' | 'intro' | 'quiz' | 'results'
@@ -39,7 +45,18 @@ function formatTime(totalSeconds: number) {
 }
 
 export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
-  const { title, sectionA, sectionB, sectionC, durationMinutes, showTutoringCTA = true, skipGate = false } = config
+  const {
+    title,
+    sectionA,
+    sectionB,
+    sectionC,
+    durationMinutes,
+    showTutoringCTA = true,
+    skipGate = false,
+    hideTopicHint = false,
+    introDescription,
+    sectionBLabel = 'Section B',
+  } = config
   const testPassword = config.password.toUpperCase()
   const durationSeconds = durationMinutes * 60
   const unlockKey = `pmp_unlocked_${config.slug}`
@@ -64,14 +81,26 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
     )
     const fromB = sectionB.map((q, i) => {
       globalId += 1
-      return { ...q, id: globalId, section: 'B' as const, sectionLabel: 'Section B', localNumber: i + 1 }
+      return {
+        ...q,
+        id: globalId,
+        section: 'B' as const,
+        sectionLabel: sectionBLabel,
+        localNumber: i + 1,
+      }
     })
     const fromC = sectionC.map((q, i) => {
       globalId += 1
-      return { ...q, id: globalId, section: 'C' as const, sectionLabel: 'Section C', localNumber: i + 1 }
+      return {
+        ...q,
+        id: globalId,
+        section: 'C' as const,
+        sectionLabel: 'Section C',
+        localNumber: i + 1,
+      }
     })
     return [...fromScenarios, ...fromB, ...fromC]
-  }, [sectionA, sectionB, sectionC])
+  }, [sectionA, sectionB, sectionC, sectionBLabel])
 
   const totalQuestions = examQuestions.length
 
@@ -113,7 +142,9 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
       setPasswordError('')
       setStage('intro')
     } else {
-      setPasswordError('Incorrect password. Please check with your instructor for access.')
+      setPasswordError(
+        'Incorrect password. Please check with your instructor for access.',
+      )
     }
   }
 
@@ -136,14 +167,19 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
   const answeredCount = Object.keys(answers).length
   const question = examQuestions[currentIndex]
 
-  const results = useMemo(() => scoreQuestions(examQuestions, answers), [answers, examQuestions])
+  const results = useMemo(
+    () => scoreQuestions(examQuestions, answers),
+    [answers, examQuestions],
+  )
 
   useEffect(() => {
     if (stage !== 'results' || emailedRef.current) return
     emailedRef.current = true
 
     const scorePercent = `${Math.round((results.correctCount / totalQuestions) * 100)}%`
-    const domainBreakdown = (['People', 'Process', 'Business Environment'] as const)
+    const domainBreakdown = (
+      ['People', 'Process', 'Business Environment'] as const
+    )
       .map((d) => {
         const { correct, total } = results.byDomain[d]
         return `${d}: ${correct}/${total}`
@@ -182,7 +218,8 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
             </div>
             <h1 className="text-3xl font-bold text-[#143D2D] mb-3">{title}</h1>
             <p className="text-gray-600 mb-8 font-light">
-              This practice exam is restricted to enrolled students. Enter your access password to continue.
+              This practice exam is restricted to enrolled students. Enter your
+              access password to continue.
             </p>
             <form onSubmit={handleUnlock} className="space-y-4">
               <input
@@ -193,7 +230,9 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
                 className="w-full px-4 py-3 border border-gray-200 rounded-sm focus:outline-none focus:border-[#1E5C3A] text-center"
                 autoFocus
               />
-              {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
+              {passwordError && (
+                <p className="text-red-500 text-sm">{passwordError}</p>
+              )}
               <button
                 type="submit"
                 className="w-full bg-[#1E5C3A] hover:bg-[#144D2E] text-white px-6 py-3 rounded-sm font-medium transition-colors"
@@ -208,35 +247,69 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
           <div className="max-w-2xl mx-auto text-center">
             <h1 className="text-4xl font-bold text-[#143D2D] mb-4">{title}</h1>
             <p className="text-gray-600 mb-10 font-light text-lg">
-              {totalQuestions} questions across all three PMP domains, structured like the real exam: a case-study
-              section followed by two independent-question sections.
+              {introDescription ??
+                `${totalQuestions} questions across all three PMP domains, structured like the real exam: a case-study section followed by two independent-question sections.`}
             </p>
-            <div className="grid grid-cols-4 gap-4 mb-10">
+            <div
+              className={`grid gap-4 mb-10 ${sectionC.length === 0 ? 'grid-cols-3' : 'grid-cols-4'}`}
+            >
               <div className="bg-gray-50 rounded-xl p-5">
-                <div className="text-3xl font-black text-[#143D2D]">{sectionA.reduce((n, s) => n + s.questions.length, 0)}</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">Section A</div>
+                <div className="text-3xl font-black text-[#143D2D]">
+                  {sectionA.reduce((n, s) => n + s.questions.length, 0)}
+                </div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">
+                  Case Study
+                </div>
               </div>
               <div className="bg-gray-50 rounded-xl p-5">
-                <div className="text-3xl font-black text-[#143D2D]">{sectionB.length}</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">Section B</div>
+                <div className="text-3xl font-black text-[#143D2D]">
+                  {sectionB.length}
+                </div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">
+                  {sectionBLabel}
+                </div>
               </div>
+              {sectionC.length > 0 && (
+                <div className="bg-gray-50 rounded-xl p-5">
+                  <div className="text-3xl font-black text-[#143D2D]">
+                    {sectionC.length}
+                  </div>
+                  <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">
+                    Section C
+                  </div>
+                </div>
+              )}
               <div className="bg-gray-50 rounded-xl p-5">
-                <div className="text-3xl font-black text-[#143D2D]">{sectionC.length}</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">Section C</div>
-              </div>
-              <div className="bg-gray-50 rounded-xl p-5">
-                <div className="text-3xl font-black text-[#143D2D]">{durationMinutes}</div>
-                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">Minutes</div>
+                <div className="text-3xl font-black text-[#143D2D]">
+                  {durationMinutes}
+                </div>
+                <div className="text-xs text-gray-500 uppercase tracking-wide mt-1">
+                  Minutes
+                </div>
               </div>
             </div>
             <div className="text-left bg-[#143D2D] text-gray-200 rounded-2xl p-7 mb-10">
               <p className="font-semibold text-white mb-3">Before you begin:</p>
               <ul className="space-y-2 text-sm font-light">
-                <li>The timer starts as soon as you click Start and runs continuously through all three sections — it does not pause, unlike the two short breaks on the real exam.</li>
-                <li>Section A's case studies keep their narrative pinned next to the questions while you work through them.</li>
-                <li>You can move freely between questions and change answers before submitting.</li>
+                <li>
+                  The timer starts as soon as you click Start and runs
+                  continuously through all three sections — it does not pause,
+                  unlike the two short breaks on the real exam.
+                </li>
+                <li>
+                  Section A's case studies keep their narrative pinned next to
+                  the questions while you work through them.
+                </li>
+                <li>
+                  You can move freely between questions and change answers
+                  before submitting.
+                </li>
                 <li>The test auto-submits when the timer reaches zero.</li>
-                <li>After submitting, you'll get a personalized results report with domain-by-domain advice based on the questions you missed.</li>
+                <li>
+                  After submitting, you'll get a personalized results report
+                  with domain-by-domain advice based on the questions you
+                  missed.
+                </li>
               </ul>
             </div>
             <div className="mb-8 max-w-xs mx-auto">
@@ -261,11 +334,14 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
           <div>
             <div className="flex items-center justify-between mb-6 sticky top-0 bg-white/95 backdrop-blur py-3 z-10">
               <span className="text-sm font-medium text-gray-500">
-                {question.sectionLabel} &middot; Question {question.localNumber} &middot; {answeredCount}/{totalQuestions} answered overall
+                {question.sectionLabel} &middot; Question {question.localNumber}{' '}
+                &middot; {answeredCount}/{totalQuestions} answered overall
               </span>
               <span
                 className={`inline-flex items-center gap-2 text-sm font-bold px-3 py-1.5 rounded-full ${
-                  timeLeft <= 600 ? 'bg-red-50 text-red-600' : 'bg-gray-100 text-[#143D2D]'
+                  timeLeft <= 600
+                    ? 'bg-red-50 text-red-600'
+                    : 'bg-gray-100 text-[#143D2D]'
                 }`}
               >
                 <Clock size={14} /> {formatTime(timeLeft)}
@@ -273,7 +349,9 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
             </div>
 
             {(['A', 'B', 'C'] as Section[]).map((sec) => {
-              const secQuestions = examQuestions.filter((q) => q.section === sec)
+              const secQuestions = examQuestions.filter(
+                (q) => q.section === sec,
+              )
               if (secQuestions.length === 0) return null
               return (
                 <div key={sec} className="mb-3">
@@ -313,8 +391,12 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
                     <div className="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A] mb-3">
                       <BookOpen size={14} /> Case Study
                     </div>
-                    <h2 className="text-lg font-bold text-[#143D2D] mb-3">{question.scenarioTitle}</h2>
-                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">{question.scenarioText}</p>
+                    <h2 className="text-lg font-bold text-[#143D2D] mb-3">
+                      {question.scenarioTitle}
+                    </h2>
+                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-line">
+                      {question.scenarioText}
+                    </p>
                   </div>
                 </div>
                 <div className="lg:col-span-3">
@@ -323,9 +405,14 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
                     currentIndex={currentIndex}
                     totalQuestions={totalQuestions}
                     answers={answers}
+                    hideTopicHint={hideTopicHint}
                     onSelect={selectAnswer}
                     onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
-                    onNext={() => setCurrentIndex((i) => Math.min(totalQuestions - 1, i + 1))}
+                    onNext={() =>
+                      setCurrentIndex((i) =>
+                        Math.min(totalQuestions - 1, i + 1),
+                      )
+                    }
                     onSubmit={() => setStage('results')}
                   />
                 </div>
@@ -337,9 +424,12 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
                   currentIndex={currentIndex}
                   totalQuestions={totalQuestions}
                   answers={answers}
+                  hideTopicHint={hideTopicHint}
                   onSelect={selectAnswer}
                   onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
-                  onNext={() => setCurrentIndex((i) => Math.min(totalQuestions - 1, i + 1))}
+                  onNext={() =>
+                    setCurrentIndex((i) => Math.min(totalQuestions - 1, i + 1))
+                  }
                   onSubmit={() => setStage('results')}
                 />
               </div>
@@ -371,6 +461,7 @@ function QuestionBody({
   currentIndex,
   totalQuestions,
   answers,
+  hideTopicHint = false,
   onSelect,
   onPrev,
   onNext,
@@ -380,6 +471,7 @@ function QuestionBody({
   currentIndex: number
   totalQuestions: number
   answers: Answers
+  hideTopicHint?: boolean
   onSelect: (questionId: number, key: 'a' | 'b' | 'c' | 'd') => void
   onPrev: () => void
   onNext: () => void
@@ -387,10 +479,14 @@ function QuestionBody({
 }) {
   return (
     <div>
-      <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
-        {question.domain} Domain &middot; {question.topic}
-      </div>
-      <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">{question.prompt}</h2>
+      {!hideTopicHint && (
+        <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
+          {question.domain} Domain &middot; {question.topic}
+        </div>
+      )}
+      <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">
+        {question.prompt}
+      </h2>
 
       <div className="space-y-3 mb-10">
         {question.options.map((opt) => {
@@ -400,10 +496,14 @@ function QuestionBody({
               key={opt.key}
               onClick={() => onSelect(question.id, opt.key)}
               className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-colors flex gap-3 ${
-                selected ? 'border-[#1E5C3A] bg-[#f0f7f2]' : 'border-gray-100 hover:border-gray-300'
+                selected
+                  ? 'border-[#1E5C3A] bg-[#f0f7f2]'
+                  : 'border-gray-100 hover:border-gray-300'
               }`}
             >
-              <span className={`font-bold uppercase ${selected ? 'text-[#1E5C3A]' : 'text-gray-400'}`}>
+              <span
+                className={`font-bold uppercase ${selected ? 'text-[#1E5C3A]' : 'text-gray-400'}`}
+              >
                 {opt.key}.
               </span>
               <span className="text-gray-800">{opt.text}</span>
