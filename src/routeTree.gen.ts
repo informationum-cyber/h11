@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VizhunRouteImport } from './routes/vizhun'
 import { Route as ReimbursementRouteImport } from './routes/reimbursement'
+import { Route as ProcessTestLoryshaRouteImport } from './routes/process-test-lorysha'
 import { Route as Pmp25q50mRouteImport } from './routes/pmp25q50m'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
 import { Route as PmpPracticeRouteImport } from './routes/pmp-practice'
@@ -39,6 +40,11 @@ const VizhunRoute = VizhunRouteImport.update({
 const ReimbursementRoute = ReimbursementRouteImport.update({
   id: '/reimbursement',
   path: '/reimbursement',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProcessTestLoryshaRoute = ProcessTestLoryshaRouteImport.update({
+  id: '/process-test-lorysha',
+  path: '/process-test-lorysha',
   getParentRoute: () => rootRouteImport,
 } as any)
 const Pmp25q50mRoute = Pmp25q50mRouteImport.update({
@@ -156,6 +162,7 @@ export interface FileRoutesByFullPath {
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/pmp25q50m': typeof Pmp25q50mRoute
+  '/process-test-lorysha': typeof ProcessTestLoryshaRoute
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/consultants/shawn-jung': typeof ConsultantsShawnJungRoute
@@ -179,6 +186,7 @@ export interface FileRoutesByTo {
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/pmp25q50m': typeof Pmp25q50mRoute
+  '/process-test-lorysha': typeof ProcessTestLoryshaRoute
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/consultants/shawn-jung': typeof ConsultantsShawnJungRoute
@@ -203,6 +211,7 @@ export interface FileRoutesById {
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/pmp25q50m': typeof Pmp25q50mRoute
+  '/process-test-lorysha': typeof ProcessTestLoryshaRoute
   '/reimbursement': typeof ReimbursementRoute
   '/vizhun': typeof VizhunRoute
   '/consultants/shawn-jung': typeof ConsultantsShawnJungRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
     | '/pmp-practice'
     | '/pmp24q40m'
     | '/pmp25q50m'
+    | '/process-test-lorysha'
     | '/reimbursement'
     | '/vizhun'
     | '/consultants/shawn-jung'
@@ -251,6 +261,7 @@ export interface FileRouteTypes {
     | '/pmp-practice'
     | '/pmp24q40m'
     | '/pmp25q50m'
+    | '/process-test-lorysha'
     | '/reimbursement'
     | '/vizhun'
     | '/consultants/shawn-jung'
@@ -274,6 +285,7 @@ export interface FileRouteTypes {
     | '/pmp-practice'
     | '/pmp24q40m'
     | '/pmp25q50m'
+    | '/process-test-lorysha'
     | '/reimbursement'
     | '/vizhun'
     | '/consultants/shawn-jung'
@@ -298,6 +310,7 @@ export interface RootRouteChildren {
   PmpPracticeRoute: typeof PmpPracticeRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
   Pmp25q50mRoute: typeof Pmp25q50mRoute
+  ProcessTestLoryshaRoute: typeof ProcessTestLoryshaRoute
   ReimbursementRoute: typeof ReimbursementRoute
   VizhunRoute: typeof VizhunRoute
   ConsultantsShawnJungRoute: typeof ConsultantsShawnJungRoute
@@ -318,6 +331,13 @@ declare module '@tanstack/react-router' {
       path: '/reimbursement'
       fullPath: '/reimbursement'
       preLoaderRoute: typeof ReimbursementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/process-test-lorysha': {
+      id: '/process-test-lorysha'
+      path: '/process-test-lorysha'
+      fullPath: '/process-test-lorysha'
+      preLoaderRoute: typeof ProcessTestLoryshaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/pmp25q50m': {
@@ -474,6 +494,7 @@ const rootRouteChildren: RootRouteChildren = {
   PmpPracticeRoute: PmpPracticeRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
   Pmp25q50mRoute: Pmp25q50mRoute,
+  ProcessTestLoryshaRoute: ProcessTestLoryshaRoute,
   ReimbursementRoute: ReimbursementRoute,
   VizhunRoute: VizhunRoute,
   ConsultantsShawnJungRoute: ConsultantsShawnJungRoute,
