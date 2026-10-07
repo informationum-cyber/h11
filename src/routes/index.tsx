@@ -69,6 +69,7 @@ function LandingPage() {
           <img src="/logo-hansel.png" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
         </div>
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
+          <Link to="/about" className="hover:text-[#D86040] transition-colors">About</Link>
           <Link to="/enterprise-transformation" className="hover:text-[#D86040] transition-colors">Enterprise</Link>
           <Link to="/career-transformation" className="hover:text-[#D86040] transition-colors">Career</Link>
           <Link to="/learning-transformation" className="hover:text-[#D86040] transition-colors">Learning</Link>
@@ -173,6 +174,9 @@ function LandingPage() {
             Hansel Eleven is dedicated to guiding organizations and individuals through complexity — with empathy, structure, and a human-centered approach.
           </p>
         </div>
+        <Link to="/about" className="shrink-0 inline-flex items-center gap-2 bg-[#202830] text-white px-8 py-4 rounded-sm font-medium hover:bg-[#D86040] transition-colors">
+          Meet the Team <ArrowRight size={18} />
+        </Link>
       </section>
 
       {/* PUBLISHED RESEARCH SECTION */}

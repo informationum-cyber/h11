@@ -5,7 +5,6 @@ import {
   ClipboardList,
   Briefcase,
   Linkedin,
-  FileText,
   ArrowRight,
 } from 'lucide-react'
 
@@ -20,6 +19,7 @@ const whitepaper = {
   author: 'Ji-Won (Shawn) Jung',
   date: 'Oct 2026',
   url: 'https://figshare.com/articles/preprint/_b_Management_Consultant_b_b_in_a_Startup_b_/34062363?file=69595476',
+  thumbnail: '/whitepapers/shawn-management-consultant-startup.jpg',
 }
 
 const highlights = [
@@ -207,11 +207,13 @@ function ShawnJung() {
             href={whitepaper.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="group flex flex-col sm:flex-row sm:items-center gap-6 bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-8 transition-all"
+            className="group flex flex-col sm:flex-row sm:items-center gap-6 bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-6 transition-all"
           >
-            <div className="w-14 h-14 shrink-0 rounded-xl bg-[#1E5C3A]/10 flex items-center justify-center">
-              <FileText className="text-[#1E5C3A]" size={24} />
-            </div>
+            <img
+              src={whitepaper.thumbnail}
+              alt={`${whitepaper.title} — white paper cover`}
+              className="w-28 shrink-0 rounded-lg border border-gray-100 shadow-sm mx-auto sm:mx-0"
+            />
             <div className="flex-grow">
               <div className="text-xs font-semibold tracking-wide uppercase text-gray-400 mb-2">
                 {whitepaper.publisher} &middot; {whitepaper.author} &middot;{' '}
