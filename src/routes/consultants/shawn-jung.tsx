@@ -5,11 +5,22 @@ import {
   ClipboardList,
   Briefcase,
   Linkedin,
+  FileText,
+  ArrowRight,
 } from 'lucide-react'
 
 export const Route = createFileRoute('/consultants/shawn-jung')({
   component: ShawnJung,
 })
+
+const whitepaper = {
+  title: 'Management Consultant in a Startup',
+  subtitle: 'Challenges and a Success Path',
+  publisher: 'Figshare / Preprint',
+  author: 'Ji-Won (Shawn) Jung',
+  date: 'Oct 2026',
+  url: 'https://figshare.com/articles/preprint/_b_Management_Consultant_b_b_in_a_Startup_b_/34062363?file=69595476',
+}
 
 const highlights = [
   {
@@ -181,6 +192,40 @@ function ShawnJung() {
               className="w-full h-full object-cover absolute inset-0"
             />
           </div>
+        </section>
+
+        {/* PUBLISHED RESEARCH */}
+        <section className="mb-20">
+          <div className="inline-block px-4 py-2 bg-[#1E5C3A]/10 text-[#1E5C3A] font-semibold tracking-wide text-sm rounded-full mb-4">
+            PUBLISHED RESEARCH
+          </div>
+          <h2 className="text-3xl font-bold text-[#143D2D] mb-10">
+            White paper
+          </h2>
+
+          <a
+            href={whitepaper.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex flex-col sm:flex-row sm:items-center gap-6 bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-8 transition-all"
+          >
+            <div className="w-14 h-14 shrink-0 rounded-xl bg-[#1E5C3A]/10 flex items-center justify-center">
+              <FileText className="text-[#1E5C3A]" size={24} />
+            </div>
+            <div className="flex-grow">
+              <div className="text-xs font-semibold tracking-wide uppercase text-gray-400 mb-2">
+                {whitepaper.publisher} &middot; {whitepaper.author} &middot;{' '}
+                {whitepaper.date}
+              </div>
+              <h3 className="text-xl font-bold text-[#143D2D] mb-1 group-hover:text-[#1E5C3A] transition-colors">
+                {whitepaper.title}
+              </h3>
+              <p className="text-gray-600 font-light">{whitepaper.subtitle}</p>
+            </div>
+            <div className="inline-flex items-center gap-2 text-[#1E5C3A] font-medium text-sm shrink-0 group-hover:gap-3 transition-all">
+              Read Paper <ArrowRight size={16} />
+            </div>
+          </a>
         </section>
       </main>
 
