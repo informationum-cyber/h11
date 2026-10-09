@@ -26,12 +26,10 @@ const whitepapers = [
     title: 'The Courage to Constrain',
     subtitle:
       'Why Good Consultants and Product Leaders Sometimes Create Value by Saying No',
-    publisher: 'Hansel Eleven / Whitepaper',
+    publisher: 'Figshare / Preprint',
     author: 'Ji-Won (Shawn) Jung',
     date: 'Oct 2026',
-    // Not yet published externally — links back to the Hansel Eleven site for now.
-    // Swap in the final Medium (or other) URL once it's live.
-    url: '/',
+    url: 'https://figshare.com/articles/journal_contribution/The_Courage_to_Constrain_-_Why_Good_Consultants_and_Product_Leaders_Sometimes_say_No/34327932?file=69866958',
     thumbnail: '/whitepapers/shawn-courage-to-constrain.jpg',
   },
 ]
