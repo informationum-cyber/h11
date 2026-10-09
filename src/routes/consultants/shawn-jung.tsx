@@ -12,15 +12,29 @@ export const Route = createFileRoute('/consultants/shawn-jung')({
   component: ShawnJung,
 })
 
-const whitepaper = {
-  title: 'Management Consultant in a Startup',
-  subtitle: 'Challenges and a Success Path',
-  publisher: 'Figshare / Preprint',
-  author: 'Ji-Won (Shawn) Jung',
-  date: 'Oct 2026',
-  url: 'https://figshare.com/articles/preprint/_b_Management_Consultant_b_b_in_a_Startup_b_/34062363?file=69595476',
-  thumbnail: '/whitepapers/shawn-management-consultant-startup.jpg',
-}
+const whitepapers = [
+  {
+    title: 'Management Consultant in a Startup',
+    subtitle: 'Challenges and a Success Path',
+    publisher: 'Figshare / Preprint',
+    author: 'Ji-Won (Shawn) Jung',
+    date: 'Oct 2026',
+    url: 'https://figshare.com/articles/preprint/_b_Management_Consultant_b_b_in_a_Startup_b_/34062363?file=69595476',
+    thumbnail: '/whitepapers/shawn-management-consultant-startup.jpg',
+  },
+  {
+    title: 'The Courage to Constrain',
+    subtitle:
+      'Why Good Consultants and Product Leaders Sometimes Create Value by Saying No',
+    publisher: 'Hansel Eleven / Whitepaper',
+    author: 'Ji-Won (Shawn) Jung',
+    date: 'Oct 2026',
+    // Not yet published externally — links back to the Hansel Eleven site for now.
+    // Swap in the final Medium (or other) URL once it's live.
+    url: '/',
+    thumbnail: '/whitepapers/shawn-courage-to-constrain.jpg',
+  },
+]
 
 const highlights = [
   {
@@ -97,7 +111,7 @@ function ShawnJung() {
         {/* HERO */}
         <div className="max-w-3xl mb-20">
           <p className="text-sm font-semibold tracking-widest text-[#6BAF8A] uppercase mb-4">
-            Marketing &middot; Web Presence &middot; Business Development
+            Management Consultant
           </p>
           <h1 className="text-4xl md:text-5xl font-bold text-[#143D2D] mb-6">
             Ji-Won (Shawn) Jung
@@ -161,27 +175,39 @@ function ShawnJung() {
             </h2>
             <div className="space-y-4 text-gray-300 font-light leading-relaxed">
               <p>
-                At Hansel Eleven, Shawn leads LinkedIn content creation and
-                R&amp;D for our social media and web presence, and handles
-                requirement analysis and project coordination for the Hansel
-                Eleven Website Project.
+                Shawn is a Management Consultant at Hansel Eleven, where he
+                operates across the full breadth of the business. His role spans
+                the responsibilities that larger organizations divide among
+                their operations, commercial, and technology leaders: he leads
+                operations management and strategic planning, drives marketing,
+                business development and client coordination, steers the
+                firm&rsquo;s digital presence, and supports company policy
+                development.
               </p>
               <p>
-                He also supports company policy development and assists
-                leadership with business development and marketing.
+                Based on his research, he has published white papers exploring
+                the forces shaping modern business, from management consulting
+                and organizational strategy to accounting, finance, and the
+                future of work. Drawing on cross-border experience in Canada and
+                South Korea, his writing connects strategic thinking with
+                practical execution, examining how organizations navigate
+                growth, complexity, and change in an evolving global economy.
               </p>
               <p>
-                He brings a foundation of 5+ years in operations and people
-                management across Canada and South Korea, and is a Business
-                Administration student at the University of Toronto Scarborough,
-                specializing in Accounting with a minor in Economics and working
-                toward his CPA designation.
+                Shawn brings 5+ years of operations and people management
+                experience across Canada and South Korea, including Restaurant
+                Manager, General Manager and Sales Manager roles. He is a
+                Business Administration student at the University of Toronto
+                Scarborough, specializing in Accounting with a minor in
+                Economics, and is working toward his CPA designation. On campus,
+                he serves as VP of Sponsorship for the Infinite Aperture Club
+                and previously led corporate relations at UTKOS and human
+                resources at ACE UTSC.
               </p>
               <p>
-                On campus, he serves as VP of Sponsorship for the Infinite
-                Aperture Club and previously led corporate relations at UTKOS
-                (Director, then VP) and HR at ACE UTSC. He is fluent in English
-                and Korean, with working proficiency in French.
+                Fluent in English and Korean with working proficiency in French,
+                Shawn brings a cross-cultural, collaborative approach to every
+                engagement.
               </p>
             </div>
           </div>
@@ -200,34 +226,38 @@ function ShawnJung() {
             PUBLISHED RESEARCH
           </div>
           <h2 className="text-3xl font-bold text-[#143D2D] mb-10">
-            White paper
+            White papers
           </h2>
 
-          <a
-            href={whitepaper.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group flex flex-col sm:flex-row sm:items-center gap-6 bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-6 transition-all"
-          >
-            <img
-              src={whitepaper.thumbnail}
-              alt={`${whitepaper.title} — white paper cover`}
-              className="w-28 shrink-0 rounded-lg border border-gray-100 shadow-sm mx-auto sm:mx-0"
-            />
-            <div className="flex-grow">
-              <div className="text-xs font-semibold tracking-wide uppercase text-gray-400 mb-2">
-                {whitepaper.publisher} &middot; {whitepaper.author} &middot;{' '}
-                {whitepaper.date}
-              </div>
-              <h3 className="text-xl font-bold text-[#143D2D] mb-1 group-hover:text-[#1E5C3A] transition-colors">
-                {whitepaper.title}
-              </h3>
-              <p className="text-gray-600 font-light">{whitepaper.subtitle}</p>
-            </div>
-            <div className="inline-flex items-center gap-2 text-[#1E5C3A] font-medium text-sm shrink-0 group-hover:gap-3 transition-all">
-              Read Paper <ArrowRight size={16} />
-            </div>
-          </a>
+          <div className="space-y-5">
+            {whitepapers.map((wp) => (
+              <a
+                key={wp.title}
+                href={wp.url}
+                target={wp.url.startsWith('/') ? undefined : '_blank'}
+                rel={wp.url.startsWith('/') ? undefined : 'noopener noreferrer'}
+                className="group flex flex-col sm:flex-row sm:items-center gap-6 bg-white border border-gray-100 hover:border-[#1E5C3A]/40 hover:shadow-md rounded-2xl p-6 transition-all"
+              >
+                <img
+                  src={wp.thumbnail}
+                  alt={`${wp.title} — white paper cover`}
+                  className="w-28 shrink-0 rounded-lg border border-gray-100 shadow-sm mx-auto sm:mx-0"
+                />
+                <div className="flex-grow">
+                  <div className="text-xs font-semibold tracking-wide uppercase text-gray-400 mb-2">
+                    {wp.publisher} &middot; {wp.author} &middot; {wp.date}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#143D2D] mb-1 group-hover:text-[#1E5C3A] transition-colors">
+                    {wp.title}
+                  </h3>
+                  <p className="text-gray-600 font-light">{wp.subtitle}</p>
+                </div>
+                <div className="inline-flex items-center gap-2 text-[#1E5C3A] font-medium text-sm shrink-0 group-hover:gap-3 transition-all">
+                  Read Paper <ArrowRight size={16} />
+                </div>
+              </a>
+            ))}
+          </div>
         </section>
       </main>
 

@@ -8,7 +8,7 @@ export const Route = createFileRoute('/about')({
 const team = [
   {
     name: 'Ji-Won (Shawn) Jung',
-    role: 'Marketing & Business Development Consultant',
+    role: 'Management Consultant',
     photo: '/team/shawn-jung.jpg',
     href: '/consultants/shawn-jung',
     bio: [
@@ -107,9 +107,9 @@ function About() {
                 </p>
                 <p>
                   A passionate advocate for human-centered delivery, he is
-                  dedicated to mentoring professionals at every career stage
-                  and coaching delivery professionals to thrive in an
-                  ever-evolving landscape.
+                  dedicated to mentoring professionals at every career stage and
+                  coaching delivery professionals to thrive in an ever-evolving
+                  landscape.
                 </p>
                 <p>
                   Deepak is also a published researcher — his work on meeting
