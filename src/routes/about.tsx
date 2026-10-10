@@ -7,6 +7,26 @@ export const Route = createFileRoute('/about')({
 
 const team = [
   {
+    name: 'Revthee Ganesan',
+    role: 'Advisory Consultant — Special Projects',
+    photo: '/team/revthee-ganesan.jpg',
+    href: '/consultants/revthee-ganesan',
+    bio: [
+      'With over 20 years of experience, Revthee brings a unique blend of product ownership, quality assurance, and software management expertise, grounded in certifications including Certified Scrum Master, Certified Scrum Product Owner, and ISTQB.',
+      'Based in Houston, her focus is on advancing quality assurance and agile delivery — building high-performing, cross-functional workflows that keep the highest standards of quality.',
+    ],
+  },
+  {
+    name: 'Matthew Wang',
+    role: 'Financial Strategy & Analytics Consultant',
+    photo: '/team/matthew-wang.jpg',
+    href: '/consultants/matthew-wang',
+    bio: [
+      'Matthew turns complex business and finance questions into decision-ready insights — driver-based Excel models, valuations, and KPI dashboards built for executive audiences. He studied Economics and Communication, Culture, Information & Technology at the University of Toronto, with executive certificate experience at SKEMA Business School.',
+      'His work spans acquisition ROI modeling, equity valuation, and liquidity risk simulation — blending financial rigor with clear, stakeholder-ready storytelling.',
+    ],
+  },
+  {
     name: 'Ji-Won (Shawn) Jung',
     role: 'Management Consultant',
     photo: '/team/shawn-jung.jpg',

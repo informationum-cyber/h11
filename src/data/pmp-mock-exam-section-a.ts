@@ -235,9 +235,9 @@ export const pmpMockExamSectionA: PMPScenario[] = [
             text: 'Raise a change request for the changes and gain approval from the Change Control Board.',
           },
         ],
-        correct: 'a',
+        correct: 'd',
         explanation:
-          "The sponsor has already approved the scope addition — what's missing is funding for the unbudgeted work, so the next step is securing it through management reserve via the PMO, not re-running an approval that already happened, silently absorbing it into a budget it wasn't scoped for, or treating this predictive workstream as if it had an agile backlog.",
+          "A sponsor's verbal agreement during a progress review is not the same as a formally approved change — any addition to scope, especially unbudgeted work, still has to go through integrated change control: raise a change request, get it assessed for cost/schedule/risk impact, and have the Change Control Board approve it and update the baseline, rather than skipping straight to funding it, silently absorbing it into a budget it wasn't scoped for, or treating this predictive workstream as if it had an agile backlog.",
       },
       {
         id: 2,
