@@ -2,8 +2,8 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import {
   Megaphone,
   Globe2,
-  ClipboardList,
   Briefcase,
+  Users,
   Linkedin,
   ArrowRight,
 } from 'lucide-react'
@@ -26,44 +26,42 @@ const whitepapers = [
     title: 'The Courage to Constrain',
     subtitle:
       'Why Good Consultants and Product Leaders Sometimes Create Value by Saying No',
-    publisher: 'Hansel Eleven / Whitepaper',
+    publisher: 'Figshare / Preprint',
     author: 'Ji-Won (Shawn) Jung',
     date: 'Oct 2026',
-    // Not yet published externally — links back to the Hansel Eleven site for now.
-    // Swap in the final Medium (or other) URL once it's live.
-    url: '/',
+    url: 'https://figshare.com/articles/journal_contribution/The_Courage_to_Constrain_-_Why_Good_Consultants_and_Product_Leaders_Sometimes_say_No/34327932?file=69866958',
     thumbnail: '/whitepapers/shawn-courage-to-constrain.jpg',
   },
 ]
 
 const highlights = [
   {
-    icon: Megaphone,
-    meta: 'Marketing & Content',
-    title: 'LinkedIn Content Creation',
+    icon: Briefcase,
+    meta: 'Operations & Strategy',
+    title: 'Running the business and planning its growth',
     description:
-      "Creates and manages content that grows Hansel Eleven's presence and engagement on LinkedIn.",
+      "Oversees day-to-day operations, builds structured processes, and develops business plans and growth roadmaps aligned with the firm's strategic priorities.",
+  },
+  {
+    icon: Megaphone,
+    meta: 'Commercial & Client Leadership',
+    title: 'Marketing, business development and client coordination',
+    description:
+      'Leads brand and content strategy, identifies growth opportunities and acquisition channels, and manages client communication and engagement.',
   },
   {
     icon: Globe2,
-    meta: 'Digital Strategy',
-    title: 'Social Media & Web Presence R&D',
+    meta: 'Digital & Information Strategy',
+    title: 'Web presence and digital initiatives',
     description:
-      "Researches and develops strategies to strengthen Hansel Eleven's social media and web presence.",
+      "Leads the firm's social media and web presence R&D, and coordinates requirements and delivery for the Hansel Eleven website project.",
   },
   {
-    icon: ClipboardList,
-    meta: 'Project Coordination',
-    title: 'Hansel Eleven Website Project',
+    icon: Users,
+    meta: 'People & Culture',
+    title: 'Employee relations and organizational policy',
     description:
-      'Leads requirement analysis and coordinates delivery for the Hansel Eleven Website Project.',
-  },
-  {
-    icon: Briefcase,
-    meta: 'Leadership Support',
-    title: 'Policy & Business Development',
-    description:
-      'Supports company policy development and assists leadership with business development and marketing.',
+      'Manages team relations and supports company policy development to strengthen engagement, collaboration and retention.',
   },
 ]
 
