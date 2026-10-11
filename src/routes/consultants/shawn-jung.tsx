@@ -92,9 +92,6 @@ function ShawnJung() {
           >
             Learning
           </Link>
-          <Link to="/vizhun" className="hover:text-[#1E5C3A] transition-colors">
-            Vizhun
-          </Link>
         </nav>
       </header>
 
