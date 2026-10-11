@@ -117,21 +117,22 @@ function LandingPage() {
       </header>
 
       {/* HERO SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
-        <div className="relative">
-          <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-5">
-            {/* Subtle geometric background element */}
-            <div className="w-[600px] h-[600px] border-[40px] border-[#202830] rounded-full filter blur-3xl"></div>
-          </div>
+      <section className="relative overflow-hidden">
+        <img
+          src="/home-hero-forest.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-[75%_35%] md:object-[80%_40%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#143D2D] via-[#143D2D]/92 to-[#143D2D]/75 md:from-[#143D2D] md:via-[#143D2D]/80 md:to-[#143D2D]/15" />
 
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#202830] max-w-4xl mx-auto leading-tight mb-8">
-            Transformation & <br /> Professional Enablement
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start text-left">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white max-w-2xl leading-tight mb-6">
+            A steadier way through{' '}
+            <span className="text-[#D86040]">complexity.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 font-light">
-            Guiding professionals and organizations through complexity —{' '}
-            <span className="text-[#D86040] font-medium">
-              one breadcrumb at a time.
-            </span>
+          <p className="text-lg md:text-xl text-gray-200 max-w-xl mb-10 font-light italic">
+            Guiding professionals and organizations through complexity — one
+            breadcrumb at a time.
           </p>
           <a
             href="#offerings"
