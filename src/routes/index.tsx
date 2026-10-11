@@ -123,17 +123,18 @@ function LandingPage() {
           alt=""
           className="absolute inset-0 w-full h-full object-cover object-[75%_35%] md:object-[80%_40%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#143D2D] via-[#143D2D]/92 to-[#143D2D]/75 md:from-[#143D2D] md:via-[#143D2D]/80 md:to-[#143D2D]/15" />
 
         <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start text-left">
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white max-w-2xl leading-tight mb-6">
-            A steadier way through{' '}
-            <span className="text-[#D86040]">complexity.</span>
-          </h1>
-          <p className="text-lg md:text-xl text-gray-200 max-w-xl mb-10 font-light italic">
-            Guiding professionals and organizations through complexity — one
-            breadcrumb at a time.
-          </p>
+          <div className="bg-[#143D2D]/85 px-6 py-6 md:px-8 md:py-8 mb-8 max-w-2xl">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight mb-4">
+              A steadier way through{' '}
+              <span className="text-[#D86040]">complexity.</span>
+            </h1>
+            <p className="text-lg md:text-xl text-gray-200 max-w-xl font-light italic">
+              Guiding professionals and organizations through complexity —
+              one breadcrumb at a time.
+            </p>
+          </div>
           <a
             href="#offerings"
             className="bg-[#D86040] hover:bg-[#C1542F] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block"
