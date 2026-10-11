@@ -1,5 +1,11 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
-import { Network, TrendingUp, GraduationCap, CalendarClock, Quote, ArrowRight } from 'lucide-react'
+import {
+  Network,
+  TrendingUp,
+  GraduationCap,
+  Quote,
+  ArrowRight,
+} from 'lucide-react'
 
 const whitepapers = [
   {
@@ -10,13 +16,15 @@ const whitepapers = [
   },
   {
     title: 'The Human Operating System™',
-    subtitle: 'Projects do not fail because of bad plans. They fail because of human conditions that no project charter or risk register captures.',
+    subtitle:
+      'Projects do not fail because of bad plans. They fail because of human conditions that no project charter or risk register captures.',
     publisher: 'GovWhitePapers',
     url: 'https://govwhitepapers.com/whitepapers/human-operating-system-why-projects-fail-people-before-they-fail-plans',
   },
   {
     title: 'Protecting the Product from Its Own Clients',
-    subtitle: 'What project managers learn when they finally cross into product thinking.',
+    subtitle:
+      'What project managers learn when they finally cross into product thinking.',
     publisher: 'Hansel Eleven / Figshare',
     url: 'https://doi.org/10.6084/m9.figshare.32974694',
   },
@@ -31,32 +39,37 @@ const testimonials = [
     name: 'Tomas Czyz',
     country: 'Poland',
     flag: '🇵🇱',
-    quote: 'Hansel Eleven helped me in my journey to build real confidence for the corporate workplace. Every session was well prepared, engaging, and focused on my goals. I appreciate how much the mentors care about my progress and make learning enjoyable.',
+    quote:
+      'Hansel Eleven helped me in my journey to build real confidence for the corporate workplace. Every session was well prepared, engaging, and focused on my goals. I appreciate how much the mentors care about my progress and make learning enjoyable.',
   },
   {
     name: 'Andrea D',
     country: 'Italy',
     flag: '🇮🇹',
-    quote: "Deepak from Hansel Eleven is a wonderful mentor. I can't stop thanking him for opening my eyes to the world of Project Management, which changed my perspective and helped me love my job even more. In your professional life, some people are unforgettable, and he is one of them.",
+    quote:
+      "Deepak from Hansel Eleven is a wonderful mentor. I can't stop thanking him for opening my eyes to the world of Project Management, which changed my perspective and helped me love my job even more. In your professional life, some people are unforgettable, and he is one of them.",
   },
   {
     name: 'Bota K',
     country: 'Uzbekistan',
     flag: '🇺🇿',
-    quote: 'The guidance I received from them has been invaluable in preparing me for technical and C-level interviews where I got great feedback from those interviews.',
+    quote:
+      'The guidance I received from them has been invaluable in preparing me for technical and C-level interviews where I got great feedback from those interviews.',
   },
   {
     name: 'Salama',
     country: 'Egypt',
     flag: '🇪🇬',
-    quote: 'Your expertise, passion, and dedication have helped shape my vision of this project management field and have optimally prepared me to face the challenges ahead. I am convinced that your positive influence will remain etched in me throughout my career.',
+    quote:
+      'Your expertise, passion, and dedication have helped shape my vision of this project management field and have optimally prepared me to face the challenges ahead. I am convinced that your positive influence will remain etched in me throughout my career.',
     note: 'Translated from the original French',
   },
   {
     name: 'Antonio',
     country: 'United Kingdom',
     flag: '🇬🇧',
-    quote: 'Consulted with them as I was looking to start a career in IT PM. Received great guidance, direction and invaluable knowledge about the industry.',
+    quote:
+      'Consulted with them as I was looking to start a career in IT PM. Received great guidance, direction and invaluable knowledge about the industry.',
   },
 ]
 
@@ -66,33 +79,65 @@ function LandingPage() {
       {/* HEADER */}
       <header className="w-full max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row justify-between items-center">
         <div className="mb-4 md:mb-0">
-          <img src="/logo-hansel.png" alt="Hansel Eleven Logo" className="h-28 w-auto object-contain" />
+          <img
+            src="/logo-hansel.png"
+            alt="Hansel Eleven Logo"
+            className="h-28 w-auto object-contain"
+          />
         </div>
         <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2 text-sm font-medium text-gray-600">
-          <Link to="/about" className="hover:text-[#D86040] transition-colors">About</Link>
-          <Link to="/enterprise-transformation" className="hover:text-[#D86040] transition-colors">Enterprise</Link>
-          <Link to="/career-transformation" className="hover:text-[#D86040] transition-colors">Career</Link>
-          <Link to="/learning-transformation" className="hover:text-[#D86040] transition-colors">Learning</Link>
-          <Link to="/vizhun" className="hover:text-[#D86040] transition-colors">Vizhun</Link>
-          <Link to="/careers" className="hover:text-[#D86040] transition-colors">Jobs @ Hansel</Link>
+          <Link to="/about" className="hover:text-[#D86040] transition-colors">
+            About
+          </Link>
+          <Link
+            to="/enterprise-transformation"
+            className="hover:text-[#D86040] transition-colors"
+          >
+            Enterprise
+          </Link>
+          <Link
+            to="/career-transformation"
+            className="hover:text-[#D86040] transition-colors"
+          >
+            Career
+          </Link>
+          <Link
+            to="/learning-transformation"
+            className="hover:text-[#D86040] transition-colors"
+          >
+            Learning
+          </Link>
+          <Link
+            to="/careers"
+            className="hover:text-[#D86040] transition-colors"
+          >
+            Jobs @ Hansel
+          </Link>
         </nav>
       </header>
 
       {/* HERO SECTION */}
-      <section className="w-full max-w-7xl mx-auto px-6 py-24 md:py-32 flex flex-col items-center text-center">
-        <div className="relative">
-          <div className="absolute inset-0 -z-10 flex items-center justify-center opacity-5">
-            {/* Subtle geometric background element */}
-            <div className="w-[600px] h-[600px] border-[40px] border-[#202830] rounded-full filter blur-3xl"></div>
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-[#202830] max-w-4xl mx-auto leading-tight mb-8">
-            Transformation & <br /> Professional Enablement
+      <section className="relative overflow-hidden">
+        <img
+          src="/home-hero-forest.jpg"
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover object-[75%_35%] md:object-[80%_40%]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#143D2D] via-[#143D2D]/92 to-[#143D2D]/75 md:from-[#143D2D] md:via-[#143D2D]/80 md:to-[#143D2D]/15" />
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-6 py-24 md:py-36 flex flex-col items-start text-left">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-white max-w-2xl leading-tight mb-6">
+            A steadier way through{' '}
+            <span className="text-[#D86040]">complexity.</span>
           </h1>
-          <p className="text-xl md:text-2xl text-gray-600 max-w-2xl mx-auto mb-12 font-light">
-            Guiding professionals and organizations through complexity — <span className="text-[#D86040] font-medium">one breadcrumb at a time.</span>
+          <p className="text-lg md:text-xl text-gray-200 max-w-xl mb-10 font-light italic">
+            Guiding professionals and organizations through complexity — one
+            breadcrumb at a time.
           </p>
-          <a href="#offerings" className="bg-[#D86040] hover:bg-[#C1542F] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block">
+          <a
+            href="#offerings"
+            className="bg-[#D86040] hover:bg-[#C1542F] text-white px-8 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block"
+          >
             Explore Our Offerings
           </a>
         </div>
@@ -100,64 +145,96 @@ function LandingPage() {
 
       {/* PILLAR CARDS */}
       <section id="offerings" className="bg-gray-50 py-24">
-        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1 */}
-          <Link to="/enterprise-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link
+            to="/enterprise-transformation"
+            className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+          >
             <div className="w-14 h-14 bg-[#202830]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#202830] transition-colors">
               <Network className="w-7 h-7 text-[#202830] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#202830] mb-3">Enterprise Transformation</h3>
-            <p className="text-gray-500 mb-6 font-medium">Transform how you deliver</p>
+            <h3 className="text-2xl font-bold text-[#202830] mb-3">
+              Enterprise Transformation
+            </h3>
+            <p className="text-gray-500 mb-6 font-medium">
+              Transform how you deliver
+            </p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span> HART Framework</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span> Consulting</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span> Workshops</li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span>{' '}
+                HART Framework
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span>{' '}
+                Consulting
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span>{' '}
+                Workshops
+              </li>
             </ul>
           </Link>
 
           {/* Card 2 */}
-          <Link to="/career-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link
+            to="/career-transformation"
+            className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+          >
             <div className="w-14 h-14 bg-[#D86040]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#D86040] transition-colors">
               <TrendingUp className="w-7 h-7 text-[#D86040] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#202830] mb-3">Career Transformation</h3>
-            <p className="text-gray-500 mb-6 font-medium">Transform your career path</p>
+            <h3 className="text-2xl font-bold text-[#202830] mb-3">
+              Career Transformation
+            </h3>
+            <p className="text-gray-500 mb-6 font-medium">
+              Transform your career path
+            </p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Career Coaching</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Interview Prep</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Transitions</li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span>{' '}
+                Career Coaching
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span>{' '}
+                Interview Prep
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span>{' '}
+                Transitions
+              </li>
             </ul>
           </Link>
 
           {/* Card 3 */}
-          <Link to="/learning-transformation" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
+          <Link
+            to="/learning-transformation"
+            className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group"
+          >
             <div className="w-14 h-14 bg-[#202830]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#202830] transition-colors">
               <GraduationCap className="w-7 h-7 text-[#202830] group-hover:text-white transition-colors" />
             </div>
-            <h3 className="text-2xl font-bold text-[#202830] mb-3">Learning Transformation</h3>
-            <p className="text-gray-500 mb-6 font-medium">Transform your expertise</p>
+            <h3 className="text-2xl font-bold text-[#202830] mb-3">
+              Learning Transformation
+            </h3>
+            <p className="text-gray-500 mb-6 font-medium">
+              Transform your expertise
+            </p>
             <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span> PMP Prep</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span> Agile Training</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span> Thought Leadership</li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span>{' '}
+                PMP Prep
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span>{' '}
+                Agile Training
+              </li>
+              <li className="flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#D86040]"></span>{' '}
+                Thought Leadership
+              </li>
             </ul>
           </Link>
-
-          {/* Card 4 */}
-          <Link to="/vizhun" className="block bg-white p-10 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow group">
-            <div className="w-14 h-14 bg-[#D86040]/10 rounded-lg flex items-center justify-center mb-8 group-hover:bg-[#D86040] transition-colors">
-              <CalendarClock className="w-7 h-7 text-[#D86040] group-hover:text-white transition-colors" />
-            </div>
-            <h3 className="text-2xl font-bold text-[#202830] mb-3">Vizhun</h3>
-            <p className="text-gray-500 mb-6 font-medium">Transform your vision into a plan</p>
-            <ul className="space-y-3 text-gray-700">
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Vision to Calendar</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Smart Scheduling</li>
-              <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-[#202830]"></span> Early Access</li>
-            </ul>
-          </Link>
-
         </div>
       </section>
 
@@ -171,10 +248,15 @@ function LandingPage() {
             A boutique transformation firm
           </h2>
           <p className="text-lg text-gray-600 font-light leading-relaxed">
-            Hansel Eleven is dedicated to guiding organizations and individuals through complexity — with empathy, structure, and a human-centered approach.
+            Hansel Eleven is dedicated to guiding organizations and individuals
+            through complexity — with empathy, structure, and a human-centered
+            approach.
           </p>
         </div>
-        <Link to="/about" className="shrink-0 inline-flex items-center gap-2 bg-[#202830] text-white px-8 py-4 rounded-sm font-medium hover:bg-[#D86040] transition-colors">
+        <Link
+          to="/about"
+          className="shrink-0 inline-flex items-center gap-2 bg-[#202830] text-white px-8 py-4 rounded-sm font-medium hover:bg-[#D86040] transition-colors"
+        >
           Meet the Team <ArrowRight size={18} />
         </Link>
       </section>
@@ -190,7 +272,8 @@ function LandingPage() {
               Published Research
             </h2>
             <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
-              Original research on delivery, leadership, and organizational complexity — by Deepak Yeshwanth Saibaba.
+              Original research on delivery, leadership, and organizational
+              complexity — by Deepak Yeshwanth Saibaba.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -202,9 +285,15 @@ function LandingPage() {
                 rel="noopener noreferrer"
                 className="group bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#D86040]/50 rounded-2xl p-8 transition-all flex flex-col"
               >
-                <div className="text-[#D86040] text-xs font-bold tracking-widest uppercase mb-4">{wp.publisher}</div>
-                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#D86040] transition-colors leading-snug">{wp.title}</h3>
-                <p className="text-gray-400 text-sm font-light leading-relaxed mb-8 flex-grow">{wp.subtitle}</p>
+                <div className="text-[#D86040] text-xs font-bold tracking-widest uppercase mb-4">
+                  {wp.publisher}
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-[#D86040] transition-colors leading-snug">
+                  {wp.title}
+                </h3>
+                <p className="text-gray-400 text-sm font-light leading-relaxed mb-8 flex-grow">
+                  {wp.subtitle}
+                </p>
                 <div className="inline-flex items-center gap-2 text-[#D86040] text-sm font-medium group-hover:gap-3 transition-all">
                   Read Paper <ArrowRight size={14} />
                 </div>
@@ -227,12 +316,21 @@ function LandingPage() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {testimonials.map((t) => (
-              <div key={t.name} className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col">
+              <div
+                key={t.name}
+                className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col"
+              >
                 <Quote className="w-8 h-8 text-[#D86040]/30 mb-4" />
-                <p className="text-gray-700 font-light leading-relaxed mb-6 flex-grow">"{t.quote}"</p>
-                {t.note && <p className="text-xs text-gray-400 italic mb-4">{t.note}</p>}
+                <p className="text-gray-700 font-light leading-relaxed mb-6 flex-grow">
+                  "{t.quote}"
+                </p>
+                {t.note && (
+                  <p className="text-xs text-gray-400 italic mb-4">{t.note}</p>
+                )}
                 <div className="flex items-center gap-2 pt-4 border-t border-gray-100">
-                  <span className="text-2xl" role="img" aria-label={t.country}>{t.flag}</span>
+                  <span className="text-2xl" role="img" aria-label={t.country}>
+                    {t.flag}
+                  </span>
                   <div>
                     <p className="font-bold text-[#202830] text-sm">{t.name}</p>
                     <p className="text-gray-500 text-xs">{t.country}</p>
@@ -247,14 +345,20 @@ function LandingPage() {
       {/* FOOTER */}
       <footer className="bg-[#202830] text-white py-12 text-center">
         <div className="max-w-7xl mx-auto px-6">
-          <div className="text-2xl font-black tracking-tight mb-4">HANSEL ELEVEN</div>
-          <p className="text-[#F0A583] mb-4">Transformation & Professional Enablement</p>
+          <div className="text-2xl font-black tracking-tight mb-4">
+            HANSEL ELEVEN
+          </div>
+          <p className="text-[#F0A583] mb-4">
+            Transformation & Professional Enablement
+          </p>
           <p className="text-gray-300 text-sm mb-8 font-light tracking-wide">
             Supporting companies and people in <br className="md:hidden" />
-            Toronto | San Francisco | Warsaw | Dubai | Chennai | Seoul | Hong Kong
+            Toronto | San Francisco | Warsaw | Dubai | Chennai | Seoul | Hong
+            Kong
           </p>
           <div className="text-sm text-gray-400">
-            &copy; {new Date().getFullYear()} Hansel Eleven Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} Hansel Eleven Inc. All rights
+            reserved.
           </div>
         </div>
       </footer>
