@@ -47,7 +47,7 @@ export const createConsultCheckoutSession = createServerFn({ method: 'POST' }).h
               description:
                 'A focused 1-hour session covering your background, PMP ECO walkthrough, readiness assessment, a personalized study roadmap, and exam registration details.',
             },
-            unit_amount: 2500,
+            unit_amount: 4500,
           },
           quantity: 1,
         },
