@@ -75,10 +75,16 @@ function EnterpriseTransformation() {
             </p>
             <p className="text-gray-600 flex-grow">
               <strong>Hybrid Adaptive Responsive Transformation.</strong> A
-              proprietary diagnostic and delivery profile methodology. It serves
-              as a smart tool for understanding exactly what methodology to
-              choose for your unique organizational context.
+              context-driven framework for tailoring program delivery,
+              governance and product decision-making, with a traceable
+              rationale behind every recommendation.
             </p>
+            <Link
+              to="/hart"
+              className="mt-6 text-[#1E5C3A] font-semibold inline-flex items-center hover:underline"
+            >
+              Explore HART <ArrowRight size={18} className="ml-1" />
+            </Link>
           </div>
 
           {/* Card 2 */}

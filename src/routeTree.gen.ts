@@ -19,6 +19,7 @@ import { Route as People_test_reviewRouteImport } from './routes/people_test_rev
 import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
+import { Route as HartRouteImport } from './routes/hart'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as ContractorOnboardingRouteImport } from './routes/contractor-onboarding'
 import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
@@ -82,6 +83,11 @@ const PaymentSuccessRoute = PaymentSuccessRouteImport.update({
 const LearningTransformationRoute = LearningTransformationRouteImport.update({
   id: '/learning-transformation',
   path: '/learning-transformation',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HartRoute = HartRouteImport.update({
+  id: '/hart',
+  path: '/hart',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnterpriseTransformationRoute =
@@ -168,6 +174,7 @@ export interface FileRoutesByFullPath {
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/hart': typeof HartRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
@@ -194,6 +201,7 @@ export interface FileRoutesByTo {
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/hart': typeof HartRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
@@ -221,6 +229,7 @@ export interface FileRoutesById {
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/hart': typeof HartRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
@@ -249,6 +258,7 @@ export interface FileRouteTypes {
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
+    | '/hart'
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
@@ -275,6 +285,7 @@ export interface FileRouteTypes {
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
+    | '/hart'
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
@@ -301,6 +312,7 @@ export interface FileRouteTypes {
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
+    | '/hart'
     | '/learning-transformation'
     | '/payment-success'
     | '/people_test'
@@ -328,6 +340,7 @@ export interface RootRouteChildren {
   ContractorAdminRoute: typeof ContractorAdminRoute
   ContractorOnboardingRoute: typeof ContractorOnboardingRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
+  HartRoute: typeof HartRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
   People_testRoute: typeof People_testRoute
@@ -414,6 +427,13 @@ declare module '@tanstack/react-router' {
       path: '/learning-transformation'
       fullPath: '/learning-transformation'
       preLoaderRoute: typeof LearningTransformationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hart': {
+      id: '/hart'
+      path: '/hart'
+      fullPath: '/hart'
+      preLoaderRoute: typeof HartRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enterprise-transformation': {
@@ -528,6 +548,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContractorAdminRoute: ContractorAdminRoute,
   ContractorOnboardingRoute: ContractorOnboardingRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
+  HartRoute: HartRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
   People_testRoute: People_testRoute,
