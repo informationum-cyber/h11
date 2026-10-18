@@ -1,6 +1,13 @@
 import { Link } from '@tanstack/react-router'
 import { CheckCircle2, XCircle, ArrowRight } from 'lucide-react'
-import type { PMPDomain, PMPQuestion } from '../data/pmp-quiz-types'
+import {
+  correctKeys,
+  formatAnswerKeys,
+  isAnswerCorrect,
+  type PMPAnswers,
+  type PMPDomain,
+  type PMPQuestion,
+} from '../data/pmp-quiz-types'
 
 export const DOMAINS: PMPDomain[] = ['People', 'Process', 'Business Environment']
 
@@ -10,7 +17,7 @@ export interface QuizResults {
   wrongQuestions: PMPQuestion[]
 }
 
-export function scoreQuestions(questions: PMPQuestion[], answers: Partial<Record<number, 'a' | 'b' | 'c' | 'd'>>): QuizResults {
+export function scoreQuestions(questions: PMPQuestion[], answers: PMPAnswers): QuizResults {
   const wrongQuestions: PMPQuestion[] = []
   const byDomain: Record<PMPDomain, { correct: number; total: number }> = {
     People: { correct: 0, total: 0 },
@@ -20,8 +27,7 @@ export function scoreQuestions(questions: PMPQuestion[], answers: Partial<Record
   let correctCount = 0
   for (const q of questions) {
     byDomain[q.domain].total += 1
-    const given = answers[q.id]
-    if (given === q.correct) {
+    if (isAnswerCorrect(q, answers[q.id])) {
       correctCount += 1
       byDomain[q.domain].correct += 1
     } else {
@@ -175,7 +181,8 @@ export function ResultsAdvisory({
                     </div>
                   </div>
                   <p className="text-xs text-gray-600 ml-8">
-                    Correct answer: <strong>{q.correct.toUpperCase()}</strong> &mdash; {q.explanation}
+                    Correct answer: <strong>{formatAnswerKeys(correctKeys(q))}</strong> &mdash;{' '}
+                    {q.explanation}
                   </p>
                 </div>
               )
