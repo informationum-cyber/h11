@@ -15,6 +15,7 @@ import { Route as ProcessTestLoryshaRouteImport } from './routes/process-test-lo
 import { Route as Pmp25q50mRouteImport } from './routes/pmp25q50m'
 import { Route as Pmp24q40mRouteImport } from './routes/pmp24q40m'
 import { Route as PmpPracticeRouteImport } from './routes/pmp-practice'
+import { Route as PmpOct2026RouteImport } from './routes/pmp-oct-2026'
 import { Route as People_test_reviewRouteImport } from './routes/people_test_review'
 import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
@@ -63,6 +64,11 @@ const Pmp24q40mRoute = Pmp24q40mRouteImport.update({
 const PmpPracticeRoute = PmpPracticeRouteImport.update({
   id: '/pmp-practice',
   path: '/pmp-practice',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PmpOct2026Route = PmpOct2026RouteImport.update({
+  id: '/pmp-oct-2026',
+  path: '/pmp-oct-2026',
   getParentRoute: () => rootRouteImport,
 } as any)
 const People_test_reviewRoute = People_test_reviewRouteImport.update({
@@ -179,6 +185,7 @@ export interface FileRoutesByFullPath {
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
   '/people_test_review': typeof People_test_reviewRoute
+  '/pmp-oct-2026': typeof PmpOct2026Route
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/pmp25q50m': typeof Pmp25q50mRoute
@@ -206,6 +213,7 @@ export interface FileRoutesByTo {
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
   '/people_test_review': typeof People_test_reviewRoute
+  '/pmp-oct-2026': typeof PmpOct2026Route
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/pmp25q50m': typeof Pmp25q50mRoute
@@ -234,6 +242,7 @@ export interface FileRoutesById {
   '/payment-success': typeof PaymentSuccessRoute
   '/people_test': typeof People_testRoute
   '/people_test_review': typeof People_test_reviewRoute
+  '/pmp-oct-2026': typeof PmpOct2026Route
   '/pmp-practice': typeof PmpPracticeRoute
   '/pmp24q40m': typeof Pmp24q40mRoute
   '/pmp25q50m': typeof Pmp25q50mRoute
@@ -263,6 +272,7 @@ export interface FileRouteTypes {
     | '/payment-success'
     | '/people_test'
     | '/people_test_review'
+    | '/pmp-oct-2026'
     | '/pmp-practice'
     | '/pmp24q40m'
     | '/pmp25q50m'
@@ -290,6 +300,7 @@ export interface FileRouteTypes {
     | '/payment-success'
     | '/people_test'
     | '/people_test_review'
+    | '/pmp-oct-2026'
     | '/pmp-practice'
     | '/pmp24q40m'
     | '/pmp25q50m'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/payment-success'
     | '/people_test'
     | '/people_test_review'
+    | '/pmp-oct-2026'
     | '/pmp-practice'
     | '/pmp24q40m'
     | '/pmp25q50m'
@@ -345,6 +357,7 @@ export interface RootRouteChildren {
   PaymentSuccessRoute: typeof PaymentSuccessRoute
   People_testRoute: typeof People_testRoute
   People_test_reviewRoute: typeof People_test_reviewRoute
+  PmpOct2026Route: typeof PmpOct2026Route
   PmpPracticeRoute: typeof PmpPracticeRoute
   Pmp24q40mRoute: typeof Pmp24q40mRoute
   Pmp25q50mRoute: typeof Pmp25q50mRoute
@@ -399,6 +412,13 @@ declare module '@tanstack/react-router' {
       path: '/pmp-practice'
       fullPath: '/pmp-practice'
       preLoaderRoute: typeof PmpPracticeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pmp-oct-2026': {
+      id: '/pmp-oct-2026'
+      path: '/pmp-oct-2026'
+      fullPath: '/pmp-oct-2026'
+      preLoaderRoute: typeof PmpOct2026RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/people_test_review': {
@@ -553,6 +573,7 @@ const rootRouteChildren: RootRouteChildren = {
   PaymentSuccessRoute: PaymentSuccessRoute,
   People_testRoute: People_testRoute,
   People_test_reviewRoute: People_test_reviewRoute,
+  PmpOct2026Route: PmpOct2026Route,
   PmpPracticeRoute: PmpPracticeRoute,
   Pmp24q40mRoute: Pmp24q40mRoute,
   Pmp25q50mRoute: Pmp25q50mRoute,

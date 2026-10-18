@@ -340,4 +340,186 @@ export const pmpOct2026Questions: PMPQuestion[] = [
     explanation:
       'Monitoring is an active response when it is deliberately selected, owned and tied to a trigger. Continue checking whether the exposure remains acceptable. If conditions change or the threshold is crossed, reassess and activate or seek approval for the next response as required.',
   },
+  {
+    id: 16,
+    domain: 'Process',
+    topic: 'Data, Information & Reports',
+    prompt:
+      'The project manager combines analyzed scope-change implementation results, forecasts and a short narrative into a consolidated update distributed to the customer. What is the resulting communication best described as?',
+    options: [
+      { key: 'a', text: 'Work performance data.' },
+      { key: 'b', text: 'The project management information system.' },
+      { key: 'c', text: 'A work performance report.' },
+      { key: 'd', text: 'The scope baseline.' },
+    ],
+    correct: 'c',
+    explanation:
+      'Raw observations are work performance data. Analysis produces work performance information. Compiling results into a stakeholder communication produces a work performance report. The information system supports collection and distribution, but is not itself the report. Watch for: distribution alone is not the only clue — here the results are explicitly compiled into a consolidated report.',
+  },
+  {
+    id: 17,
+    domain: 'Process',
+    topic: 'Critical Path & Compression',
+    prompt:
+      'A network has only two complete start-to-finish paths: A-F-G-H takes 22 days and A-D-E takes 18 days. Extra resources can reduce the first path to 16 days; the second path cannot be shortened. Shared activity A is unchanged. What is the shortest possible project duration?',
+    options: [
+      { key: 'a', text: '16 days.' },
+      { key: 'b', text: '18 days.' },
+      { key: 'c', text: '20 days.' },
+      { key: 'd', text: '22 days.' },
+    ],
+    correct: 'b',
+    explanation:
+      'Project duration is governed by the longest remaining path. Once A-F-G-H is reduced below 18 days, A-D-E becomes critical and still takes 18 days. Further compression of the first path alone produces no additional reduction in the project finish date. Watch for: recalculate the network after compression — the original critical path may stop controlling the finish date.',
+  },
+  {
+    id: 18,
+    domain: 'Business Environment',
+    topic: 'Benefits Realization & Sponsor Alignment',
+    prompt:
+      'A new sponsor questions whether an ongoing PMO improvement project supports current priorities. The PM has reliable tracked benefits and outcome forecasts. What is the strongest evidence-based response?',
+    options: [
+      { key: 'a', text: 'Continue without discussion because the previous sponsor approved the project.' },
+      { key: 'b', text: "Present only the team's effort and historical spending." },
+      {
+        key: 'c',
+        text: "Discuss the sponsor's concerns using tracked benefits and projected outcomes, and reassess alignment where needed.",
+      },
+      { key: 'd', text: 'Insist that changing sponsors cannot affect project direction.' },
+    ],
+    correct: 'c',
+    explanation:
+      "Demonstrate value with outcomes and credible benefit evidence, while listening to the new sponsor's priorities. This supports an informed decision to continue, modify or stop the initiative. Historical approval and sunk cost do not establish continuing strategic value. Watch for: presenting benefit evidence should support dialogue, not dismiss a sponsor's legitimate concerns.",
+  },
+  {
+    id: 19,
+    domain: 'Process',
+    topic: 'Contingency Reserves & Change Control',
+    prompt:
+      'At a steering committee, a stakeholder requests a new feature and suggests funding it from contingency reserved for identified delivery risks. The feature is outside approved scope. What should the project manager do?',
+    options: [
+      {
+        key: 'a',
+        text: "Explain the reserve's purpose and route the feature through impact assessment and the formal change process.",
+      },
+      { key: 'b', text: 'Approve it immediately because any contingency can fund any work.' },
+      { key: 'c', text: 'Transfer the reserve quietly and update records after delivery.' },
+      { key: 'd', text: "Reject the stakeholder's right to submit a change request." },
+    ],
+    correct: 'a',
+    explanation:
+      "A new feature should be assessed and authorized through the project's change governance. Contingency is planned for identified risk exposure; reallocating it changes that exposure and requires the appropriate decision. A stakeholder may propose a feature, but the request alone does not authorize implementation. Watch for: neither stakeholder seniority nor the existence of a reserve replaces approval.",
+  },
+  {
+    id: 20,
+    domain: 'People',
+    topic: 'Capability Gaps & Mentoring',
+    prompt:
+      'A project includes interns and experienced specialists. Some interns lack skills needed for upcoming critical deliverables. The PM knows there is a capability gap but has not established its size or training needs. What should happen first?',
+    options: [
+      { key: 'a', text: 'Assign every critical task to interns and expect learning by trial and error.' },
+      { key: 'b', text: 'Replace all interns immediately.' },
+      { key: 'c', text: 'Ignore the gap until a milestone is missed.' },
+      {
+        key: 'd',
+        text: 'Assess the specific capability gap and delivery exposure with the team, then target mentoring, training or work allocation.',
+      },
+    ],
+    correct: 'd',
+    explanation:
+      'A focused assessment identifies which skills are missing and where the schedule is exposed. It allows mentoring, pairing, training and assignments to address the actual gap. Those responses can then balance development of people with delivery commitments, instead of assuming one intervention fits everyone. Watch for: pairing may be valuable, but choose it based on the gap and the work rather than skipping an assessment the scenario says is missing.',
+  },
+  {
+    id: 21,
+    domain: 'Process',
+    topic: 'Backlog Prioritization & Value Evidence',
+    prompt:
+      'A stakeholder repeatedly demands niche features despite usage data showing very low adoption. The product owner has not yet reviewed the latest data against agreed value objectives. What should the PM do first to support a sound prioritization decision?',
+    options: [
+      { key: 'a', text: 'Reorder the backlog personally to satisfy the most vocal stakeholder.' },
+      { key: 'b', text: 'Require all stakeholders to approve every backlog item.' },
+      {
+        key: 'c',
+        text: 'Review the adoption evidence and value objectives with the product owner, then support transparent stakeholder discussion.',
+      },
+      { key: 'd', text: 'Tell the stakeholder that low adoption means their views no longer matter.' },
+    ],
+    correct: 'c',
+    explanation:
+      'The product owner needs the current evidence to make informed ordering decisions. Review value and usage, then communicate the reasoning and invite relevant input. A workshop may be helpful when broader alignment is the problem, but it is not automatically the first step for every request. Watch for: use evidence and respect product decision authority — neither loudness nor a blanket workshop rule determines priority.',
+  },
+  {
+    id: 22,
+    domain: 'Process',
+    topic: 'Scope Clarification — Choose Two',
+    prompt:
+      'Stakeholders say a planned release is missing deliverables they expected. The PM has not yet established whether the items are approved requirements, omissions or new requests. Which TWO actions are most appropriate before committing to extra work?',
+    options: [
+      { key: 'a', text: 'Add all requested items immediately.' },
+      { key: 'b', text: 'Clarify the expected outcomes with the affected stakeholders.' },
+      { key: 'c', text: 'Ask the sponsor to resolve the issue without reviewing project records.' },
+      { key: 'd', text: 'Authorize overtime before assessing scope coverage.' },
+      { key: 'e', text: 'Review approved requirements, traceability and scope with the team.' },
+    ],
+    correct: ['b', 'e'],
+    explanation:
+      "Clarification establishes what stakeholders mean; reviewing approved records establishes the project's commitment. Together these distinguish a delivery omission from an unapproved expectation or new scope request. The PM can then agree a response and seek change approval where necessary. Watch for: two useful actions may complement each other — selecting two does not imply skipping assessment or granting automatic scope approval.",
+  },
+  {
+    id: 23,
+    domain: 'Process',
+    topic: 'WBS & Requirements Traceability',
+    prompt:
+      'While reviewing a WBS, a team member identifies an apparently missing deliverable. The PM does not know whether it is needed to satisfy an approved requirement. What should the PM do first?',
+    options: [
+      { key: 'a', text: 'Ask the sponsor for extra funding immediately.' },
+      {
+        key: 'b',
+        text: 'Review the requirements traceability matrix and approved scope with the team to establish whether the deliverable is required.',
+      },
+      { key: 'c', text: 'Add the deliverable without checking its purpose.' },
+      { key: 'd', text: 'Remove the related requirement to keep the WBS unchanged.' },
+    ],
+    correct: 'b',
+    explanation:
+      'Trace the proposed deliverable to the requirement and intended outcome it would satisfy. If approved scope is incompletely represented, address the omission through the applicable controls. If the item represents new scope, assess and process the request. Establishing the facts precedes a funding request. Watch for: a document review is useful because it answers a specific uncertainty, not because checking a document is always the answer.',
+  },
+  {
+    id: 24,
+    domain: 'People',
+    topic: 'Scarce Subject Matter Experts',
+    prompt:
+      'The delivery team is struggling to interpret technical scope. A relevant subject matter expert is available for only one week. What is the best use of that availability?',
+    options: [
+      { key: 'a', text: 'Have the PM attend a general workshop alone.' },
+      { key: 'b', text: 'Ask the SME to write a report without meeting the team.' },
+      {
+        key: 'c',
+        text: 'Arrange targeted working or learning sessions between the SME and team, focused on their scope questions.',
+      },
+      { key: 'd', text: 'Postpone all discussion until the SME has left.' },
+    ],
+    correct: 'c',
+    explanation:
+      "Connect the expert directly with the people who need the knowledge. Focused sessions allow the team to explain its difficulties, test understanding and capture guidance for later use. The PM facilitates access and follow-through rather than becoming the only channel for technical knowledge. Watch for: the team's capability gap is the problem — a PM-only conversation does not directly close it.",
+  },
+  {
+    id: 25,
+    domain: 'Business Environment',
+    topic: 'Regulatory Compliance Before Delivery',
+    prompt:
+      'Before equipment ships, the compliance team confirms that a new mandatory certification rule will apply to this delivery. The approved project plan does not include the required compliance work. What should the project manager do?',
+    options: [
+      { key: 'a', text: 'Ship anyway and offer a longer warranty.' },
+      {
+        key: 'b',
+        text: 'Initiate the formal change process to assess and authorize the compliance work before delivery.',
+      },
+      { key: 'c', text: 'Record the confirmed obligation only as a possible future risk.' },
+      { key: 'd', text: 'Promise a revised date and price without assessing impacts or obtaining approval.' },
+    ],
+    correct: 'b',
+    explanation:
+      'The confirmed obligation must be incorporated into delivery decisions. Initiate the appropriate change process, assess impacts with compliance and technical specialists, obtain approval and update affected plans. Contract adjustments may also be needed, but shipping a known noncompliant product is not an acceptable workaround.',
+  },
 ]
