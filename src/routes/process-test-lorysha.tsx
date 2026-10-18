@@ -18,7 +18,6 @@ function RouteComponent() {
         sectionB: pmpProcessLoryshaQuestions,
         sectionC: [],
         durationMinutes: 79,
-        hideTopicHint: true,
         sectionBLabel: 'Practice Questions',
         introDescription:
           '62 Process-domain questions: an opening case study followed by independent practice questions.',

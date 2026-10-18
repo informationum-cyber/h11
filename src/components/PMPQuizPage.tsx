@@ -246,9 +246,6 @@ export function PMPQuizPage({ config }: { config: PMPQuizConfig }) {
               ))}
             </div>
 
-            <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
-              {question.domain} Domain &middot; {question.topic}
-            </div>
             <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">{question.prompt}</h2>
 
             <div className="space-y-3 mb-10">

@@ -15,8 +15,6 @@ export interface FullMockExamConfig {
   durationMinutes: number
   showTutoringCTA?: boolean
   skipGate?: boolean
-  /** Hide the "{domain} Domain · {topic}" line above each question — the topic often hints at the answer. Defaults to false. */
-  hideTopicHint?: boolean
   /** Override the intro paragraph under the title. Defaults to the 3-domain mock-exam description. */
   introDescription?: string
   /** Override the "Section B" label shown in the status bar and dot navigation. Defaults to "Section B". */
@@ -53,7 +51,6 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
     durationMinutes,
     showTutoringCTA = true,
     skipGate = false,
-    hideTopicHint = false,
     introDescription,
     sectionBLabel = 'Section B',
   } = config
@@ -405,7 +402,6 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
                     currentIndex={currentIndex}
                     totalQuestions={totalQuestions}
                     answers={answers}
-                    hideTopicHint={hideTopicHint}
                     onSelect={selectAnswer}
                     onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
                     onNext={() =>
@@ -424,7 +420,6 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
                   currentIndex={currentIndex}
                   totalQuestions={totalQuestions}
                   answers={answers}
-                  hideTopicHint={hideTopicHint}
                   onSelect={selectAnswer}
                   onPrev={() => setCurrentIndex((i) => Math.max(0, i - 1))}
                   onNext={() =>
@@ -461,7 +456,6 @@ function QuestionBody({
   currentIndex,
   totalQuestions,
   answers,
-  hideTopicHint = false,
   onSelect,
   onPrev,
   onNext,
@@ -471,7 +465,6 @@ function QuestionBody({
   currentIndex: number
   totalQuestions: number
   answers: Answers
-  hideTopicHint?: boolean
   onSelect: (questionId: number, key: 'a' | 'b' | 'c' | 'd') => void
   onPrev: () => void
   onNext: () => void
@@ -479,11 +472,6 @@ function QuestionBody({
 }) {
   return (
     <div>
-      {!hideTopicHint && (
-        <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
-          {question.domain} Domain &middot; {question.topic}
-        </div>
-      )}
       <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">
         {question.prompt}
       </h2>
