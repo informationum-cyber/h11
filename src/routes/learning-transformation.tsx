@@ -480,7 +480,7 @@ function LearningTransformation() {
           </ul>
           <div className="text-center">
             <div className="mb-4">
-              <span className="text-4xl font-black text-white">$25</span>
+              <span className="text-4xl font-black text-white">$45</span>
               <span className="text-gray-400 ml-2 text-sm">/ 1 hour</span>
             </div>
             <button
@@ -489,7 +489,7 @@ function LearningTransformation() {
               className="bg-[#1E5C3A] hover:bg-[#144D2E] disabled:opacity-60 text-white px-10 py-4 rounded-sm text-lg font-medium transition-all shadow-lg hover:shadow-xl inline-flex items-center gap-2"
             >
               <CreditCard size={20} />
-              {consultLoading ? 'Redirecting to checkout…' : 'Book Now — $25'}
+              {consultLoading ? 'Redirecting to checkout…' : 'Book Now — $45'}
             </button>
             {consultError && (
               <p className="text-red-400 text-sm mt-3">{consultError}</p>

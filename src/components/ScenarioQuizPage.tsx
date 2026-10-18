@@ -1,6 +1,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { ArrowRight, ArrowLeft, Lock, BookOpen } from 'lucide-react'
-import type { PMPQuestion, PMPScenario } from '../data/pmp-quiz-types'
+import { Check, ArrowRight, ArrowLeft, Lock, BookOpen } from 'lucide-react'
+import {
+  correctKeys,
+  formatAnswerKeys,
+  hasAnswer,
+  isMultiSelect,
+  nextAnswerState,
+  type PMPAnswers,
+  type PMPOptionKey,
+  type PMPQuestion,
+  type PMPScenario,
+} from '../data/pmp-quiz-types'
 import { QuizHeader, QuizFooter } from './QuizChrome'
 import { ResultsAdvisory, scoreQuestions } from './QuizResultsAdvisory'
 import { emailResults } from '../lib/quizEmail'
@@ -15,7 +25,7 @@ export interface ScenarioQuizConfig {
 }
 
 type Stage = 'gate' | 'intro' | 'quiz' | 'results'
-type Answers = Partial<Record<number, 'a' | 'b' | 'c' | 'd'>>
+type Answers = PMPAnswers
 
 interface FlatQuestion extends PMPQuestion {
   scenarioIndex: number
@@ -75,15 +85,18 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
     setStage('quiz')
   }
 
-  function selectAnswer(questionId: number, key: 'a' | 'b' | 'c' | 'd') {
-    setAnswers((prev) => ({ ...prev, [questionId]: key }))
+  function selectAnswer(question: PMPQuestion, key: PMPOptionKey) {
+    setAnswers((prev) => ({
+      ...prev,
+      [question.id]: nextAnswerState(question, prev[question.id], key),
+    }))
   }
 
   function retakeTest() {
     setStage('intro')
   }
 
-  const answeredCount = Object.keys(answers).length
+  const answeredCount = flatQuestions.filter((q) => hasAnswer(answers, q.id)).length
   const question = flatQuestions[currentIndex]
   const scenario = question ? scenarios[question.scenarioIndex] : undefined
 
@@ -105,7 +118,7 @@ export function ScenarioQuizPage({ config, onExit }: { config: ScenarioQuizConfi
           .map((q) => {
             const fq = q as FlatQuestion
             const given = answers[q.id]
-            return `${scenarios[fq.scenarioIndex].title} Q${fq.localNumber} (${q.domain} — ${q.topic}): answered ${given ? given.toUpperCase() : '—'}, correct ${q.correct.toUpperCase()}`
+            return `${scenarios[fq.scenarioIndex].title} Q${fq.localNumber} (${q.domain} — ${q.topic}): answered ${given?.length ? formatAnswerKeys(given) : '—'}, correct ${formatAnswerKeys(correctKeys(q))}`
           })
           .join('\n')
       : 'None — perfect score.'
@@ -303,11 +316,12 @@ function QuestionPanel({
   flatQuestions: FlatQuestion[]
   answers: Answers
   onJump: (index: number) => void
-  onSelect: (questionId: number, key: 'a' | 'b' | 'c' | 'd') => void
+  onSelect: (question: PMPQuestion, key: PMPOptionKey) => void
   onPrev: () => void
   onNext: () => void
   onSubmit: () => void
 }) {
+  const multi = isMultiSelect(question)
   return (
     <div>
       <div className="flex items-center justify-between mb-6">
@@ -324,7 +338,7 @@ function QuestionPanel({
             className={`w-8 h-8 text-xs font-semibold rounded-full flex items-center justify-center transition-colors ${
               i === currentIndex
                 ? 'bg-[#1E5C3A] text-white'
-                : answers[q.id]
+                : hasAnswer(answers, q.id)
                   ? 'bg-[#a8d5b5] text-[#143D2D]'
                   : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
             }`}
@@ -334,22 +348,34 @@ function QuestionPanel({
         ))}
       </div>
 
-      <div className="mb-2 text-xs font-semibold tracking-wide uppercase text-[#1E5C3A]">
-        {question.domain} Domain &middot; {question.topic}
-      </div>
       <h2 className="text-xl font-semibold text-gray-900 mb-6 leading-relaxed">{question.prompt}</h2>
+
+      {multi && (
+        <p className="text-sm font-medium text-amber-700 bg-amber-50 border border-amber-100 rounded-lg px-4 py-2 mb-4">
+          Select {correctKeys(question).length} answers.
+        </p>
+      )}
 
       <div className="space-y-3 mb-10">
         {question.options.map((opt) => {
-          const selected = answers[question.id] === opt.key
+          const selected = !!answers[question.id]?.includes(opt.key)
           return (
             <button
               key={opt.key}
-              onClick={() => onSelect(question.id, opt.key)}
-              className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-colors flex gap-3 ${
+              onClick={() => onSelect(question, opt.key)}
+              className={`w-full text-left px-5 py-4 rounded-xl border-2 transition-colors flex gap-3 items-start ${
                 selected ? 'border-[#1E5C3A] bg-[#f0f7f2]' : 'border-gray-100 hover:border-gray-300'
               }`}
             >
+              {multi && (
+                <span
+                  className={`w-4 h-4 mt-1 rounded border-2 flex items-center justify-center shrink-0 ${
+                    selected ? 'bg-[#1E5C3A] border-[#1E5C3A]' : 'border-gray-300'
+                  }`}
+                >
+                  {selected && <Check size={12} className="text-white" />}
+                </span>
+              )}
               <span className={`font-bold uppercase ${selected ? 'text-[#1E5C3A]' : 'text-gray-400'}`}>
                 {opt.key}.
               </span>
