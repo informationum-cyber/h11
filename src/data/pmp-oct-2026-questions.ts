@@ -227,4 +227,117 @@ export const pmpOct2026Questions: PMPQuestion[] = [
     explanation:
       'An identified risk is not unlimited authorization to change scope or spend. When the actual response exceeds approved baselines or delegated authority, follow the established change process. A response already authorized within existing tolerances may be executed under that authority; the facts here explicitly say otherwise.',
   },
+  {
+    id: 11,
+    domain: 'Process',
+    topic: 'Quality & Acceptance Criteria',
+    prompt:
+      'During a production-system upgrade, a stakeholder questions whether output is sufficiently consistent and reliable. Acceptance requirements and quality measures already exist. What is the best next action?',
+    options: [
+      { key: 'a', text: 'Redefine the project scope immediately.' },
+      { key: 'b', text: 'Escalate to the project sponsor before examining the measures or output.' },
+      {
+        key: 'c',
+        text: 'Measure and inspect the deliverables against the agreed quality and acceptance criteria.',
+      },
+      {
+        key: 'd',
+        text: 'Treat the concern only as a hypothetical risk and avoid collecting performance evidence.',
+      },
+    ],
+    correct: 'c',
+    explanation:
+      'Use the agreed measures to determine whether the output meets requirements. That evidence establishes whether there is a defect, normal variation or an expectation mismatch, and guides corrective action. Escalation and scope changes should follow evidence and the applicable authority, rather than replace assessment.',
+  },
+  {
+    id: 12,
+    domain: 'Process',
+    topic: 'Risk Review Cadence',
+    prompt:
+      'An agile team created a risk register at initiation. After three sprints, technical challenges and market conditions have changed. Which approach best keeps risk management relevant?',
+    options: [
+      { key: 'a', text: 'Keep the original register unchanged until project closure.' },
+      {
+        key: 'b',
+        text: 'Review risks only at a quarterly steering committee as frequent review of risks are not required.',
+      },
+      {
+        key: 'c',
+        text: 'Replace risk ownership with automated email alerts to make the process more lightweight and agile.',
+      },
+      {
+        key: 'd',
+        text: 'Embed risk identification and review into iteration planning, updating owners and responses as conditions change.',
+      },
+    ],
+    correct: 'd',
+    explanation:
+      'Short feedback cycles allow the team to identify new uncertainty and adjust responses as it learns. A register remains useful when maintained and connected to decisions. Regular stakeholder reviews can complement this work, but do not replace continuous team attention to evolving conditions.',
+  },
+  {
+    id: 13,
+    domain: 'Business Environment',
+    topic: 'Operational Risk Coordination',
+    prompt:
+      "A medical-office improvement project has confirmed that recruitment gaps, inadequate training and turnover are undermining safe operations. The causes are already understood. Which action should the project manager prioritize within the project's authority?",
+    options: [
+      { key: 'a', text: 'Repeat a broad lessons-learned exercise without changing the response.' },
+      {
+        key: 'b',
+        text: 'Coordinate with the accountable clinical and operations leaders on staffing and training.',
+      },
+      { key: 'c', text: 'Purchase new monitoring software and then assess its relevance.' },
+      { key: 'd', text: 'Focus only on producing a more detailed status report.' },
+    ],
+    correct: 'b',
+    explanation:
+      'The scenario already identifies the operational causes and their consequences. Coordinate a response with the leaders authorized to make staffing and clinical decisions, prioritizing safe and effective care. The project manager enables the response and escalates urgent concerns appropriately, rather than assuming clinical authority.',
+  },
+  {
+    id: 14,
+    domain: 'Process',
+    topic: 'Change Control & Gold Plating',
+    prompt:
+      'A predictive software project is within budget and ahead of schedule. The team identifies a two-day code change that could improve performance by 20%, beyond the approved requirement. No one has authorized the change. What should the project manager do next?',
+    options: [
+      {
+        key: 'a',
+        text: 'Evaluate value, impact and alternatives, then route any proposed change through the applicable approval process.',
+      },
+      {
+        key: 'b',
+        text: 'Implement it because the project is ahead of schedule and there will be no negative impact because of a change.',
+      },
+      {
+        key: 'c',
+        text: 'Ask developers to hide the extra work in an existing task so that it can easily pass an audit by the change committee.',
+      },
+      { key: 'd', text: 'Reject any discussion of the idea because improvements can never be proposed.' },
+    ],
+    correct: 'a',
+    explanation:
+      'An improvement can be considered without being implemented. Evaluate its value, cost, risk and effect on commitments, then seek the appropriate decision. Gold plating is adding unauthorized extras; an assessed proposal that follows change governance is different.',
+  },
+  {
+    id: 15,
+    domain: 'Process',
+    topic: 'Risk Monitoring & Triggers',
+    prompt:
+      'A possible market price increase may reduce sales. The risk has been assessed as within tolerance, and the approved response is to monitor sales against a defined trigger before activating further action. Prices have not yet changed and the trigger has not been reached. What should the PM do?',
+    options: [
+      {
+        key: 'a',
+        text: 'Change the product price and then obtain approvals when meeting with the sponsor and stakeholders next time.',
+      },
+      { key: 'b', text: 'Declare a sales-loss issue even though sales have not declined.' },
+      { key: 'c', text: 'Stop the project immediately as this is unnecessary risk exposure.' },
+      {
+        key: 'd',
+        text: 'Monitor the agreed indicators, keep the risk information current and act if the risk exposure changes.',
+      },
+    ],
+    correct: 'd',
+    explanation:
+      'Monitoring is an active response when it is deliberately selected, owned and tied to a trigger. Continue checking whether the exposure remains acceptable. If conditions change or the threshold is crossed, reassess and activate or seek approval for the next response as required.',
+  },
 ]
