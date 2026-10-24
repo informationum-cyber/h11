@@ -42,8 +42,8 @@ function RouteComponent() {
 
   function handleUnlock(e: React.FormEvent) {
     e.preventDefault()
-    const pw = passwordInput.trim()
-    if (pw.toUpperCase() === 'MABELA2026') {
+    const pw = passwordInput.trim().toUpperCase()
+    if (pw === 'MABELA2026') {
       sessionStorage.setItem(UNLOCK_KEY, pw)
       setPassword(pw)
       setUnlocked(true)
