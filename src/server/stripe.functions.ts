@@ -53,7 +53,7 @@ export const createConsultCheckoutSession = createServerFn({ method: 'POST' }).h
         },
       ],
       mode: 'payment',
-      success_url: `${baseUrl}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
+      success_url: `${baseUrl}/payment-success?session_id={CHECKOUT_SESSION_ID}&product=consult`,
       cancel_url: `${baseUrl}/learning-transformation#consult`,
     })
 
