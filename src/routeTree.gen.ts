@@ -27,6 +27,7 @@ import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
 import { Route as ClassRegisterRouteImport } from './routes/class-register'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
+import { Route as BookMabelaRouteImport } from './routes/book-mabela'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
 import { Route as AnastasiaBizenvRouteImport } from './routes/anastasia-bizenv'
 import { Route as AboutRouteImport } from './routes/about'
@@ -127,6 +128,11 @@ const CareerTransformationRoute = CareerTransformationRouteImport.update({
   path: '/career-transformation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BookMabelaRoute = BookMabelaRouteImport.update({
+  id: '/book-mabela',
+  path: '/book-mabela',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AygulQuizRoute = AygulQuizRouteImport.update({
   id: '/aygul-quiz',
   path: '/aygul-quiz',
@@ -174,6 +180,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
+  '/book-mabela': typeof BookMabelaRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -202,6 +209,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
+  '/book-mabela': typeof BookMabelaRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -231,6 +239,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
+  '/book-mabela': typeof BookMabelaRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -261,6 +270,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/anastasia-bizenv'
     | '/aygul-quiz'
+    | '/book-mabela'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -289,6 +299,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/anastasia-bizenv'
     | '/aygul-quiz'
+    | '/book-mabela'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -317,6 +328,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/anastasia-bizenv'
     | '/aygul-quiz'
+    | '/book-mabela'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -346,6 +358,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AnastasiaBizenvRoute: typeof AnastasiaBizenvRoute
   AygulQuizRoute: typeof AygulQuizRoute
+  BookMabelaRoute: typeof BookMabelaRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   CareersRoute: typeof CareersRoute
   ClassRegisterRoute: typeof ClassRegisterRoute
@@ -498,6 +511,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareerTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/book-mabela': {
+      id: '/book-mabela'
+      path: '/book-mabela'
+      fullPath: '/book-mabela'
+      preLoaderRoute: typeof BookMabelaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/aygul-quiz': {
       id: '/aygul-quiz'
       path: '/aygul-quiz'
@@ -562,6 +582,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AnastasiaBizenvRoute: AnastasiaBizenvRoute,
   AygulQuizRoute: AygulQuizRoute,
+  BookMabelaRoute: BookMabelaRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   CareersRoute: CareersRoute,
   ClassRegisterRoute: ClassRegisterRoute,
