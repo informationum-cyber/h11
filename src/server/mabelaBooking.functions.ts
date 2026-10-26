@@ -16,7 +16,7 @@ export function priceForClassCount(classCount: number): number {
 export const createMabelaCheckoutSession = createServerFn({ method: 'POST' })
   .inputValidator((data: { password: string; classCount: number }) => data)
   .handler(async ({ data }) => {
-    if (data.password !== MABELA_PASSWORD) {
+    if (data.password.trim().toUpperCase() !== MABELA_PASSWORD) {
       throw new Error('Unauthorized')
     }
     const classCount = Math.trunc(data.classCount)
