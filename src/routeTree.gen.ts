@@ -21,6 +21,7 @@ import { Route as People_testRouteImport } from './routes/people_test'
 import { Route as PaymentSuccessRouteImport } from './routes/payment-success'
 import { Route as LearningTransformationRouteImport } from './routes/learning-transformation'
 import { Route as HartRouteImport } from './routes/hart'
+import { Route as GregCaseStudiesRouteImport } from './routes/greg-case-studies'
 import { Route as EnterpriseTransformationRouteImport } from './routes/enterprise-transformation'
 import { Route as ContractorOnboardingRouteImport } from './routes/contractor-onboarding'
 import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
@@ -95,6 +96,11 @@ const LearningTransformationRoute = LearningTransformationRouteImport.update({
 const HartRoute = HartRouteImport.update({
   id: '/hart',
   path: '/hart',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GregCaseStudiesRoute = GregCaseStudiesRouteImport.update({
+  id: '/greg-case-studies',
+  path: '/greg-case-studies',
   getParentRoute: () => rootRouteImport,
 } as any)
 const EnterpriseTransformationRoute =
@@ -187,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/greg-case-studies': typeof GregCaseStudiesRoute
   '/hart': typeof HartRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
@@ -216,6 +223,7 @@ export interface FileRoutesByTo {
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/greg-case-studies': typeof GregCaseStudiesRoute
   '/hart': typeof HartRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
@@ -246,6 +254,7 @@ export interface FileRoutesById {
   '/contractor-admin': typeof ContractorAdminRoute
   '/contractor-onboarding': typeof ContractorOnboardingRoute
   '/enterprise-transformation': typeof EnterpriseTransformationRoute
+  '/greg-case-studies': typeof GregCaseStudiesRoute
   '/hart': typeof HartRoute
   '/learning-transformation': typeof LearningTransformationRoute
   '/payment-success': typeof PaymentSuccessRoute
@@ -277,6 +286,7 @@ export interface FileRouteTypes {
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
+    | '/greg-case-studies'
     | '/hart'
     | '/learning-transformation'
     | '/payment-success'
@@ -306,6 +316,7 @@ export interface FileRouteTypes {
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
+    | '/greg-case-studies'
     | '/hart'
     | '/learning-transformation'
     | '/payment-success'
@@ -335,6 +346,7 @@ export interface FileRouteTypes {
     | '/contractor-admin'
     | '/contractor-onboarding'
     | '/enterprise-transformation'
+    | '/greg-case-studies'
     | '/hart'
     | '/learning-transformation'
     | '/payment-success'
@@ -365,6 +377,7 @@ export interface RootRouteChildren {
   ContractorAdminRoute: typeof ContractorAdminRoute
   ContractorOnboardingRoute: typeof ContractorOnboardingRoute
   EnterpriseTransformationRoute: typeof EnterpriseTransformationRoute
+  GregCaseStudiesRoute: typeof GregCaseStudiesRoute
   HartRoute: typeof HartRoute
   LearningTransformationRoute: typeof LearningTransformationRoute
   PaymentSuccessRoute: typeof PaymentSuccessRoute
@@ -467,6 +480,13 @@ declare module '@tanstack/react-router' {
       path: '/hart'
       fullPath: '/hart'
       preLoaderRoute: typeof HartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/greg-case-studies': {
+      id: '/greg-case-studies'
+      path: '/greg-case-studies'
+      fullPath: '/greg-case-studies'
+      preLoaderRoute: typeof GregCaseStudiesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/enterprise-transformation': {
@@ -589,6 +609,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContractorAdminRoute: ContractorAdminRoute,
   ContractorOnboardingRoute: ContractorOnboardingRoute,
   EnterpriseTransformationRoute: EnterpriseTransformationRoute,
+  GregCaseStudiesRoute: GregCaseStudiesRoute,
   HartRoute: HartRoute,
   LearningTransformationRoute: LearningTransformationRoute,
   PaymentSuccessRoute: PaymentSuccessRoute,
