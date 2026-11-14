@@ -33,7 +33,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'c',
         explanation:
-          "Before anyone can decide anything, the actual impact of the new requirement needs to be established — on scope, schedule, cost, architecture, and the regulatory obligation itself. Swapping scope, escalating, or approving extra budget are all premature when the effect of the change hasn't been assessed yet.",
+          'An impact analysis provides the facts needed for a decision. The project manager must understand the regulatory obligation and its consequences before proposing changes or escalating for approval. PMP principle: assess before acting.',
       },
       {
         id: 2,
@@ -61,7 +61,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'a',
         explanation:
-          "With the impact analysis in hand, the right move is to bring the key stakeholders together to work through the findings and find a feasible path — not to declare that compliance overrides governance, unilaterally proceed around the sponsor, or quietly push the cost onto the team's overtime.",
+          'Once the impact is understood, the project manager should facilitate collaboration among the decision-makers. Mandatory compliance must be addressed, but the delivery approach and trade-offs still require stakeholder engagement and appropriate authorization. PMP principle: collaborate before escalating unnecessarily.',
       },
       {
         id: 3,
@@ -86,7 +86,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'd',
         explanation:
-          'Because the change affects the approved baseline and cost, it has to go through formal integrated change control — a change request, evaluation, and approval — before anything is implemented or the plan is updated. Implementing first and documenting afterward, or asking the regulatory officer to authorize budget/schedule (not their authority), both skip the required governance step.',
+          'Changes affecting approved baselines must follow the established change control process, even in a hybrid project. Backlog reprioritization alone does not authorize changes to the schedule or cost baseline. PMP principle: follow integrated change control.',
       },
       {
         id: 4,
@@ -105,7 +105,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'b',
         explanation:
-          'The team is confused about priorities, not short on direction from above — the fix is a facilitated backlog refinement session with the product owner and team to realign on priorities and approach. Dictating the backlog, having the sponsor assign individual tasks, or cancelling the very ceremonies designed to resolve this all bypass the team and the PO.',
+          'The immediate problem is lack of shared understanding. Collaborative refinement and planning restore clarity, alignment, and team ownership rather than relying on unilateral task assignments. PMP principle: enable the team through collaboration.',
       },
       {
         id: 5,
@@ -127,7 +127,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'c',
         explanation:
-          "Since this compliance requirement was mandatory, the phase can't close until it's formally validated against the regulatory acceptance criteria — not just confirmed as 'done' by the sponsor or product owner, and not deferred to the next phase while funding is released now.",
+          'Completing development is not the same as satisfying acceptance criteria. Required compliance validation and formal approvals must be obtained before the phase can legitimately be closed and its funding gate passed. PMP principle: validate before obtaining formal acceptance.',
       },
     ],
   },
@@ -151,7 +151,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'b',
         explanation:
-          'Average velocity = (24 + 30 + 27) / 3 = 27 points/iteration. Completed so far = 81 points, leaving 320 − 81 = 239 points. 239 ÷ 27 ≈ 8.85, which rounds up to 9 additional iterations — 8 iterations (216 points) would leave work unfinished.',
+          'Total completed = 24 + 30 + 27 = 81 points. Average velocity = 81 ÷ 3 = 27 points per iteration. Remaining work = 320 − 81 = 239 points. Iterations needed = 239 ÷ 27 = 8.85, rounded up to 9 full iterations. PMP principle: velocity-based forecasting — estimate remaining duration using average completed work.',
       },
       {
         id: 2,
@@ -167,7 +167,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'c',
         explanation:
-          'In a self-organizing agile team, the "how" of the work — including technical approach — belongs to the development team. The product owner owns the "what" and priority; the PM and sponsor should not dictate a technical solution.',
+          'In Agile, developers are self-managing and decide how to perform the technical work. The project manager facilitates collaboration and removes obstacles but should not dictate the technical solution. PMP principle: self-management and team empowerment.',
       },
       {
         id: 3,
@@ -183,7 +183,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'a',
         explanation:
-          "Removing impediments for the team is a core part of the PM's servant-leadership role — here that means actively chasing the vendor for the missing specs rather than just rescheduling the work, guessing at an undocumented integration, or escalating straight to replacing the vendor.",
+          'The project manager should actively support resolution of external dependencies, including coordinating with the vendor. Postponing the work or changing vendors prematurely does not address the underlying impediment effectively. PMP principle: servant leadership and impediment removal.',
       },
       {
         id: 4,
@@ -202,7 +202,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'd',
         explanation:
-          "Agile welcomes changing requirements, but that doesn't mean implementing or rejecting one on the spot — the PM should bring the product owner and team together to assess the actual impact and agree on how (and whether) to incorporate it, before escalating or committing either way.",
+          "The project manager should help the product owner and team understand the change's effects on delivery and dependencies. The product owner manages backlog ordering; a stakeholder request does not automatically override the sprint goal. PMP principle: Agile change management and value-based prioritization.",
       },
       {
         id: 5,
@@ -221,7 +221,7 @@ export const gregCaseStudies: PMPScenario[] = [
         ],
         correct: 'b',
         explanation:
-          "The root cause is unclear expectations and acceptance criteria, not any one person's fault — a facilitated conversation to get the team to agree on shared working agreements addresses that directly, instead of assigning blame, offloading the conflict to functional managers, or adding monitoring that treats the symptom.",
+          'The underlying problem concerns unclear expectations, shared responsibilities, and team communication. Collaborative conflict resolution and clearer acceptance criteria are preferable to blame, excessive oversight, or immediate escalation. PMP principle: conflict resolution, servant leadership, and team effectiveness.',
       },
     ],
   },
