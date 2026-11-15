@@ -523,4 +523,76 @@ export const gregCaseStudies: PMPScenario[] = [
       },
     ],
   },
+  {
+    id: 5,
+    title: 'Warehouse Construction Project',
+    scenarioText:
+      "You are the project manager overseeing the construction of a new distribution warehouse. You lead a medium-sized, cross-functional team responsible for obtaining regulatory approvals and permits, architectural design, construction, plumbing, and electrical installations.\n\nConstruction is currently underway, and the installation of the building's structural framework and wall sheeting is a critical schedule dependency for several downstream activities.\n\nApproximately halfway through the project, the wall installation subcontractor informs you that their team is experiencing resource constraints and will arrive three weeks later than originally scheduled.\n\nThe procurement manager identifies an alternative subcontractor who may be able to begin work sooner. However, the equipment proposed by this supplier has not yet been verified against the project's approved technical specifications.\n\nThe project has incurred $4 million of its approved $9 million budget. Materials already delivered to the construction site are being stored at a cost of $300 per day.\n\nA review of the project schedule indicates that several activities scheduled before and after the wall installation can potentially be performed concurrently, although some adjustments to the sequencing of work may be necessary.\n\nThe project sponsor is concerned about the possible schedule delays, increased costs, and consequences of engaging an unverified supplier.",
+    questions: [
+      {
+        id: 1,
+        domain: 'Process',
+        topic: 'Schedule Management',
+        prompt:
+          'The project manager identifies several activities that could be performed concurrently to recover the three-week delay.\n\nWhat should the project manager do NEXT?',
+        options: [
+          { key: 'a', text: 'Begin overlapping the selected activities.' },
+          { key: 'b', text: 'Assess the risks of overlapping activities.' },
+          { key: 'c', text: 'Assign more resources to delayed activities.' },
+          { key: 'd', text: 'Remove dependencies from the project schedule.' },
+        ],
+        correct: 'b',
+        explanation:
+          'Assessing the risks of overlapping activities should precede fast tracking. Parallel work can introduce rework and coordination risks.',
+      },
+      {
+        id: 2,
+        domain: 'Business Environment',
+        topic: 'Procurement Management',
+        prompt:
+          'The procurement manager recommends an alternative subcontractor, but the proposed equipment has not been verified.\n\nWhat should the project manager do to determine whether the alternative is suitable?',
+        options: [
+          { key: 'a', text: 'Compare its pricing with the original supplier.' },
+          { key: 'b', text: 'Review its ability to begin work immediately.' },
+          { key: 'c', text: 'Examine its experience with similar projects.' },
+          { key: 'd', text: 'Verify its equipment against project specifications.' },
+        ],
+        correct: 'd',
+        explanation:
+          'The alternative equipment must meet the approved technical specifications before the supplier can be considered suitable.',
+      },
+      {
+        id: 3,
+        domain: 'People',
+        topic: 'Responsibility and Accountability',
+        prompt:
+          'Wall sheeting is a critical-path activity, and the subcontractor has reported a three-week delay in arriving at the construction site.\n\nWho is directly responsible for the reported delay?',
+        options: [
+          { key: 'a', text: 'The project manager.' },
+          { key: 'b', text: 'The project sponsor.' },
+          { key: 'c', text: 'The procurement manager.' },
+          { key: 'd', text: 'The wall subcontractor.' },
+        ],
+        correct: 'd',
+        explanation:
+          'The wall subcontractor is directly responsible for the reported late arrival. The project manager remains accountable for managing its overall project impact.',
+      },
+      {
+        id: 4,
+        domain: 'Process',
+        topic: 'Schedule Compression',
+        prompt:
+          'To recover the delayed schedule, the project manager proposes performing activities in parallel that were originally planned in sequence.\n\nWhich schedule compression technique is being considered?',
+        options: [
+          { key: 'a', text: 'Resource leveling.' },
+          { key: 'b', text: 'Schedule crashing.' },
+          { key: 'c', text: 'Fast tracking.' },
+          { key: 'd', text: 'Resource smoothing.' },
+        ],
+        correct: 'c',
+        explanation:
+          'Fast tracking overlaps activities originally planned in sequence. Crashing instead adds resources to shorten duration.',
+      },
+    ],
+  },
 ]
