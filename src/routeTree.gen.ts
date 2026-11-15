@@ -28,6 +28,7 @@ import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
 import { Route as ClassRegisterRouteImport } from './routes/class-register'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
+import { Route as CapmDomain1MockRouteImport } from './routes/capm-domain1-mock'
 import { Route as BookMabelaRouteImport } from './routes/book-mabela'
 import { Route as AygulQuizRouteImport } from './routes/aygul-quiz'
 import { Route as AnastasiaBizenvRouteImport } from './routes/anastasia-bizenv'
@@ -134,6 +135,11 @@ const CareerTransformationRoute = CareerTransformationRouteImport.update({
   path: '/career-transformation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CapmDomain1MockRoute = CapmDomain1MockRouteImport.update({
+  id: '/capm-domain1-mock',
+  path: '/capm-domain1-mock',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookMabelaRoute = BookMabelaRouteImport.update({
   id: '/book-mabela',
   path: '/book-mabela',
@@ -187,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/book-mabela': typeof BookMabelaRoute
+  '/capm-domain1-mock': typeof CapmDomain1MockRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -217,6 +224,7 @@ export interface FileRoutesByTo {
   '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/book-mabela': typeof BookMabelaRoute
+  '/capm-domain1-mock': typeof CapmDomain1MockRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -248,6 +256,7 @@ export interface FileRoutesById {
   '/anastasia-bizenv': typeof AnastasiaBizenvRoute
   '/aygul-quiz': typeof AygulQuizRoute
   '/book-mabela': typeof BookMabelaRoute
+  '/capm-domain1-mock': typeof CapmDomain1MockRoute
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -280,6 +289,7 @@ export interface FileRouteTypes {
     | '/anastasia-bizenv'
     | '/aygul-quiz'
     | '/book-mabela'
+    | '/capm-domain1-mock'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -310,6 +320,7 @@ export interface FileRouteTypes {
     | '/anastasia-bizenv'
     | '/aygul-quiz'
     | '/book-mabela'
+    | '/capm-domain1-mock'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -340,6 +351,7 @@ export interface FileRouteTypes {
     | '/anastasia-bizenv'
     | '/aygul-quiz'
     | '/book-mabela'
+    | '/capm-domain1-mock'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -371,6 +383,7 @@ export interface RootRouteChildren {
   AnastasiaBizenvRoute: typeof AnastasiaBizenvRoute
   AygulQuizRoute: typeof AygulQuizRoute
   BookMabelaRoute: typeof BookMabelaRoute
+  CapmDomain1MockRoute: typeof CapmDomain1MockRoute
   CareerTransformationRoute: typeof CareerTransformationRoute
   CareersRoute: typeof CareersRoute
   ClassRegisterRoute: typeof ClassRegisterRoute
@@ -531,6 +544,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareerTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/capm-domain1-mock': {
+      id: '/capm-domain1-mock'
+      path: '/capm-domain1-mock'
+      fullPath: '/capm-domain1-mock'
+      preLoaderRoute: typeof CapmDomain1MockRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book-mabela': {
       id: '/book-mabela'
       path: '/book-mabela'
@@ -603,6 +623,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnastasiaBizenvRoute: AnastasiaBizenvRoute,
   AygulQuizRoute: AygulQuizRoute,
   BookMabelaRoute: BookMabelaRoute,
+  CapmDomain1MockRoute: CapmDomain1MockRoute,
   CareerTransformationRoute: CareerTransformationRoute,
   CareersRoute: CareersRoute,
   ClassRegisterRoute: ClassRegisterRoute,
