@@ -1,10 +1,12 @@
+/** PMI's three PMP exam domains. Other exams (e.g. CAPM) use their own domain names — see PMPQuestion.domain. */
 export type PMPDomain = 'People' | 'Process' | 'Business Environment'
 
 export type PMPOptionKey = 'a' | 'b' | 'c' | 'd' | 'e'
 
 export interface PMPQuestion {
   id: number
-  domain: PMPDomain
+  /** The exam's own domain name for this question — not necessarily one of PMPDomain's three PMP values. Keep it an exact match to the source exam's domain taxonomy (e.g. CAPM's "Project Management Fundamentals and Core Concepts", "Predictive, Plan-Based Methodologies", "Agile Frameworks/Methodologies") rather than borrowing PMP's. */
+  domain: string
   topic: string
   prompt: string
   options: { key: PMPOptionKey; text: string }[]
