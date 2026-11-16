@@ -187,9 +187,7 @@ export function FullMockExamPage({ config }: { config: FullMockExamConfig }) {
     emailedRef.current = true
 
     const scorePercent = `${Math.round((results.correctCount / totalQuestions) * 100)}%`
-    const domainBreakdown = (
-      ['People', 'Process', 'Business Environment'] as const
-    )
+    const domainBreakdown = results.domains
       .map((d) => {
         const { correct, total } = results.byDomain[d]
         return `${d}: ${correct}/${total}`

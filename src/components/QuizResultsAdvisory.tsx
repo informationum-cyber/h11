@@ -5,27 +5,27 @@ import {
   formatAnswerKeys,
   isAnswerCorrect,
   type PMPAnswers,
-  type PMPDomain,
   type PMPQuestion,
 } from '../data/pmp-quiz-types'
 
-export const DOMAINS: PMPDomain[] = ['People', 'Process', 'Business Environment']
-
 export interface QuizResults {
   correctCount: number
-  byDomain: Record<PMPDomain, { correct: number; total: number }>
+  /** Domains in first-seen order, exactly as they appear on the questions passed in — not a fixed PMP/CAPM list. */
+  domains: string[]
+  byDomain: Record<string, { correct: number; total: number }>
   wrongQuestions: PMPQuestion[]
 }
 
 export function scoreQuestions(questions: PMPQuestion[], answers: PMPAnswers): QuizResults {
   const wrongQuestions: PMPQuestion[] = []
-  const byDomain: Record<PMPDomain, { correct: number; total: number }> = {
-    People: { correct: 0, total: 0 },
-    Process: { correct: 0, total: 0 },
-    'Business Environment': { correct: 0, total: 0 },
-  }
+  const domains: string[] = []
+  const byDomain: Record<string, { correct: number; total: number }> = {}
   let correctCount = 0
   for (const q of questions) {
+    if (!byDomain[q.domain]) {
+      byDomain[q.domain] = { correct: 0, total: 0 }
+      domains.push(q.domain)
+    }
     byDomain[q.domain].total += 1
     if (isAnswerCorrect(q, answers[q.id])) {
       correctCount += 1
@@ -34,19 +34,30 @@ export function scoreQuestions(questions: PMPQuestion[], answers: PMPAnswers): Q
       wrongQuestions.push(q)
     }
   }
-  return { correctCount, byDomain, wrongQuestions }
+  return { correctCount, domains, byDomain, wrongQuestions }
 }
 
-function domainAdvice(domain: PMPDomain, wrongTopics: string[]) {
+/** Curated advice for domain names we know about. Anything else gets a generic, still-useful fallback. */
+const KNOWN_DOMAIN_ADVICE: Record<string, (topicList: string) => string> = {
+  People: (t) =>
+    `Revisit stakeholder engagement, team leadership, and conflict-handling scenarios — particularly: ${t}. Focus on servant-leadership and proactive communication patterns.`,
+  Process: (t) =>
+    `Tighten up your technical process fundamentals — particularly: ${t}. Re-work the earned value, scheduling, and quality formulas until they're automatic.`,
+  'Business Environment': (t) =>
+    `Review how external factors and governance connect to the project — particularly: ${t}. Focus on distinguishing OPAs from EEFs and when compliance overrides other constraints.`,
+  'Project Management Fundamentals and Core Concepts': (t) =>
+    `Revisit the core vocabulary and artifacts tested here — particularly: ${t}. Make sure project-vs-operations distinctions, key terms (issue/risk/assumption/constraint), and foundational roles are automatic.`,
+  'Predictive, Plan-Based Methodologies': (t) =>
+    `Tighten up predictive planning mechanics — particularly: ${t}. Focus on baselines, change control, and schedule sequencing/compression techniques.`,
+  'Agile Frameworks/Methodologies': (t) =>
+    `Review adaptive delivery concepts — particularly: ${t}. Focus on iterative planning, self-organizing team roles, and agile ceremonies.`,
+}
+
+function domainAdvice(domain: string, wrongTopics: string[]) {
   const topicList = wrongTopics.join('; ')
-  switch (domain) {
-    case 'People':
-      return `Revisit stakeholder engagement, team leadership, and conflict-handling scenarios — particularly: ${topicList}. Focus on servant-leadership and proactive communication patterns.`
-    case 'Process':
-      return `Tighten up your technical process fundamentals — particularly: ${topicList}. Re-work the earned value, scheduling, and quality formulas until they're automatic.`
-    case 'Business Environment':
-      return `Review how external factors and governance connect to the project — particularly: ${topicList}. Focus on distinguishing OPAs from EEFs and when compliance overrides other constraints.`
-  }
+  const known = KNOWN_DOMAIN_ADVICE[domain]
+  if (known) return known(topicList)
+  return `Revisit ${domain} — particularly: ${topicList}.`
 }
 
 export function ResultsAdvisory({
@@ -64,7 +75,7 @@ export function ResultsAdvisory({
   onRetake: () => void
   showTutoringCTA: boolean
 }) {
-  const { correctCount, byDomain, wrongQuestions } = results
+  const { correctCount, domains, byDomain, wrongQuestions } = results
   const scorePct = Math.round((correctCount / totalQuestions) * 100)
 
   const readiness =
@@ -74,7 +85,7 @@ export function ResultsAdvisory({
         ? { label: 'On track — a few gaps to close', color: 'text-amber-600' }
         : { label: 'Needs focused review', color: 'text-red-600' }
 
-  const weakDomains = DOMAINS.filter((d) => byDomain[d].total > byDomain[d].correct)
+  const weakDomains = domains.filter((d) => byDomain[d].total > byDomain[d].correct)
 
   return (
     <div>
@@ -97,7 +108,7 @@ export function ResultsAdvisory({
         <div className="bg-gray-50 rounded-2xl p-7">
           <p className="text-sm font-semibold text-[#143D2D] mb-4">Score by domain</p>
           <div className="space-y-3">
-            {DOMAINS.map((d) => {
+            {domains.map((d) => {
               const { correct, total } = byDomain[d]
               const pct = total ? Math.round((correct / total) * 100) : 0
               return (
