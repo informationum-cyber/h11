@@ -3,7 +3,7 @@ import type { PMPQuestion } from './pmp-quiz-types'
 export const capmDomain1Questions: PMPQuestion[] = [
   {
     id: 1,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Easy',
     prompt: 'An insurance firm builds a new claims portal, then operates a support desk after launch. Which activity is a project?',
     options: [
@@ -17,7 +17,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 2,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Medium',
     prompt: 'A bank coordinates two related migration projects to realize a common customer-service benefit. What best describes this grouping?',
     options: [
@@ -31,7 +31,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 3,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Medium',
     prompt: 'A supplier was due to deliver an interface yesterday but has still not delivered it. How should the project manager classify the missed delivery?',
     options: [
@@ -45,7 +45,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 4,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Medium',
     prompt: 'A public-sector reporting solution has stable requirements and mandatory approvals before construction. Which delivery approach best fits?',
     options: [
@@ -59,7 +59,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 5,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Easy',
     prompt: 'During planning, a team expects access to a test environment next week, but its availability has not been confirmed. What is the expectation?',
     options: [
@@ -73,7 +73,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 6,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Medium',
     prompt: 'During bid evaluation, a vendor offers the project manager an expensive personal gift. What is the most appropriate response?',
     options: [
@@ -87,7 +87,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 7,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 1 — Difficult',
     prompt: 'A hospital introduces scheduling software to reduce wait times. Staff must also change workflows to realize the promised benefits. What does this show?',
     options: [
@@ -101,7 +101,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 8,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Medium',
     prompt: 'A product manager maintains a roadmap of user capabilities, while a project manager plans delivery. Which item belongs primarily in the project management plan?',
     options: [
@@ -115,7 +115,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 9,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Easy',
     prompt: 'Which of the following is a milestone rather than an activity with a duration?',
     options: [
@@ -129,7 +129,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 10,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Medium',
     prompt: 'A team identifies a risk that a supplier may deliver late. What information is most useful to capture in the risk register?',
     options: [
@@ -143,7 +143,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 11,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Medium',
     prompt: 'A new regulatory representative gains significant influence over a project. What should the project manager update first?',
     options: [
@@ -157,7 +157,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 12,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Medium',
     prompt: 'A project must build an API and obtain security approval before release. How should the project manager estimate resources?',
     options: [
@@ -171,7 +171,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 13,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Difficult',
     prompt: 'The final release has passed testing, and operations will assume ongoing support. What should the project manager confirm before project closure?',
     options: [
@@ -185,7 +185,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 14,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 2 — Difficult',
     prompt: 'To meet a fixed release date, the team proposes shortening system testing. What should the project manager evaluate?',
     options: [
@@ -199,7 +199,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 15,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 3 — Medium',
     prompt: "A major assumption in the business case is no longer valid, threatening the project's expected benefits. What is the sponsor's role?",
     options: [
@@ -213,7 +213,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 16,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 3 — Difficult',
     prompt: 'Two technical specialists disagree about an interface design. The project manager is not the technical decision-maker. What should the PM do?',
     options: [
@@ -227,7 +227,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 17,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 3 — Easy',
     prompt: 'A project manager tracks assigned work and also inspires the team around a shared purpose. Which action is an example of leadership?',
     options: [
@@ -241,7 +241,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 18,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 3 — Difficult',
     prompt: 'An ordinarily engaged analyst becomes silent during a tense workshop. The PM notices signs of frustration. What best demonstrates emotional intelligence?',
     options: [
@@ -255,7 +255,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 19,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 4 — Medium',
     prompt: 'A communications plan calls for weekly updates but immediate escalation of major blockers. A major blocker is identified today. What should the PM do?',
     options: [
@@ -269,7 +269,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 20,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 4 — Difficult',
     prompt: 'On a predictive project, the sponsor asks to shorten verification to protect go-live. No change is approved yet. What should the PM do first?',
     options: [
@@ -283,7 +283,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 21,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 4 — Medium',
     prompt: 'At initiation, a new service portal is expected to reduce average handling time. What most supports later benefits evaluation?',
     options: [
@@ -297,7 +297,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 22,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 5 — Easy',
     prompt: 'A team needs to generate many possible solutions to an onboarding problem before evaluating them. Which technique is most suitable?',
     options: [
@@ -311,7 +311,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 23,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 5 — Medium',
     prompt: 'Before designing a patient portal, the team wants to understand how different patient groups perceive the proposed experience. Which technique helps most?',
     options: [
@@ -325,7 +325,7 @@ export const capmDomain1Questions: PMPQuestion[] = [
   },
   {
     id: 24,
-    domain: 'Process',
+    domain: 'Project Management Fundamentals and Core Concepts',
     topic: 'Task 5 — Difficult',
     prompt: "A kickoff meeting ends with broad agreement, but nobody knows who must do what next. What action would most improve the meeting's effectiveness?",
     options: [
