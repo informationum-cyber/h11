@@ -28,6 +28,8 @@ import { Route as ContractorAdminRouteImport } from './routes/contractor-admin'
 import { Route as ClassRegisterRouteImport } from './routes/class-register'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as CareerTransformationRouteImport } from './routes/career-transformation'
+import { Route as CapmDomain4RouteImport } from './routes/capm-domain4'
+import { Route as CapmDomain3RouteImport } from './routes/capm-domain3'
 import { Route as CapmDomain1Set2RouteImport } from './routes/capm-domain1-set2'
 import { Route as CapmDomain1MockRouteImport } from './routes/capm-domain1-mock'
 import { Route as BookMabelaRouteImport } from './routes/book-mabela'
@@ -136,6 +138,16 @@ const CareerTransformationRoute = CareerTransformationRouteImport.update({
   path: '/career-transformation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CapmDomain4Route = CapmDomain4RouteImport.update({
+  id: '/capm-domain4',
+  path: '/capm-domain4',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CapmDomain3Route = CapmDomain3RouteImport.update({
+  id: '/capm-domain3',
+  path: '/capm-domain3',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CapmDomain1Set2Route = CapmDomain1Set2RouteImport.update({
   id: '/capm-domain1-set2',
   path: '/capm-domain1-set2',
@@ -201,6 +213,8 @@ export interface FileRoutesByFullPath {
   '/book-mabela': typeof BookMabelaRoute
   '/capm-domain1-mock': typeof CapmDomain1MockRoute
   '/capm-domain1-set2': typeof CapmDomain1Set2Route
+  '/capm-domain3': typeof CapmDomain3Route
+  '/capm-domain4': typeof CapmDomain4Route
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -233,6 +247,8 @@ export interface FileRoutesByTo {
   '/book-mabela': typeof BookMabelaRoute
   '/capm-domain1-mock': typeof CapmDomain1MockRoute
   '/capm-domain1-set2': typeof CapmDomain1Set2Route
+  '/capm-domain3': typeof CapmDomain3Route
+  '/capm-domain4': typeof CapmDomain4Route
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -266,6 +282,8 @@ export interface FileRoutesById {
   '/book-mabela': typeof BookMabelaRoute
   '/capm-domain1-mock': typeof CapmDomain1MockRoute
   '/capm-domain1-set2': typeof CapmDomain1Set2Route
+  '/capm-domain3': typeof CapmDomain3Route
+  '/capm-domain4': typeof CapmDomain4Route
   '/career-transformation': typeof CareerTransformationRoute
   '/careers': typeof CareersRoute
   '/class-register': typeof ClassRegisterRoute
@@ -300,6 +318,8 @@ export interface FileRouteTypes {
     | '/book-mabela'
     | '/capm-domain1-mock'
     | '/capm-domain1-set2'
+    | '/capm-domain3'
+    | '/capm-domain4'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -332,6 +352,8 @@ export interface FileRouteTypes {
     | '/book-mabela'
     | '/capm-domain1-mock'
     | '/capm-domain1-set2'
+    | '/capm-domain3'
+    | '/capm-domain4'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -364,6 +386,8 @@ export interface FileRouteTypes {
     | '/book-mabela'
     | '/capm-domain1-mock'
     | '/capm-domain1-set2'
+    | '/capm-domain3'
+    | '/capm-domain4'
     | '/career-transformation'
     | '/careers'
     | '/class-register'
@@ -397,6 +421,8 @@ export interface RootRouteChildren {
   BookMabelaRoute: typeof BookMabelaRoute
   CapmDomain1MockRoute: typeof CapmDomain1MockRoute
   CapmDomain1Set2Route: typeof CapmDomain1Set2Route
+  CapmDomain3Route: typeof CapmDomain3Route
+  CapmDomain4Route: typeof CapmDomain4Route
   CareerTransformationRoute: typeof CareerTransformationRoute
   CareersRoute: typeof CareersRoute
   ClassRegisterRoute: typeof ClassRegisterRoute
@@ -557,6 +583,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CareerTransformationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/capm-domain4': {
+      id: '/capm-domain4'
+      path: '/capm-domain4'
+      fullPath: '/capm-domain4'
+      preLoaderRoute: typeof CapmDomain4RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/capm-domain3': {
+      id: '/capm-domain3'
+      path: '/capm-domain3'
+      fullPath: '/capm-domain3'
+      preLoaderRoute: typeof CapmDomain3RouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/capm-domain1-set2': {
       id: '/capm-domain1-set2'
       path: '/capm-domain1-set2'
@@ -645,6 +685,8 @@ const rootRouteChildren: RootRouteChildren = {
   BookMabelaRoute: BookMabelaRoute,
   CapmDomain1MockRoute: CapmDomain1MockRoute,
   CapmDomain1Set2Route: CapmDomain1Set2Route,
+  CapmDomain3Route: CapmDomain3Route,
+  CapmDomain4Route: CapmDomain4Route,
   CareerTransformationRoute: CareerTransformationRoute,
   CareersRoute: CareersRoute,
   ClassRegisterRoute: ClassRegisterRoute,
